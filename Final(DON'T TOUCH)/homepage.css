@@ -1,0 +1,660 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    min-height:100vh;
+    font-family:Arial, sans-serif;
+}
+
+h1{
+    color:beige;
+    font-size:48px;
+    padding:30px;
+    font-weight:bold;
+}
+
+.dashboard{
+    display: flex;     
+    justify-content: center;
+    gap: 20px;
+    margin: 20px;
+}
+.card{
+    
+    height:150px;
+    width: 250px;
+    display:block;
+    flex-wrap: nowrap;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    
+}
+
+.card h2{
+    font-size:100%;
+    color:#2c3e50;
+    margin-bottom:30px;
+}
+
+.card p{
+    font-size:5vh;
+    font-weight:bold;
+    color:#1f3a5f;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.55);
+    background-image:url("makhanda2.jpeg"); /* Your image */
+    padding: 40px;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    width: 100%;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.hero-buttons .btn {
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+/* Primary button */
+.hero-buttons .primary {
+    background: #334e4a;
+    color: white;
+    border: none;
+}
+
+.hero-buttons .primary:hover {
+    background: #334e4a;
+}
+
+/* Secondary buttons */
+.hero-buttons .secondary {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.hero-buttons .secondary:hover {
+    background: #686868;
+    color: black;
+}
+
+.notices {
+    padding: 60px 20px;
+    background:#686868;
+    text-align: center;
+}
+
+.notices h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color:beige;
+}
+
+.notice-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.notice-card {
+    background:beige;
+    padding: 20px;
+    width: 280px;
+    
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.notice-card:hover {
+    transform: translateY(-5px);
+}
+
+.notice-card h3 {
+    margin-bottom: 10px;
+    color: #222;
+    font-size: 18px;
+}
+
+.notice-card p {
+    font-size: 14px;
+    color: #666;
+}
+.dam-card {
+    width: 300px;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+    text-align: center;
+}
+
+/* ================= OVERVIEW SECTION ================= */
+
+.overview-section{
+    max-width:1200px;
+    margin:60px auto;
+}
+
+.overview-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.menu-btn{
+    background:none;
+    border:none;
+    font-size:30px;
+    cursor:pointer;
+    color:#334e4a;
+}
+
+.overview-header h2{
+    font-size:36px;
+    color:#334e4a;
+    border-left:6px solid #917e5a;
+    padding-left:15px;
+    margin:0;
+}
+
+.overview-container{
+    display:flex;
+    align-items:flex-start;
+    gap:20px;
+}
+
+/* Hidden by default */
+.ward-panel{
+    display:none;
+    width:240px;
+    background:#f8f5ef;
+    border-radius:10px;
+    padding:20px;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+
+.ward-panel.show{
+    display:block;
+}
+
+.ward-panel h3{
+    margin-bottom:15px;
+    color:#334e4a;
+}
+
+.ward-panel ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.ward-panel li{
+    padding:12px 0;
+    border-bottom:1px solid #ddd;
+}
+
+.ward-panel a{
+    text-decoration:none;
+    color:#334e4a;
+    font-weight:bold;
+}
+
+.ward-panel a:hover{
+    color:#917e5a;
+}
+
+.Overview{
+    flex:1;
+    background:#f8f5ef;
+    padding:40px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+
+.Overview h3{
+    font-size:18px;
+    font-weight:normal;
+    line-height:1.8;
+    color:#555;
+}
+/* ===================== DAM LEVELS ===================== */
+
+.dam-levels{
+    padding:70px 8%;
+    background:#f8f5ef;
+}
+
+.dam-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.dam-title h2{
+    color:#334e4a;
+    font-size:38px;
+}
+
+.dam-title p{
+    color:#666;
+    margin-top:10px;
+    font-size:18px;
+}
+
+.dam-container{
+    display:flex;
+    gap:30px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.dam-card{
+    width:360px;
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,.12);
+    transition:.3s;
+}
+
+.dam-card:hover{
+    transform:translateY(-8px);
+}
+
+.dam-card h3{
+    text-align:center;
+    color:#334e4a;
+    margin-bottom:25px;
+}
+
+.dam-content{
+    display:flex;
+    gap:25px;
+}
+
+/* Gauge */
+
+.gauge{
+    width:90px;
+    height:280px;
+    border:4px solid #ddd;
+    border-radius:50px;
+    position:relative;
+    overflow:hidden;
+    background:#fff;
+}
+
+.water{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-weight:bold;
+    font-size:24px;
+    transition:1.5s;
+}
+
+.blue .water{
+    background:#3498db;
+}
+
+.green .water{
+    background:#4CAF50;
+}
+
+.orange .water{
+    background:#f39c12;
+}
+
+.dam-info{
+    flex:1;
+}
+
+.dam-info p{
+    margin-bottom:12px;
+    color:#444;
+}
+
+.history-btn{
+    margin-top:15px;
+    width:100%;
+    padding:12px;
+    background:#334e4a;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.history-btn:hover{
+    background:#917e5a;
+}
+
+
+
+/*navigation bar code*/
+
+*{
+ margin: 0;
+    padding: 0;
+}
+
+
+.navbar{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px 2%;
+    background-color: #334e4a;
+    position: sticky;
+    top:0;
+    z-index: 1000;  /*Keeps keeps the naviagtion bar on top of everything*/
+}
+
+.nav-links{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5vw;
+    list-style: none;
+    flex-wrap: nowrap; /*this makes the links not jump to the nest line, this happend with the about us link*/
+}
+
+.nav-links a{
+    text-decoration: none; 
+    color: white;
+}
+
+.link{
+    text-decoration: none;
+    color: white;
+    position: relative;
+    font-size: 1.5vw;
+}
+
+
+/*underline hover for the links*/
+.link::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background-color: #917e5a;
+    transition: width 0.3s ease;
+}
+
+.link:hover{
+    color: #917e5a;
+}
+
+
+.link:hover::after{
+    width: 100%;
+}
+/*underline hover for thr links end here*/
+
+.logo img{
+    width: 10vw;
+    min-width: 80px;
+    max-width: 150px;
+    height: auto;
+}
+
+
+.btn{
+    background-color: #334e4a;
+    color:white;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 2px solid #917e5a;
+    transition: 0.4s;
+    font-size: 1.5vw;
+
+    white-space: nowrap;
+}
+
+.btn:hover{
+    background-color: #917e5a;
+    color: aliceblue;
+}
+#navbuttons{
+    display: flex;
+    gap:5px;
+    margin-left: 20px;
+}
+/*######################### RESPONSIVENESS ############### */
+
+@media screen and (max-width: 768px){
+    .nav-links{
+        display: block;
+        gap: 10px;
+        padding: 0;
+    }
+
+    .nav-links li {
+        margin-bottom: 10px; 
+    }
+
+    .navbar{
+        display: block;
+        gap: 10px;
+        width: 25%;
+    }
+
+    #navbuttons{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .btn{
+        display: inline-block;
+        width: max-content;
+        text-align: center;
+    }
+}
+
+hr{
+    height: 2px;
+    border: none;
+    background-color: #917e5a;}
+
+/*footer code*/
+
+footer {
+    background-color: #334e4a;
+    color: #ffffff;
+    padding: 40px 0 0 0;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+.footerContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr; /* left split for logo and description */
+    gap: 60px;
+    padding-bottom: 50px;
+}
+
+.makanaLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.logoBrand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.logoBrand img{
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.logoBrand h2 {
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.makanaLogo p {
+    color: #b3c2c0;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 25px 0;
+    max-width: 380px;
+}
+
+.socials {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 35px;
+}
+
+.socials img {
+    width: 18px;
+    height: 18px;
+    filter: invert(100%); /* Turns dark icons clean white */
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.socials img:hover {
+    opacity: 1;
+}
+
+.backToTopBtn {
+    border: 1px solid #ffffff;
+    background: transparent;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    border-radius: 2px;
+}
+
+.backToTopBtn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.siteMap, .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.siteMap h2, .contact h2 {
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.siteMap a, .contact a {
+    color: #b3c2c0;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 14px;
+    transition: color 0.2s ease;
+}
+
+.siteMap a:hover, .contact a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.address {
+    margin-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+}
+
+.address p {
+    color: #8da3a0;
+    font-size: 13px;
+    margin: 4px 0;
+}
+
+.copyrightBar {
+    background-color: beige;
+    padding: 15px 40px;
+    text-align: center;
+}
+
+.copyrightBar p {
+    margin: 0;
+    color: #0b342e; 
+    font-size: 12px;
+    font-weight: 500;
+}
+
+
+ 

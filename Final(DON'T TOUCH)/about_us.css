@@ -1,0 +1,391 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.navbar{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px 2%;
+    background-color: #334e4a;
+    position: sticky;
+    top:0;
+    z-index: 1000;  /*Keeps keeps the naviagtion bar on top of everything*/
+}
+ 
+.nav-links{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5vw;
+    list-style: none;
+    flex-wrap: nowrap; /*this makes the links not jump to the nest line, this happend with the about us link*/
+}
+ 
+.nav-links a{
+    text-decoration: none; 
+    color: white;
+}
+ 
+.link{
+    text-decoration: none;
+    color: white;
+    position: relative;
+    font-size: 1.5vw;
+}
+ 
+ 
+/*underline hover for the links*/
+.link::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background-color: #917e5a;
+    transition: width 0.3s ease;
+}
+ 
+.link:hover{
+    color: #917e5a;
+}
+ 
+ 
+.link:hover::after{
+    width: 100%;
+}
+/*underline hover for thr links end here*/
+ 
+.logo img{
+    width: 10vw;
+    min-width: 80px;
+    max-width: 150px;
+    height: auto;
+}
+ 
+ 
+.btn{
+    background-color: #334e4a;
+    color:white;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 2px solid #917e5a;
+    transition: 0.4s;
+    font-size: 1.5vw;
+ 
+    white-space: nowrap;
+}
+ 
+.btn:hover{
+    background-color: #917e5a;
+    color: aliceblue;
+}
+#navbuttons{
+    display: flex;
+    gap:5px;
+    margin-left: 20px;
+}
+/*######################### RESPONSIVENESS ############### */
+ 
+@media screen and (max-width: 768px){
+    .nav-links{
+        display: block;
+        gap: 10px;
+        padding: 0;
+    }
+ 
+    .nav-links li {
+        margin-bottom: 10px; 
+    }
+ 
+    .navbar{
+        display: block;
+        gap: 10px;
+        width: 25%;
+    }
+ 
+    #navbuttons{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+    }
+ 
+    .btn{
+        display: inline-block;
+        width: max-content;
+        text-align: center;
+    }
+}
+ 
+hr{
+    height: 2px;
+    border: none;
+    background-color: #917e5a;
+ /*####################### Everything on top is the navigation bar ##############################*/ 
+}
+body{
+    background-color: #334e4a;
+}
+p{
+    text-align: center;
+    color: #b3c2c0;
+}
+h2{
+    text-align: center;
+    color: white;
+}
+ 
+.aboutus{
+   text-align: center;
+   color: white; 
+}
+ 
+/* ===================== DEVELOPERS SECTION ===================== */
+ 
+.developers-section{
+    padding: 50px 5%;
+    text-align: center;
+    color: white;
+}
+ 
+.developers-section h2{
+    margin-bottom: 30px;
+}
+ 
+.developer-heading p{
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+}
+ 
+.developer-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 40px;
+}
+ 
+.developer-card{
+    position: relative;
+    overflow: hidden;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px 20px;
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /*Hover effect to amacard wethu start here*/
+}
+ 
+.developer-card:hover{
+    transform: scale(1.05);    /*enlarge the card*/
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    z-index: 1;            /*ensures card stay above others*/
+}
+ 
+.developer-card img{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #917e5a;
+    margin-bottom: 20px;
+}
+ 
+.developer-card h3{
+    color: #334e4a;
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+}
+ 
+.developer-card h4{
+    color: #917e5a;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+ 
+.developer-card p{
+    color: #5b6664;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+ 
+.developer-card .social-icons{
+    display: flex;
+    gap: 16px;
+    margin-top: auto;
+}
+ 
+.developer-card .social-icons img{
+    width: 18px;
+    height: 18px;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+ 
+/* Responsive spacing for developer cards on smaller screens */
+@media screen and (max-width: 768px){
+    .developer-container{
+        gap: 25px;
+    }
+ 
+    .developer-card{
+        width: 90%;
+        max-width: 320px;
+    }
+}
+                                                        /*then the hover ends here*/
+footer {
+    background-color: #334e4a;
+    color: #ffffff;
+    padding: 60px 0 0 0;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+ 
+.footerContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr; /* left split for logo and description */
+    gap: 60px;
+    padding-bottom: 50px;
+}
+ 
+.makanaLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+ 
+.logoBrand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+ 
+.logoBrand img{
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 30px;
+}
+ 
+.logoBrand h2 {
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin: 0;
+    font-weight: 600;
+}
+ 
+.makanaLogo p {
+    color: #b3c2c0;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 25px 0;
+    max-width: 380px;
+}
+ 
+.socials {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 35px;
+}
+ 
+.socials img {
+    width: 18px;
+    height: 18px;
+    filter: invert(100%); /* Turns dark icons clean white */
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+ 
+.socials img:hover {
+    opacity: 1;
+}
+ 
+.backToTopBtn {
+    border: 1px solid #ffffff;
+    background: transparent;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    border-radius: 2px;
+}
+ 
+.backToTopBtn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+ 
+.siteMap, .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+ 
+.siteMap h2, .contact h2 {
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #ffffff;
+    font-weight: 500;
+}
+ 
+.siteMap a, .contact a {
+    color: #b3c2c0;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 14px;
+    transition: color 0.2s ease;
+}
+ 
+.siteMap a:hover, .contact a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+ 
+.address {
+    margin-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+}
+ 
+.address p {
+    color: #8da3a0;
+    font-size: 13px;
+    margin: 4px 0;
+}
+ 
+.copyrightBar {
+    background-color: #917e5a;
+    padding: 15px 40px;
+    text-align: center;
+}
+ 
+.copyrightBar p {
+    margin: 0;
+    color: #0b342e; 
+    font-size: 12px;
+    font-weight: 500;
+}
