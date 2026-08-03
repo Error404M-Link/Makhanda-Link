@@ -104,7 +104,7 @@
 
     <!-- Emegency contact -->
 
-    <div class="emergencyBanner">
+    <!-- <div class="emergencyBanner">
         <div class="emergencyContent">
             <span class="emergencyIcon"><img src="emergency_home.svg" alt="Emergency icon"></span>
             <div class="emergencyText">
@@ -115,7 +115,7 @@
                 <span>Municipal After-Hours: 046 603 6134</span>
             </div>
         </div>
-    </div>
+    </div> -->
 
             <!-- ################# DISPLAYING THE STATS ################### -->
 
