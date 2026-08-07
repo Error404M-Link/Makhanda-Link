@@ -116,7 +116,7 @@
             </div>
         </div>
     </div> -->
-
+    
             <!-- ################# DISPLAYING THE STATS ################### -->
 
     <section id="FaultStats">
