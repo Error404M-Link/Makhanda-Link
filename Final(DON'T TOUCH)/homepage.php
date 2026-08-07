@@ -47,9 +47,9 @@ $icon = $data['current']['condition']['icon'];
         <ul class="nav-links">
             <li><a href="#" class="link"> Home </a></li>
             <li><a href="PublicFaultBoard.php" class="link"> Fault </a></li>
+            <li><a href="ward_notices.php" class="link"> Notices  </a></li>
             <li><a href="about_us_page.html" class="link"> About us </a></li>
             <li><a href="contactUs.html" class="link"> Contact us </a></li>
-            <li><a href="#" class="link"> Notices  </a></li>
             <div id="navbuttons">
                 <li><a href="login.html" class="btn"> Login </a></li>
                 <li><a href="register.html" class="btn"> Sign up </a></li>

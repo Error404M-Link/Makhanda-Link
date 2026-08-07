@@ -49,8 +49,8 @@
             <ul class="mainNavLinks">
                 <li><a href="homepage.php" class="navItem">Home</a></li>
                 <li><a href="#" class="navItem active">Faults</a></li>
+                <li><a href="ward_notices.php" class="link"> Notices  </a></li>
                 <li><a href="about_us_page.html" class="navItem">About Us</a></li>
-                <li><a href="#" class="navItem">Notices</a></li>
                 <li><a href="contactUs.html" class="navItem">Contact us</a></li>
             </ul> 
         </div>
