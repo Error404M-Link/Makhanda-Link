@@ -48,6 +48,7 @@ $icon = $data['current']['condition']['icon'];
             <li><a href="#" class="link"> Home </a></li>
             <li><a href="PublicFaultBoard.php" class="link"> Fault </a></li>
             <li><a href="ward_notices.php" class="link"> Notices  </a></li>
+            <li><a href="viewWards.html" class="link"> Wards </a></li>
             <li><a href="about_us_page.html" class="link"> About us </a></li>
             <li><a href="contactUs.html" class="link"> Contact us </a></li>
             <div id="navbuttons">
@@ -332,6 +333,7 @@ $icon = $data['current']['condition']['icon'];
                 <a href="#">About Us</a>
                 <a href="#">Report A Fault</a>
                 <a href="#">Contact Us</a>
+                <a href="FAQ.html">FAQs</a>
             </div>
 
             <div class="contact">

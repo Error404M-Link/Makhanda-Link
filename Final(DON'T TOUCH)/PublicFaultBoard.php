@@ -8,7 +8,8 @@
     <title>Public Fault Board</title>
 
     <!-- STYLESHEETS -->
-     <link rel="stylesheet" href="publicfaultBoard.css">
+    <link rel="stylesheet" href="publicfaultBoard.css">
+    <link rel="stylesheet" href="backButton.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <style>
         
@@ -50,11 +51,13 @@
                 <li><a href="homepage.php" class="navItem">Home</a></li>
                 <li><a href="#" class="navItem active">Faults</a></li>
                 <li><a href="about_us_page.html" class="navItem">About Us</a></li>
-                <li><a href="#" class="navItem">Notices</a></li>
+                <li><a href="ward_notices.php" class="navItem">Notices</a></li>
                 <li><a href="contactUs.html" class="navItem">Contact us</a></li>
             </ul> 
         </div>
     </nav>
+
+    <!-- BACK BUTTON -->
 
     <!--<div class="faultsHeader">
         <strong>Public Faults</strong>
@@ -63,6 +66,19 @@
 
     <!-- Searching and stuff -->
     <section class="searchFilterWrapper">
+
+        <div class="backNavWrapper">
+            <div class="backNavContainer">
+                <a href="javascript:history.back()" class="backBtn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    <span>Back</span>
+                </a>
+            </div>
+        </div>
+
         <div class="searchBox">
             <input type="text" id="faultSeachInput" placeholder="Search by keyword or location...">
             <span class="searchIcon">
@@ -293,6 +309,7 @@
                 <a href="#">About Us</a>
                 <a href="#">Report A Fault</a>
                 <a href="#">Contact Us</a>
+                <a href="FAQ.html">FAQs</a>
             </div>
 
             <div class="contact">

@@ -148,6 +148,10 @@ body{
     gap: 5px;
 }
 
+.utilityLeft{
+    margin-left: 3.3%;
+}
+
 .utilityRight a.utilityBtn {
     background-color: transparent;
     color: white;
@@ -282,10 +286,9 @@ hr{
     display: flex;
     gap: 12px;
     align-items: center;
-    width: 100%;
     margin-bottom: 10px;
-    justify-content: center;
-    margin: 25px auto 20px auto;
+    justify-content: flex-end;
+    margin: 8px auto 20px auto;
     box-sizing: border-box;
     padding: 0 4%;
 }
