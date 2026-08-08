@@ -1,0 +1,139 @@
+body {
+    background: linear-gradient(rgb(81, 117, 81));
+}
+
+.registration{
+    height:80vh ;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+        
+.form-group input{
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.form-group label {
+    width: 120px;              
+    margin-right: 10px;
+    text-align: right;          
+}
+
+.form-group{
+    display: flex;
+    align-items: center;
+    
+}
+
+h4{
+    text-align: center;
+}
+
+
+button {
+    color: white;
+    width: 80px;
+    background: peachpuff;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+/* ###########  LOGIN ###################*/
+
+
+.logs {
+
+    width: 500px;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+
+
+.logs h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: black;
+}
+
+
+
+.information {
+    width: 95%;
+    margin-bottom: 20px;
+}
+
+
+.information input {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 0 20px;
+    font-size: 16px;
+}
+
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+
+.remember-forgot a {
+    text-decoration: none;
+    color: khaki;
+}
+
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+
+button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    background: peachpuff;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+button:hover {
+    background: khaki;
+}
+
+
+.registerlink {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 15px;
+}
+
+
+.registerlink a {
+    color: rgb(71, 121, 71);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+.registerlink a:hover {
+    text-decoration: underline;
+}
