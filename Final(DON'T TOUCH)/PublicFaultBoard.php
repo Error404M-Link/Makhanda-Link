@@ -50,7 +50,7 @@
             <ul class="mainNavLinks">
                 <li><a href="index.php" class="navItem">Home</a></li>
                 <li><a href="#" class="navItem active">Faults</a></li>
-                <li><a href="viewWards.html" class="link"> Wards </a></li>
+                <li><a href="viewWards.html" class="navItem"> Wards </a></li>
                 <li><a href="about_us_page.html" class="navItem">About Us</a></li>
                 <li><a href="ward_notices.php" class="navItem">Notices</a></li>
                 <li><a href="contactUs.html" class="navItem">Contact us</a></li>
