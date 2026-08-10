@@ -52,8 +52,8 @@ $icon = $data['current']['condition']['icon'];
             <li><a href="about_us_page.html" class="link"> About us </a></li>
             <li><a href="contactUs.html" class="link"> Contact us </a></li>
             <div id="navbuttons">
-                <li><a href="login.html" class="btn"> Login </a></li>
-                <li><a href="register.html" class="btn"> Sign up </a></li>
+                <li><a href="register.html?mode=login" class="btn"> Login </a></li>
+                <li><a href="register.html?mode=register" class="btn"> Sign up </a></li>
             </div>
         </ul> 
     </nav>

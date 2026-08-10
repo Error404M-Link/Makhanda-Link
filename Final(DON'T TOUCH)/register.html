@@ -5,207 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="regisration.css">
     <link rel="stylesheet" href="publicfaultBoard.css">
-    <title>Account Access</title>
+    <link rel="stylesheet" href="backButton.css">
+    <title>Sign Up</title>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f6f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .registration {
-            width: 90%;
-            max-width: 1000px;
-            min-height: 650px;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .registrationBody {
-            display: flex;
-            flex: 1;
-        }
-
-        /* Left side header column */
-        .registrationHeader {
-            width: 35%;
-            padding: 40px;
-            border-right: 1px solid #e0e0e0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
-
-        /* supporting dynamic header transition */
-
-        .header-content {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.35s ease-in-out;
-        }
-
-        .header-content.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .registrationHeader h4 {
-            font-size: 24px;
-            margin: 0 0 10px 0;
-            color: #333;
-        }
-
-        /* Right side form column */
-        .registrationForm {
-            flex: 1;
-            padding: 40px 45px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-        }
-
-        .account-type {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .account-type label {
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .account-signin {
-            width: 100%;
-            padding: 18px 0;
-            text-align: center;
-            background-color: #f8fafc;
-            border-top: 1px solid #e2e8f0;
-        }
-        
-        .account-signin p {
-            margin: 0;
-            font-size: 14px;
-            color: #64748b;
-        }
-
-        .account-signin a {
-            color: #3b82f6;
-            text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .account-signin a:hover {
-            text-decoration: underline;
-        }
-
-        .form-group {
-            margin-bottom: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .form-group label {
-            width: 30%;
-            margin-bottom: 0;
-            font-size: 14px;
-            color: #555;
-        }
-
-        .form-group input {
-            width: 70%;
-            padding: 10px 14px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        /* login elements */
-        .remember-forgot {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 15px 0 20px 0;
-            font-size: 14px;
-        }
-
-        .remember-forgot a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .remember-forgot a:hover {
-            text-decoration: underline;
-        }
-
-        .formButtons {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-            padding-left: 30%;
-        }
-
-        button {
-            flex: 1;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Dynamic form height wrapper */
-        .form-wrapper {
-            position: relative;
-            transition: height 0.35s ease-in-out;
-        }
-
-        .section {
-            opacity: 0;
-            visibility: hidden;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            transform: translateY(10px);
-            transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out, visibility 0.35s;
-        }
-
-        .section.active {
-            opacity: 1;
-            visibility: visible;
-            position: relative;
-            transform: translateY(0);
-        }
     </style>
 </head>
 <body>
+    <nav class="navbar"> 
+        <div class="logo">
+            <a href="index.php"><img src="MakanaLogo.svg" alt="Makhanda logo"></a>
+        </div> 
+    </nav>
+
+    <div class="backNavWrapper">
+        <div class="backNavContainer">
+            <a href="javascript:history.back()" class="backBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>Back</span>
+            </a>
+        </div>
+    </div>
+
     <section class="registration">
         
         <div class="registrationBody">
@@ -346,92 +170,6 @@
     </section>
 
     <!-- SCROLLER SCRIPT -->
-    <script>
-        const resident = document.getElementById("residentSection");
-        const organisation = document.getElementById("organisationSection");
-        const login = document.getElementById("loginSection");
-        const formWrapper = document.getElementById("formWrapper");
-        const radios = document.querySelectorAll("input[name='accountType']");
-        
-        const registerHeader = document.getElementById("registerHeader");
-        const loginHeader = document.getElementById("loginHeader");
-        const registerFooter = document.getElementById("registerFooter");
-        const loginFooter = document.getElementById("loginFooter");
-        const accountTypeSelector = document.getElementById("accountTypeSelector");
-
-        let currentMode = 'register';
-
-        function updateWrapperHeight(targetSection) {
-            formWrapper.style.height = targetSection.offsetHeight + "px";
-        }
-
-        function switchPageMode(mode) {
-            currentMode = mode;
-
-            if (mode === 'login') {
-                // Header update
-                registerHeader.classList.remove("active");
-                loginHeader.classList.add("active");
-
-                // Form section update
-                resident.classList.remove("active");
-                organisation.classList.remove("active");
-                login.classList.add("active");
-
-                // Hide radio buttons & update footer text
-                accountTypeSelector.style.display = "none";
-                registerFooter.style.display = "none";
-                loginFooter.style.display = "block";
-
-                updateWrapperHeight(login);
-            } else {
-                // Header update
-                loginHeader.classList.remove("active");
-                registerHeader.classList.add("active");
-
-                // Restore active radio selection
-                const selectedType = document.querySelector("input[name='accountType']:checked").value;
-                login.classList.remove("active");
-                
-                if (selectedType === "resident") {
-                    resident.classList.add("active");
-                    updateWrapperHeight(resident);
-                } else {
-                    organisation.classList.add("active");
-                    updateWrapperHeight(organisation);
-                }
-
-                // Show radio buttons & update footer text
-                accountTypeSelector.style.display = "flex";
-                loginFooter.style.display = "none";
-                registerFooter.style.display = "block";
-            }
-        }
-
-        // Handle resident/organisation toggle
-        radios.forEach(radio => {
-            radio.addEventListener("change", function() {
-                if (currentMode === 'register') {
-                    if (this.value === "resident") {
-                        organisation.classList.remove("active");
-                        resident.classList.add("active");
-                        updateWrapperHeight(resident);
-                    } else {
-                        resident.classList.remove("active");
-                        organisation.classList.add("active");
-                        updateWrapperHeight(organisation);
-                    }
-                }
-            });
-        });
-
-        // Initialize view
-        updateWrapperHeight(resident);
-
-        window.addEventListener("resize", () => {
-            const activeSection = document.querySelector(".section.active");
-            if (activeSection) updateWrapperHeight(activeSection);
-        });
-    </script>
+    <script src="registration.js"></script>
 </body>
 </html>
