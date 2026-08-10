@@ -4,22 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ward councilor's Update</title>
-    <link rel="stylesheet" href="publicfaultBoard.css">
+    <link rel="stylesheet" href="view_notices.css">
 </head>
 <body>
-    <nav class="navbar"> 
+        <nav class="navbar"> 
         <div class="logo">
             <img src="MakanaLogo.svg" alt="Makhanda logo">
         </div> 
         <ul class="nav-links">
-            <li><a href="homepage.php" class="link"> Home </a></li>
-            <li><a href="PublicFaultBoard.php" class="link"> Fault </a></li>
-            <li><a href="ward_notices" class="link"> Notices  </a></li>
-            <li><a href="about_us_page.html" class="link"> About us </a></li>
-            <li><a href="contactUs.html" class="navItem">Contact us</a></li>
+            <li><a href="#" class="link"> Home </a></li>
+            <li><a href="#" class="link"> Fault </a></li>
+            <li><a href="#" class="link"> About us </a></li>
+            <li><a href="#" class="link"> Notices  </a></li>
             <div id="navbuttons">
-                <li><a href="login.html" class="btn"> Login </a></li>
-                <li><a href="register.html" class="btn"> Sign up </a></li>
+                <li><a href="#" class="btn"> Login </a></li>
+                <li><a href="#" class="btn"> Sign up </a></li>
             </div>
         </ul> 
     </nav>
@@ -51,7 +50,6 @@
 <button type="submit">View Notice</button> 
 </form>
 <hr>
-
 </body> 
 
 <?php
