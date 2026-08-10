@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="regisration.css">
     <link rel="stylesheet" href="publicfaultBoard.css">
-    <title>Create an Account</title>
+    <title>Account Access</title>
 
     <style>
         * {
@@ -23,7 +23,6 @@
             min-height: 100vh;
         }
 
-        /* Outer centered container */
         .registration {
             width: 90%;
             max-width: 1000px;
@@ -37,16 +36,35 @@
             overflow: hidden;
         }
 
+        .registrationBody {
+            display: flex;
+            flex: 1;
+        }
+
         /* Left side header column */
         .registrationHeader {
-            max-width: 40%;
+            width: 35%;
             padding: 40px;
-            border-right: 1px solid #e0e0e0; /* Middle dividing line */
+            border-right: 1px solid #e0e0e0;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            position: relative;
+        }
+
+        /* supporting dynamic header transition */
+
+        .header-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.35s ease-in-out;
+        }
+
+        .header-content.active {
+            display: block;
+            opacity: 1;
         }
 
         .registrationHeader h4 {
@@ -76,31 +94,32 @@
             font-weight: bold;
         }
 
-        .account-signin{
+        .account-signin {
             width: 100%;
-            padding: 15px 0;
+            padding: 18px 0;
             text-align: center;
+            background-color: #f8fafc;
             border-top: 1px solid #e2e8f0;
         }
         
-        .account-signin p{
+        .account-signin p {
             margin: 0;
             font-size: 14px;
             color: #64748b;
         }
 
-        .account-signin a{
+        .account-signin a {
             color: #3b82f6;
             text-decoration: none;
             font-weight: bold;
+            cursor: pointer;
         }
 
-        .account-signin a:hover{
+        .account-signin a:hover {
             text-decoration: underline;
         }
 
         .form-group {
-            margin-bottom: 12px;
             margin-bottom: 22px;
             display: flex;
             align-items: center;
@@ -108,23 +127,47 @@
         }
 
         .form-group label {
-            display: block;
-            margin-bottom: 4px;
+            width: 30%;
+            margin-bottom: 0;
             font-size: 14px;
             color: #555;
         }
 
         .form-group input {
-            width: 100%;
-            padding: 12px 16px;
+            width: 70%;
+            padding: 10px 14px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
 
-        button{
-            margin-top: 15px;
-            width: 100%;
-            padding: 5px;
+        /* login elements */
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0 20px 0;
+            font-size: 14px;
+        }
+
+        .remember-forgot a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .remember-forgot a:hover {
+            text-decoration: underline;
+        }
+
+        .formButtons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            padding-left: 30%;
+        }
+
+        button {
+            flex: 1;
+            padding: 10px;
             background-color: #007bff;
             color: white;
             border: none;
@@ -136,17 +179,10 @@
         button:hover {
             background-color: #0056b3;
         }
-        .formButtons{
-            display: flex;
-            gap: 20%;
-            margin-top: 30px;
-            padding-left: 30%;
-        }
 
-        /* Smooth Transition */
+        /* Dynamic form height wrapper */
         .form-wrapper {
             position: relative;
-            
             transition: height 0.35s ease-in-out;
         }
 
@@ -172,16 +208,27 @@
 <body>
     <section class="registration">
         
-        <div class="regisrationBody" style="display: flex;">
+        <div class="registrationBody">
+            <!-- FORM HEADERS -->
             <div class="registrationHeader">
-                <h4>Registration Page</h4>
-                <p style="color: #666; margin: 0;">Select your account type to proceed with registration.</p>
+                <div id="registerHeader" class="header-content active">
+                    <h4>Registration</h4>
+                    <p style="color: #666; margin: 0;">Select your account type to proceed with registration.</p>
+                </div>
+
+                <div id="loginHeader" class="header-content">
+                    <h4>Sign In</h4>
+                    <p style="color: #666; margin: 0;">Welcome back! Enter your details to access your account.</p>
+                </div>
             </div>
 
+            <!-- FORM CONTAINER ON THE RIGHT SIDE -->
             <div class="registrationForm">
-                <form id="registrationForm" action="#" method="POST">
                 
-                    <div class="account-type">
+                <!-- REGISTRATION FORM -->
+                <form id="registrationForm" action="#" method="POST">
+                    
+                    <div class="account-type" id="accountTypeSelector">
                         <label>
                             <input type="radio" name="accountType" value="resident" checked>
                             Resident
@@ -194,7 +241,7 @@
                     </div>
 
                     <div class="form-wrapper" id="formWrapper">
-                        <!-- RESIDENT SIGN UP FORM -->
+                        <!-- RESIDENT FORM -->
                         <div id="residentSection" class="section active">
                             <h3>Resident Details</h3>
 
@@ -222,11 +269,14 @@
                                 <label for="resSuburb">Suburb</label>
                                 <input type="text" id="resSuburb" name="resSuburb" placeholder="St John">
                             </div>
+
+                            <div class="formButtons">
+                                <button type="reset">Reset</button>
+                                <button type="submit">Submit</button>
+                            </div>
                         </div>
 
-                        <!-- ORGANISATION SECTION -->
-
-                        
+                        <!-- ORGANISATION FORM -->
                         <div id="organisationSection" class="section">
                             <h3>Organisation Details</h3>
 
@@ -249,53 +299,135 @@
                                 <label for="orgType">Organisation Type</label>
                                 <input type="text" id="orgType" name="orgType">
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="formButtons">
-                        <button type="reset">Reset</button>
-                        <button type="submit">Submit</button>
+                            <div class="formButtons">
+                                <button type="reset">Reset</button>
+                                <button type="submit">Submit</button>
+                            </div>
+                        </div>
+
+                        <!-- LOGIN SECTION -->
+                        <div id="loginSection" class="section">
+                            <h3>Account Login</h3>
+
+                            <div class="form-group">
+                                <label for="loginUsername">Username</label>
+                                <input type="text" id="loginUsername" name="username" placeholder="Username" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="loginPassword">Password</label>
+                                <input type="password" id="loginPassword" name="password" placeholder="Password" required>
+                            </div>
+
+                            <div class="remember-forgot">
+                                <label><input type="checkbox" name="remember"> Remember me</label>
+                                <a href="#">Forgot Password?</a>
+                            </div>
+
+                            <button type="submit" style="width: 100%; margin-top: 10px;">Login</button>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
-        
-        <div class="account-signin">
-            <p>
-                Already have an acount? 
-                <a href="login.html">Sign in here</a>
+
+        <!-- LINKS CONTAINER -->
+        <div class="account-signin" id="footerContainer">
+            <p id="registerFooter">
+                Already have an account? 
+                <a onclick="switchPageMode('login')">Sign in here</a>
+            </p>
+            <p id="loginFooter" style="display: none;">
+                Don't have an account? 
+                <a onclick="switchPageMode('register')">Register here</a>
             </p>
         </div>
     </section>
 
+    <!-- SCROLLER SCRIPT -->
     <script>
         const resident = document.getElementById("residentSection");
         const organisation = document.getElementById("organisationSection");
+        const login = document.getElementById("loginSection");
         const formWrapper = document.getElementById("formWrapper");
         const radios = document.querySelectorAll("input[name='accountType']");
+        
+        const registerHeader = document.getElementById("registerHeader");
+        const loginHeader = document.getElementById("loginHeader");
+        const registerFooter = document.getElementById("registerFooter");
+        const loginFooter = document.getElementById("loginFooter");
+        const accountTypeSelector = document.getElementById("accountTypeSelector");
+
+        let currentMode = 'register';
 
         function updateWrapperHeight(targetSection) {
             formWrapper.style.height = targetSection.offsetHeight + "px";
         }
 
-        // Set initial wrapper height
-        updateWrapperHeight(resident);
+        function switchPageMode(mode) {
+            currentMode = mode;
 
-        radios.forEach(radio => {
-            radio.addEventListener("change", function() {
-                if (this.value === "resident") {
-                    organisation.classList.remove("active");
+            if (mode === 'login') {
+                // Header update
+                registerHeader.classList.remove("active");
+                loginHeader.classList.add("active");
+
+                // Form section update
+                resident.classList.remove("active");
+                organisation.classList.remove("active");
+                login.classList.add("active");
+
+                // Hide radio buttons & update footer text
+                accountTypeSelector.style.display = "none";
+                registerFooter.style.display = "none";
+                loginFooter.style.display = "block";
+
+                updateWrapperHeight(login);
+            } else {
+                // Header update
+                loginHeader.classList.remove("active");
+                registerHeader.classList.add("active");
+
+                // Restore active radio selection
+                const selectedType = document.querySelector("input[name='accountType']:checked").value;
+                login.classList.remove("active");
+                
+                if (selectedType === "resident") {
                     resident.classList.add("active");
                     updateWrapperHeight(resident);
                 } else {
-                    resident.classList.remove("active");
                     organisation.classList.add("active");
                     updateWrapperHeight(organisation);
+                }
+
+                // Show radio buttons & update footer text
+                accountTypeSelector.style.display = "flex";
+                loginFooter.style.display = "none";
+                registerFooter.style.display = "block";
+            }
+        }
+
+        // Handle resident/organisation toggle
+        radios.forEach(radio => {
+            radio.addEventListener("change", function() {
+                if (currentMode === 'register') {
+                    if (this.value === "resident") {
+                        organisation.classList.remove("active");
+                        resident.classList.add("active");
+                        updateWrapperHeight(resident);
+                    } else {
+                        resident.classList.remove("active");
+                        organisation.classList.add("active");
+                        updateWrapperHeight(organisation);
+                    }
                 }
             });
         });
 
-        // Recalculate container height if window is resized
+        // Initialize view
+        updateWrapperHeight(resident);
+
         window.addEventListener("resize", () => {
             const activeSection = document.querySelector(".section.active");
             if (activeSection) updateWrapperHeight(activeSection);
