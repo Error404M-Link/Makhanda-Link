@@ -48,21 +48,22 @@
 
             <!-- FORM CONTAINER ON THE RIGHT SIDE -->
             <div class="registrationForm">
+
+                <!-- SWITCHING BETWEEN THE RESIDENT AND THE ORGANIDATION -->
+                <div class="account-type" id="accountTypeSelector">
+                    <label>
+                        <input type="radio" name="accountType" value="resident" checked>
+                        Resident
+                    </label>
+
+                    <label>
+                        <input type="radio" name="accountType" value="organisation">
+                        Organisation
+                    </label>
+                </div>
                 
                 <!-- REGISTRATION FORM -->
                 <form id="registrationForm" action="#" method="POST">
-                    
-                    <div class="account-type" id="accountTypeSelector">
-                        <label>
-                            <input type="radio" name="accountType" value="resident" checked>
-                            Resident
-                        </label>
-
-                        <label>
-                            <input type="radio" name="accountType" value="organisation">
-                            Organisation
-                        </label>
-                    </div>
 
                     <div class="form-wrapper" id="formWrapper">
                         <!-- RESIDENT FORM -->
@@ -135,7 +136,7 @@
                             <h3>Account Login</h3>
 
                             <div class="form-group">
-                                <label for="loginUsername">Username</label>
+                                <label for="loginUsername">Email</label>
                                 <input type="text" id="loginUsername" name="username" placeholder="Username" required>
                             </div>
 

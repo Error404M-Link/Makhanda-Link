@@ -12,8 +12,31 @@ const accountTypeSelector = document.getElementById("accountTypeSelector");
 
 let currentMode = 'register';
 
+//  safety checks to prevent errors if elements are missing
 function updateWrapperHeight(targetSection) {
-    formWrapper.style.height = targetSection.offsetHeight + "px";
+    if (formWrapper && targetSection) {
+        formWrapper.style.height = targetSection.offsetHeight + "px";
+    }
+}
+
+// disables 'required' on hidden form inputs so they don't block submission
+function updateRequiredFields(activeSection) {
+    if (!formWrapper) return;
+    const allInputs = formWrapper.querySelectorAll("input");
+    allInputs.forEach(input => {
+        if (activeSection.contains(input)) {
+            // Restore required attribute if field needs it
+            if (input.dataset.required === "true") {
+                input.required = true;
+            }
+        } else {
+            // Track originally required fields and temporarily disable them
+            if (input.required) {
+                input.dataset.required = "true";
+            }
+            input.required = false;
+        }
+    });
 }
 
 function switchPageMode(mode) {
@@ -35,6 +58,7 @@ function switchPageMode(mode) {
         loginFooter.style.display = "block";
 
         updateWrapperHeight(login);
+        updateRequiredFields(login); // Toggles field requirements for login
     } else {
         // Header update
         loginHeader.classList.remove("active");
@@ -46,10 +70,14 @@ function switchPageMode(mode) {
         
         if (selectedType === "resident") {
             resident.classList.add("active");
+            organisation.classList.remove("active"); //Explicitly deactivate org section
             updateWrapperHeight(resident);
+            updateRequiredFields(resident); //Toggles field requirements for resident
         } else {
             organisation.classList.add("active");
+            resident.classList.remove("active"); //Explicitly deactivate resident section
             updateWrapperHeight(organisation);
+            updateRequiredFields(organisation); //Toggles field requirements for org
         }
 
         // Show radio buttons & update footer text
@@ -67,10 +95,12 @@ radios.forEach(radio => {
                 organisation.classList.remove("active");
                 resident.classList.add("active");
                 updateWrapperHeight(resident);
+                updateRequiredFields(resident); //updates required fields on radio change
             } else {
                 resident.classList.remove("active");
                 organisation.classList.add("active");
                 updateWrapperHeight(organisation);
+                updateRequiredFields(organisation); // updates required fields on radio change
             }
         }
     });
@@ -78,6 +108,7 @@ radios.forEach(radio => {
 
 // Initialize view
 updateWrapperHeight(resident);
+updateRequiredFields(resident); // set initial input requirements on initial load
 
 window.addEventListener("resize", () => {
     const activeSection = document.querySelector(".section.active");
