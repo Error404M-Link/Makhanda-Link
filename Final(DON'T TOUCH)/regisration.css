@@ -1,11 +1,14 @@
-body {
-    background: linear-gradient(rgb(81, 117, 81));
+
+
+#signUpForm{
+    align-items: center;
 }
 
 .registration{
     height:80vh ;
     justify-content: center;
     align-items: center;
+    gap: 30px;
     display: flex;
 }
         
@@ -21,12 +24,15 @@ body {
 .form-group label {
     width: 120px;              
     margin-right: 10px;
-    text-align: right;          
+    text-align: right;   
+    display: block;
+    margin-bottom: 5px;       
 }
 
 .form-group{
     display: flex;
     align-items: center;
+    margin-bottom: 15px;
     
 }
 

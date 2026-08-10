@@ -8,109 +8,297 @@
     <title>Create an Account</title>
 
     <style>
-        /* Optional basic layout styling */
-        .form-group {
-            margin-bottom: 15px;
+        * {
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Outer centered container */
+        .registration {
+            width: 90%;
+            max-width: 1000px;
+            min-height: 650px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* Left side header column */
+        .registrationHeader {
+            max-width: 40%;
+            padding: 40px;
+            border-right: 1px solid #e0e0e0; /* Middle dividing line */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .registrationHeader h4 {
+            font-size: 24px;
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+
+        /* Right side form column */
+        .registrationForm {
+            flex: 1;
+            padding: 40px 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .account-type {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .account-type label {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .account-signin{
+            width: 100%;
+            padding: 15px 0;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .account-signin p{
+            margin: 0;
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .account-signin a{
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .account-signin a:hover{
+            text-decoration: underline;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button{
+            margin-top: 15px;
+            width: 100%;
+            padding: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        .formButtons{
+            display: flex;
+            gap: 20%;
+            margin-top: 30px;
+            padding-left: 30%;
+        }
+
+        /* Smooth Transition */
+        .form-wrapper {
+            position: relative;
+            
+            transition: height 0.35s ease-in-out;
+        }
+
+        .section {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            transform: translateY(10px);
+            transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out, visibility 0.35s;
+        }
+
+        .section.active {
+            opacity: 1;
+            visibility: visible;
+            position: relative;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <h4>Registration Page</h4>
     <section class="registration">
-        <form id="registrationForm" action="#" method="POST">
-            
-            <div class="account-type">
-                <label>
-                    <input type="radio" name="accountType" value="resident" checked>
-                    Resident
-                </label>
-
-                <label>
-                    <input type="radio" name="accountType" value="organisation">
-                    Organisation
-                </label>
+        
+        <div class="regisrationBody" style="display: flex;">
+            <div class="registrationHeader">
+                <h4>Registration Page</h4>
+                <p style="color: #666; margin: 0;">Select your account type to proceed with registration.</p>
             </div>
 
-            <!-- Resident Section -->
-            <div id="residentSection" class="section">
-                <h3>Resident Details</h3>
+            <div class="registrationForm">
+                <form id="registrationForm" action="#" method="POST">
+                
+                    <div class="account-type">
+                        <label>
+                            <input type="radio" name="accountType" value="resident" checked>
+                            Resident
+                        </label>
 
-                <div class="form-group">
-                    <label for="resName">Name</label>
-                    <input type="text" id="resName" name="resName" placeholder="Mark" required>
-                </div>
+                        <label>
+                            <input type="radio" name="accountType" value="organisation">
+                            Organisation
+                        </label>
+                    </div>
 
-                <div class="form-group">
-                    <label for="resSurname">Surname</label>
-                    <input type="text" id="resSurname" name="resSurname" placeholder="Seth" required>
-                </div>
+                    <div class="form-wrapper" id="formWrapper">
+                        <!-- RESIDENT SIGN UP FORM -->
+                        <div id="residentSection" class="section active">
+                            <h3>Resident Details</h3>
 
-                <div class="form-group">
-                    <label for="resEmail">Email</label>
-                    <input type="email" id="resEmail" name="resEmail" placeholder="ms@gmail.com" required>
-                </div>
+                            <div class="form-group">
+                                <label for="resName">Name</label>
+                                <input type="text" id="resName" name="resName" placeholder="Mark" required>
+                            </div>
 
-                <div class="form-group">
-                    <label for="resPassword">Password</label>
-                    <input type="password" id="resPassword" name="resPassword" placeholder="Password" required>
-                </div>
+                            <div class="form-group">
+                                <label for="resSurname">Surname</label>
+                                <input type="text" id="resSurname" name="resSurname" placeholder="Seth" required>
+                            </div>
 
-                <div class="form-group">
-                    <label for="resSuburb">Suburb</label>
-                    <input type="text" id="resSuburb" name="resSuburb" placeholder="St John">
-                </div>
+                            <div class="form-group">
+                                <label for="resEmail">Email</label>
+                                <input type="email" id="resEmail" name="resEmail" placeholder="ms@gmail.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="resPassword">Password</label>
+                                <input type="password" id="resPassword" name="resPassword" placeholder="Password" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="resSuburb">Suburb</label>
+                                <input type="text" id="resSuburb" name="resSuburb" placeholder="St John">
+                            </div>
+                        </div>
+
+                        <!-- ORGANISATION SECTION -->
+
+                        
+                        <div id="organisationSection" class="section">
+                            <h3>Organisation Details</h3>
+
+                            <div class="form-group">
+                                <label for="orgName">Organisation Name</label>
+                                <input type="text" id="orgName" name="orgName">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="orgContact">Contact</label>
+                                <input type="text" id="orgContact" name="orgContact">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="orgEmail">Email</label>
+                                <input type="email" id="orgEmail" name="orgEmail">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="orgType">Organisation Type</label>
+                                <input type="text" id="orgType" name="orgType">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="formButtons">
+                        <button type="reset">Reset</button>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
             </div>
-
-            <!-- ORGANISATION SECTION -->
-
-            
-            <div id="organisationSection" class="section" style="display:none;">
-                <h3>Organisation Details</h3>
-
-                <div class="form-group">
-                    <label for="orgName">Organisation Name</label>
-                    <input type="text" id="orgName" name="orgName">
-                </div>
-
-                <div class="form-group">
-                    <label for="orgContact">Contact</label>
-                    <input type="text" id="orgContact" name="orgContact">
-                </div>
-
-                <div class="form-group">
-                    <label for="orgEmail">Email</label>
-                    <input type="email" id="orgEmail" name="orgEmail">
-                </div>
-
-                <div class="form-group">
-                    <label for="orgType">Organisation Type</label>
-                    <input type="text" id="orgType" name="orgType">
-                </div>
-            </div>
-
-            <button type="submit">Submit</button>
-        </form>
+        </div>
+        
+        <div class="account-signin">
+            <p>
+                Already have an acount? 
+                <a href="login.html">Sign in here</a>
+            </p>
+        </div>
     </section>
 
     <script>
         const resident = document.getElementById("residentSection");
         const organisation = document.getElementById("organisationSection");
+        const formWrapper = document.getElementById("formWrapper");
         const radios = document.querySelectorAll("input[name='accountType']");
+
+        function updateWrapperHeight(targetSection) {
+            formWrapper.style.height = targetSection.offsetHeight + "px";
+        }
+
+        // Set initial wrapper height
+        updateWrapperHeight(resident);
 
         radios.forEach(radio => {
             radio.addEventListener("change", function() {
                 if (this.value === "resident") {
-                    resident.style.display = "block";
-                    organisation.style.display = "none";
+                    organisation.classList.remove("active");
+                    resident.classList.add("active");
+                    updateWrapperHeight(resident);
                 } else {
-                    resident.style.display = "none";
-                    organisation.style.display = "block";
+                    resident.classList.remove("active");
+                    organisation.classList.add("active");
+                    updateWrapperHeight(organisation);
                 }
             });
+        });
+
+        // Recalculate container height if window is resized
+        window.addEventListener("resize", () => {
+            const activeSection = document.querySelector(".section.active");
+            if (activeSection) updateWrapperHeight(activeSection);
         });
     </script>
 </body>
