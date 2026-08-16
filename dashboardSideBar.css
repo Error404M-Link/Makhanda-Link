@@ -123,8 +123,6 @@
 #sidebarToggle:checked ~ .hamburger span:nth-child(2) {
     opacity: 0;
 }
-
-/* Bottom Line */
 #sidebarToggle:checked ~ .hamburger span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
 }
@@ -133,8 +131,6 @@
     background-color: #f9f9f9;
     min-height: 100vh;
     box-sizing: border-box;
-
-     /* the following accomodates for the side bar */
     display: flex;
     height: 100vh;
 }
@@ -146,21 +142,18 @@
         position: fixed;
         top: 0;
         left: 0;
-        height: 100vh; /* Fills 100% of the viewport height */
-        width: 70vw; /* Spans 70% of the mobile screen layout width */
+        height: 100vh; 
+        width: 70vw; 
         z-index: 999;
         
-        /* Slide it completely off-screen to the left by default */
         transform: translateX(-100%); 
     }
 
-    /* When toggled open (checkbox checked), bring the sidebar back into view */
     #sidebarToggle:checked ~ .sidebar {
         transform: translateX(0);
         width: 40vw;
         padding-left: 1.1rem;
     }
-    
 }
 
 @media (min-width: 1024px) {
@@ -168,14 +161,11 @@
         position: fixed;
         top: 0;
         left: 0;
-        height: 100vh; /* Fills 100% of the viewport height */
+        height: 100vh; 
         z-index: 999;
-        
-        /* Slide it completely off-screen to the left by default */
         transform: translateX(-100%); 
     }
 
-    /* When toggled open (checkbox checked), bring the sidebar back into view */
     #sidebarToggle:checked ~ .sidebar {
         transform: translateX(0);
         width: 15vw;
