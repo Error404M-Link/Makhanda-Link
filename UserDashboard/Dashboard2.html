@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M-LINK Dashboard</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="userDashboard.css">
+    <link rel="stylesheet" href="dashboardSidebar.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>  
+
+ 
+<div class="container dashboardContainer">
+
+    <!--#################### SIDE BAR ###########################-->
+
+    <input type="checkbox" id="sidebarToggle">
+    <label for="sidebarToggle" class="hamburger">
+        <span></span><span></span><span></span>
+    </label>
+
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="MakanaLogo.svg" alt="M-link logo" class="sidebar-logo">
+            <h2>M-LINK</h2>
+            <p>Makhanda Connect</p>
+        </div>
+
+        <div class="profile">
+            <img src="profile.jpg" alt="Profile">
+            <h3>Faith Mlambo</h3>
+            <p>Ward Councillor</p>
+            <span>Ward 5</span>
+        </div>
+
+        <ul class="menu">
+            <li class="active">
+                <a href="#dashboard">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#my-ward">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>My Ward</span>
+                </a>
+            </li>
+            <li>
+                <a href="reportFaultTicketForm.php">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    <span>Report Fault</span>
+                </a>
+            </li>
+            <li>
+                <a href="#my-tickets">
+                    <i class="fa-solid fa-ticket"></i>
+                    <span>My Tickets</span>
+                </a>
+            </li>
+            <li>
+                <a href="#notices">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Notices</span>
+                </a>
+            </li>
+            <li>
+                <a href="#events">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>Events</span>
+                </a>
+            </li>
+            <li>
+                <a href="#weather">
+                    <i class="fa-solid fa-cloud"></i>
+                    <span>Weather & Dam Levels</span>
+                </a>
+            </li>
+            <li>
+                <a href="#reports">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Reports</span>
+                </a>
+            </li>
+            <li>
+                <a href="#profile">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="logout-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div class="icons">
+
+                <div class="icon">
+                    <i class="fa-regular fa-bell"></i>
+                    <span>3</span>
+                </div>
+
+                <div class="icon">
+                    <i class="fa-regular fa-envelope"></i>
+                    <span>2</span>
+                </div>
+
+            </div>
+
+            <div class="user">
+
+                <img src="profile.jpg" alt="">
+
+                <div>
+
+                    <h4>Faith Mlambo</h4>
+
+                    <small>Ward Councillor</small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- SUMMARY CARDS -->
+
+        <section class="cards">
+
+            <div class="card">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <h4>Total Open Faults</h4>
+
+                <h2>145</h2>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-file-circle-plus"></i>
+
+                <h4>Reported Today</h4>
+
+                <h2>23</h2>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <h4>Resolved This Month</h4>
+
+                <h2>97</h2>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-bullhorn"></i>
+
+                <h4>Active Notices</h4>
+
+                <h2>12</h2>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-calendar"></i>
+
+                <h4>Upcoming Events</h4>
+
+                <h2>8</h2>
+
+            </div>
+
+        </section>
+
+        <!-- WELCOME SECTION -->
+
+        <section class="welcome">
+
+            <div class="welcome-icon">
+
+                <i class="fa-solid fa-building-columns"></i>
+
+            </div>
+
+            <h1>Welcome Back, Faith Mlambo!</h1>
+
+            <p>
+                Here's what's happening in Makhanda.
+            </p>
+
+            <p>
+                Use the menu to navigate, report municipal faults,
+                track your tickets and stay updated with community
+                information.
+            </p>
+
+        </section>
+
+        <!-- FOOTER -->
+    <footer>
+
+        <p>© 2026 M-LINK | Empowering Communities</p>
+
+    </footer>
+        
+
+    </main>
+
+</div>
+ 
+<script src="dashboard.js"></script>
+
+</body>
+</html>

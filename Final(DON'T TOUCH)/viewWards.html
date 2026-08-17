@@ -12,9 +12,9 @@
             color: #333;
         }
         header{
-            background: #B5B35C;
+            background: #C08552;
             color: #f4f4f4;
-            padding: 5px;
+            padding: 10px;
             text-align: center;
         }
         .container{
@@ -39,14 +39,168 @@
             flex-direction: column;
             gap: 15px;
         }
-        @media(max-width: 760px){
-            .container{
-                grid-template-columns: 1fr;
-            }
+        .navbar{
+            background: #B5B35C; font-family: sans-serif; padding-right: 15px;padding-left: 15px;
         }
+        .navdiv{
+            display: flex;align-items: center;justify-content: space-between;
+        }
+        .logo a{
+            font-size: 35px;font-weight: 600;color: white;
+        }
+        li{
+            list-style: none; display: inline-block;
+        }
+        li a{
+            color: white; font-size: 18px; font-weight: bold; margin-left: 25px;
+        }
+        button{
+            margin-left: 10px; border-radius: 10px; padding: 10px; width:90px;
+        }
+       footer{
+            background-color: #334e4a; 
+            color: #ffffff; 
+            padding: 60px 0 0 0; 
+            position: relative; 
+            width: 100%; 
+            box-sizing: border-box; 
+        } 
+            
+        .footerContainer { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 40px; 
+            display: grid; 
+            grid-template-columns: 2fr 1fr 1fr; /* left split for logo and description */ 
+            gap: 60px; padding-bottom: 50px;
+        } 
+        
+        .makanaLogo { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-start; 
+        } 
+        .logoBrand { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 20px; 
+        } 
+        .logoBrand img{ 
+            width: 100%; 
+            max-width: 300px; 
+            height: auto; 
+            margin-bottom: 30px; 
+        } 
+        .logoBrand h2 { 
+            font-size: 20px; 
+            letter-spacing: 2px; 
+            margin: 0; 
+            font-weight: 600; 
+        } 
+        .makanaLogo p { 
+            color: #b3c2c0; 
+            font-size: 15px; 
+            line-height: 1.6; 
+            margin: 0 0 25px 0; 
+            max-width: 380px; 
+        } 
+        .socials { 
+            display: flex; 
+            gap: 18px; 
+            margin-bottom: 35px; 
+        } 
+        .socials img { 
+            width: 18px; 
+            height: 18px; 
+            filter: invert(100%); /* Turns dark icons clean white */ 
+            opacity: 0.8; transition: opacity 0.2s; 
+        } 
+        .socials img:hover { 
+            opacity: 1; 
+        } 
+        .backToTopBtn { 
+            border: 1px solid #ffffff; 
+            background: transparent; 
+            color: #ffffff; 
+            padding: 10px 20px; 
+            font-size: 12px; 
+            letter-spacing: 1px; 
+            text-decoration: none; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            transition: all 0.2s ease; 
+            border-radius: 2px; 
+        } 
+        .backToTopBtn:hover { 
+            background-color: rgba(255, 255, 255, 0.1); 
+            transform: translateY(-1px); 
+        } 
+        .siteMap, .contact { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-start; 
+        } 
+        .siteMap h2, .contact h2 { 
+            font-size: 14px; 
+            letter-spacing: 1px; 
+            margin-top: 0; 
+            margin-bottom: 25px; 
+            color: #ffffff; 
+            font-weight: 500; 
+        } 
+        .siteMap a, .contact a { 
+            color: #b3c2c0; 
+            text-decoration: none; 
+            font-size: 14px; 
+            margin-bottom: 14px; 
+            transition: color 0.2s ease; 
+        } 
+        .siteMap a:hover, .contact a:hover { 
+            color: #ffffff; 
+            text-decoration: underline; 
+        } 
+        .address { 
+            margin-top: 15px; 
+            border-top: 1px solid rgba(255, 255, 255, 0.1); 
+            padding-top: 15px; 
+        } 
+        .address p { 
+            color: #8da3a0; 
+            font-size: 13px;
+             margin: 4px 0; 
+        } 
+        .copyrightBar { 
+            background-color: #917e5a; 
+            padding: 15px 40px; 
+            text-align: center;
+        } 
+        .copyrightBar p { 
+            margin: 0; 
+            color: #0b342e; 
+            font-size: 12px; 
+            font-weight: 500;
+        }
+        
     </style>
 </head>
 <body>
+
+    <nav class="navbar">
+        <div class="navdiv">
+            <div class="logo"><a href="#">M-Link</a></div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Fault</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Notices</a></li>
+                <button><a href="#">Login</a></button>
+                <button><a href="#">Sign Up</a></button>
+            </ul>
+        </div>
+    </nav>
+
     <header>
         <h1>WARD 1</h1>
     </header>
@@ -55,7 +209,7 @@
 
         <div class="box">
             <h2>Ward Map</h2>
-            <img src="" alt="Ward Map" class="map-img">
+            <img src="" alt="Ward 1 Map" class="map-img">
         </div>
 
         <div class="center-column">
@@ -86,53 +240,60 @@
 
     <footer>
         <div class="footerContainer">
+            
+            <!-- Logo & Description -->
             <div class="makanaLogo">
                 <div class="logoBrand">
-                    <img src="MakanaLogo.svg" alt="Makhanda logo">
-                    
+                    <img src="logo.png" alt="Makana Logo">
+                    <h2>Makana Municipality</h2>
                 </div>
                 <p>
-                    Empowering you to take charge in your neighborhood and
-                    work together to build a better,
-                    well-maintained Makana community.
+                    Building a connected community through transparency, service delivery, and innovation.
                 </p>
-
+                
+                <!-- Social Icons -->
                 <div class="socials">
-                    <a href="#"><img src="x.svg" alt="X"></a>
-                    <a href="#"><img src="instagram.svg" alt="Instagram"></a>
-                    <a href="#"><img src="facebook.svg" alt="Facebook"></a>
+                    <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+                    <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+                    <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
                 </div>
-
+                
+                <!-- Back to Top Button -->
                 <a href="#top" class="backToTopBtn">
-                    <span class="arrow">↑</span> BACK TO TOP
+                    ↑ Back to Top
                 </a>
             </div>
-
+            
+            <!-- Site Map -->
             <div class="siteMap">
                 <h2>Site Map</h2>
-                <a href="#">Homepage</a>
+                <a href="#">Home</a>
+                <a href="#">Fault</a>
                 <a href="#">About Us</a>
-                <a href="#">Report A Fault</a>
-                <a href="#">Contact Us</a>
+                <a href="#">Notices</a>
+                <a href="#">Contact</a>
             </div>
-
+            
+            <!-- Contact Info -->
             <div class="contact">
                 <h2>Contact</h2>
-                <a href="mailto:zkewuti@makana.gov.za">Customer Care</a>
-                <a href="mailto:info@makana.gov.za">Service Delivery</a>
-                <a href="mailto:enquiries@makana.gov.za">Billing Related</a>
+                <a href="mailto:info@makana.gov.za">info@makana.gov.za</a>
+                <a href="tel:+27000000000">+27 00 000 0000</a>
                 
                 <div class="address">
-                    <p>City Hall, High Str, Grahamstown, 6139</p>
-                    <p><img src="call.svg" alt="phoneIcon"> +27 (0) 46 603 6134</p>
+                    <p>Makana Municipality</p>
+                    <p>High Street, Makhanda</p>
+                    <p>Eastern Cape, South Africa</p>
                 </div>
             </div>
         </div>
-
+        
+        <!-- Copyright Bar -->
         <div class="copyrightBar">
-            <p>Copyright © 2026 makana. All Rights Reserved.</p>
+            <p>© 2026 Makana Municipality. All Rights Reserved.</p>
         </div>
     </footer>
+    
     
     <script>
         const issues = ["Water outage in Joza"];
