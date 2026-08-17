@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Public Fault Board</title>
+    <title>Public Fault</title>
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="publicfaultBoard.css">
@@ -48,8 +48,9 @@
     <nav class="mainNavbar"> 
         <div class="navContainer">
             <ul class="mainNavLinks">
-                <li><a href="homepage.php" class="navItem">Home</a></li>
+                <li><a href="index.php" class="navItem">Home</a></li>
                 <li><a href="#" class="navItem active">Faults</a></li>
+                <li><a href="viewWards.html" class="navItem"> Wards </a></li>
                 <li><a href="about_us_page.html" class="navItem">About Us</a></li>
                 <li><a href="ward_notices.php" class="navItem">Notices</a></li>
                 <li><a href="contactUs.html" class="navItem">Contact us</a></li>

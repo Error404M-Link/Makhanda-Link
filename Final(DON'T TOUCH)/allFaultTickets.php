@@ -26,25 +26,65 @@
 
         <!-- STYLESHEETS -->
         <link rel="stylesheet" href="publicfaultBoard.css">
+        <link rel="stylesheet" href="backButton.css">
     </head>
     <body>
 
-        <nav class="navbar"> 
-            <div class="logo">
-                <img src="MakanaLogo.svg" alt="Makhanda logo">
-            </div> 
-            <ul class="nav-links">
-                <li><a href="#" class="link"> Home </a></li>
-                <li><a href="publicfaultBoard.php" class="link"> Faults </a></li>
-                <li><a href="#" class="link"> About us </a></li>
-                <li><a href="#" class="link"> Notices  </a></li>
-                <div id="navbuttons">
-                    <li><a href="#" class="btn"> Login </a></li>
-                    <li><a href="#" class="btn"> Sign up </a></li>
+         <header class="heroHeader">
+            <img src="MakhandaBackgroundPic.png" alt="Background" class="heroBgImage">
+            <div class="heroOverlay"></div>
+            <div class="heroContainer">
+                <div class="heroLogo">
+                    <img src="MakanaLogo.svg" alt="Makhanda logo">
+                </div> 
+                <div class="heroText">
+                    <h1>Makana Municipality</h1>
+                    <p>Public Fault Board. Empowering our community together.</p>
                 </div>
-            </ul> 
+            </div>
+        </header>
+
+        <!-- RED UTILITY BAR -->
+        <div class="utilityBar">
+            <div class="utilityContainer">
+                <div class="utilityLeft">
+                    <a href="#">Documentation</a>
+                    <a href="#">Support</a>
+                </div>
+                <div class="utilityRight">
+                    <a href="login.html" class="utilityBtn btn">Login</a>
+                    <a href="register.html" class="utilityBtn btn">Sign Up</a>
+                </div>
+            </div>
+        </div>
+
+        <!--  WHITE MAIN NAVIGATION BAR -->
+        <nav class="mainNavbar"> 
+            <div class="navContainer">
+                <ul class="mainNavLinks">
+                    <li><a href="index.php" class="navItem">Home</a></li>
+                    <li><a href="publicFaultBoard.php" class="navItem">Faults</a></li>
+                    <li><a href="viewWards.html" class="navItem"> Wards </a></li>
+                    <li><a href="about_us_page.html" class="navItem">About Us</a></li>
+                    <li><a href="ward_notices.php" class="navItem">Notices</a></li>
+                    <li><a href="contactUs.html" class="navItem">Contact us</a></li>
+                </ul> 
+            </div>
         </nav>
-        <hr>
+
+        <!--  BACK BUTTON  -->
+
+        <div class="backNavWrapper">
+            <div class="backNavContainer">
+                <a href="javascript:history.back()" class="backBtn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    <span>Back</span>
+                </a>
+            </div>
+        </div>
 
         <div class="faultsHeader">
             <strong>Active Community Faults</strong>
@@ -116,7 +156,56 @@
                 $conn->close();
             ?>
         </section>
-        <a href="#"><button id="floatingBookBtn" class="floatingBtn">Report a fault</button></a>
+        <footer>
+            <div class="footerContainer">
+                <div class="makanaLogo">
+                    <div class="logoBrand">
+                        <img src="MakanaLogo.svg" alt="Makhanda logo">
+                        
+                    </div>
+                    <p>
+                        Empowering you to take charge in your neighborhood and
+                        work together to build a better,
+                        well-maintained Makana community.
+                    </p>
+
+                    <div class="socials">
+                        <a href="#"><img src="x.svg" alt="X"></a>
+                        <a href="#"><img src="instagram.svg" alt="Instagram"></a>
+                        <a href="#"><img src="facebook.svg" alt="Facebook"></a>
+                    </div>
+
+                    <a href="#top" class="backToTopBtn">
+                        <span class="arrow">↑</span> BACK TO TOP
+                    </a>
+                </div>
+
+                <div class="siteMap">
+                    <h2>Site Map</h2>
+                    <a href="#">Homepage</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Report A Fault</a>
+                    <a href="#">Contact Us</a>
+                    <a href="FAQ.html">FAQs</a>
+                </div>
+
+                <div class="contact">
+                    <h2>Contact</h2>
+                    <a href="mailto:zkewuti@makana.gov.za">Customer Care</a>
+                    <a href="mailto:info@makana.gov.za">Service Delivery</a>
+                    <a href="mailto:enquiries@makana.gov.za">Billing Related</a>
+                    
+                    <div class="address">
+                        <p>City Hall, High Str, Grahamstown, 6139</p>
+                        <p><img src="call.svg" alt="phoneIcon"> +27 (0) 46 603 6134</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyrightBar">
+                <p>Copyright © 2026 makana. All Rights Reserved.</p>
+            </div>
+        </footer>
         <script src="publicFaultBoard.js"></script>
     </body>
 </html>
