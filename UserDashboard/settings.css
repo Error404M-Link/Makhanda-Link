@@ -1,270 +1,210 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-.navbar{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    padding:20px 2%;
-    background-color: #334e4a;
-    position: sticky;
-    top:0;
-    z-index: 1000;  /*Keeps keeps the naviagtion bar on top of everything*/
+body {
+    background-color: #f4f6f8;
+    font-family: 'Poppins', sans-serif;
 }
 
-.nav-links{
+.profileContainer {
     display: flex;
-    flex-direction: row;
-    gap: 1.5vw;
-    list-style: none;
-    flex-wrap: nowrap; /*this makes the links not jump to the nest line, this happend with the about us link*/
+    gap: 30px;
+    max-width: 2100px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-.nav-links a{
-    text-decoration: none; 
-    color: white;
+.settingsHeader{
+    padding: 20px;
+    padding-left: 80px;
 }
 
-.link{
-    text-decoration: none;
-    color: white;
-    position: relative;
-    font-size: 1.5vw;
-}
-
-
-/*underline hover for the links*/
-.link::after{
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -3px;
-    width: 0;
-    height: 2px;
-    background-color: #917e5a;
-    transition: width 0.3s ease;
-}
-
-.link:hover{
-    color: #917e5a;
-}
-
-
-.link:hover::after{
-    width: 100%;
-}
-/*underline hover for thr links end here*/
-
-.logo img{
-    width: 10vw;
-    min-width: 80px;
-    max-width: 150px;
-    height: auto;
-}
-
-
-.btn{
-    background-color: #334e4a;
-    color:white;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none;
+/*####################### LEFT CARD ##################################*/
+.profileCardLeft {
+    width: 280px;
+    background: #ffffff;
     border-radius: 20px;
-    border: 2px solid #917e5a;
-    transition: 0.4s;
-    font-size: 1.5vw;
-
-    white-space: nowrap;
-}
-
-.btn:hover{
-    background-color: #917e5a;
-    color: aliceblue;
-}
-#navbuttons{
+    padding: 30px 20px;
     display: flex;
-    gap:5px;
-    margin-left: 20px;
-}
-/*######################### RESPONSIVENESS ############### */
-
-@media screen and (max-width: 768px){
-    .nav-links{
-        display: block;
-        gap: 10px;
-        padding: 0;
-    }
-
-    .nav-links li {
-        margin-bottom: 10px; 
-    }
-
-    .navbar{
-        display: block;
-        gap: 10px;
-        width: 25%;
-    }
-
-    #navbuttons{
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 15px;
-    }
-
-    .btn{
-        display: inline-block;
-        width: max-content;
-        text-align: center;
-    }
-}
-
-hr{
-    height: 2px;
-    border: none;
-    background-color: #917e5a;
-}
- /*####################### Everything on top is the navigation bar ##############################*/ 
-
-h1{
-    text-align: center;
-}
-
-.settings-container{
-    width:85%; 
-    margin:auto; 
-    display:flex; 
-    align-items: flex-start;
-    margin-top: 40px;
-}
-
-.profile-picture{
-    width:30%;
-    display:flex; 
-    flex-direction: column; 
-    align-items:center;
-}
-.picture-buttons{
-    display:flex; 
     flex-direction: column;
-    align-items:center; 
-    gap:12px; 
-    margin-top: 15px; 
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
-.upload-btn, .delete-btn{
-    width:220px; 
-    padding: 12px; 
-    font-size: 16px; 
-    border: none; 
-    border-radius: 8px; 
-    cursor: pointer;
-} 
-.profile-image{
-    cursor:pointer;
-    transition:0.3s;
-    width: 220px;
-    height:220px ;
-    border-radius:50% ;
-    border: 5px solid #334e4a;
+.profileAvatarWrapper {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin-bottom: 15px;
+}
+
+.profileAvatarWrapper img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 20px;
 }
 
-.profile-image:hover{
-    opacity:0.8; 
+.editBadge {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    background-color: #ff7a00;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    border: 2px solid white;
 }
 
-.profile-form{
-    width:70%; 
-    display:grid; 
+.userName {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 4px;
+}
+
+.userRole {
+    font-size: 0.85rem;
+    color: #95a5a6;
+    margin-bottom: 25px;
+}
+
+.profileNavMenu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profileNavMenu .navItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 25px;
+    color: #7f8c8d;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.profileNavMenu .navItem.active {
+    background-color: #fff4eb;
+    color: #ff7a00;
+    font-weight: 600;
+}
+
+/*################## RIGHT CARD #########################*/
+.profileCardRight {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 35px 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.profileCardRight h2 {
+    font-size: 1.3rem;
+    color: #2c3e50;
+    margin-bottom: 25px;
+}
+
+.genderSelector {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.genderSelector label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    cursor: pointer;
+}
+
+.genderSelector input[type="radio"] {
+    accent-color: #ff7a00;
+}
+
+.formGrid {
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    gap:20px; 
+    gap: 20px;
 }
 
-.input-group{
-    display:flex; 
-    flex-direction: column; 
+.fullWidth {
+    grid-column: span 2;
 }
 
-.input-group label{
-    margin-bottom:8px; 
-    font-weight: bold;
+.inputGroup label {
+    display: block;
+    font-size: 0.85rem;
+    color: #95a5a6;
+    margin-bottom: 8px;
 }
 
-input, select{
-    padding:12px; 
-    border:2px solid #334e4a; 
-    border-radius: 10px;
-    font-size: 16px;
-}
-.save-btn{
-    grid-column:span 2; 
-
-}
-.upload-btn, .delete-btn, .save-btn, .setting-btn, .logout-btn, .delete-account{
-    padding:12px 20px; 
-    border:none; 
-    border-radius:8px; 
-    cursor:pointer; 
-    transition: 0.3s;  
+.inputGroup input, 
+.inputGroup select {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #f7f8fa;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    color: #333;
+    outline: none;
+    box-sizing: border-box;
 }
 
-.upload-btn{
-    background: #334e4a;
-    color:white; 
+
+.verifiedTag {
+    position: absolute;
+    right: 15px;
+    color: #2ecc71;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
-.delete-btn{
-    background: #917e5a;
+
+.icon-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.icon-input i {
+    position: absolute;
+    right: 15px;
+    color: #95a5a6;
+}
+
+.formActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btnDiscard {
+    background: transparent;
+    border: 1px solid #ff7a00;
+    color: #ff7a00;
+    padding: 12px 30px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btnSave {
+    background: #ff7a00;
+    border: none;
     color: white;
-}
-
-.save-btn{
-    background:#334e4a; 
-    color:white; 
-    margin-top: 15px; 
-}
-
-.account-settings{
-    width:85%; 
-    margin:auto; 
-    display:flex; 
-    flex-wrap:wrap;
-    gap: 20px; 
-    margin-bottom:50px; 
-
-
-}
-.setting-btn{
-    background:#334e4a; 
-    color: white;
-
-}
-.logout-btn{
-    background:#555; 
-    color: white;
-}
-.delete-account{
-    background: #b22222;
-    color:white; 
-}
-button:hover{
-    transform:scale(1.05); 
-}
-@media(max-width: 900px){
-    .settings-container{
-        flex-direction: column;
-    }
-    .profile-picture, .profile-form{
-        width:100%; 
-    }
-    .profile-form{
-        grid-template-columns: 1fr;
-    }
-    .save-btn{
-        grid-column:span 1; 
-    }
-    .account-settings{
-        flex-direction: column;
-    }
+    padding: 12px 30px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
 }
