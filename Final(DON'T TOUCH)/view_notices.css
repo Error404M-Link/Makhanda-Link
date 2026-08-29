@@ -147,68 +147,35 @@ h2{
     }
 }
 
-form {
-    margin: 20px;
+.backNavWrapper {
+    width: 10%;   
+    margin-right: 9%;
+    padding: 0;              
+    box-sizing: border-box;       
+    display: flex;    
+    position: sticky;           
+}
+.backNavContainer {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
 }
 
-form label {
-    font-size: 18px;
-    color: #334e4a;
-    margin-right: 10px;
-}
-
-#ward {
-    padding: 10px 15px;
-    border: 2px solid #917e5a;
-    border-radius: 8px;
-    background-color: white;
-    color: #334e4a;
-    font-size: 16px;
-    cursor: pointer;
-    outline: none;
-}
-
-#ward:focus {
-    border-color: #334e4a;
-}
-
-button[type="submit"] {
-    padding: 10px 20px;
-    margin-left: 10px;
-    border: 2px solid #917e5a;
-    border-radius: 20px;
-    background-color: #334e4a;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button[type="submit"]:hover {
-    background-color: #917e5a;
-}
-
-.back-btn {
-    display: inline-block;
-    margin: 20px;
-    background-color: #334e4a;
-    color: white;
-    padding: 8px 15px;
+.backBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     text-decoration: none;
-    border: 2px solid #917e5a;
-    border-radius: 20px;
-    font-size: 16px;
-    transition: 0.3s;
+    color: #333;
+    font-weight: 600;
+    font-size: 0.95rem;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
 }
 
-.back-btn:hover {
-    background-color: #917e5a;
-    color: white;
-}
-
-.notice-title {
-    text-align: center;
-    color: #334e4a;
-    margin-top: -55px;
-    margin-bottom: 30px;
+.backBtn:hover {
+    background-color: #6c6565;
+    color: #000;
+    border-color: #ccc;
 }
