@@ -23,14 +23,15 @@
         </ul> 
     </nav>
     <hr>
+<a href="home.php" class="back-btn">← Back</a> 
+<h2 class="notice-title">Ward Public Notice Board</h2>
 
-<h2> Ward public Notice Board </h2>
 <br>
 <br>
 
 <form method="GET" action="view_notices.php">
-<label>Select Ward:</Select>
-<select name="ward">
+<label>Select Ward:</label>
+<select name="ward" id="ward">
     <option value="">All Wards</option>
     <option value="1">Ward 1</option>
     <option value="2">Ward 2</option>
@@ -52,28 +53,45 @@
 <hr>
 </body> 
 
+
 <?php
 include("dbconnections.php");
 
 $ward = $_GET["ward"] ?? ""; 
 
-if ($ward == ""){
+if ($ward == "") {
     $sql = "SELECT * FROM notices 
-    ORDER BY notice_date DESC";
-}else {
-    $sql ="SELECT * FROM notices 
-    WHERE ward = '$ward' 
-    ORDER BY notice_date DESC";
+            ORDER BY notice_date DESC";
+} else {
+    $sql = "SELECT * FROM notices 
+            WHERE ward = '$ward' 
+            ORDER BY notice_date DESC";
 }
 
 $results = $conn->query($sql); 
- 
+?>
 
-while ($row = $results -> fetch_assoc()){
-    echo "<h3>" . $row['ward'] . "</h3>";
-    echo "<h3>" . $row['title'] . "</h3>";
-    echo "<h3>" . $row['notice_date'] . "</h3>";
-    echo "<h3>" . $row['message'] . "</h3>";
-    echo "<hr>";
+<div class="notice-container">
+
+<?php
+while ($row = $results->fetch_assoc()) {
+?>
+
+    <div class="notice-card">
+
+        <h3><?php echo $row['ward']; ?></h3>
+
+        <h3><?php echo $row['title']; ?></h3>
+
+        <h3><?php echo $row['notice_date']; ?></h3>
+
+        <p><?php echo $row['message']; ?></p>
+
+    </div>
+
+<?php
 }
 ?>
+
+</div>
+
