@@ -1,18 +1,20 @@
 <?php 
-    include "connection.php";
+    require "../Error404Connection.php";
 
     $message = "";
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $wardId      = intval($_POST['wardId']);
-        $category    = $_POST['category'];
+        $serviceId   = $_POST['serviceId']; 
+        $addressId   = intval($_POST['addressId'] ?? 0);
+        $statusId    = 1;
         $streetName  = $_POST['streetName'];
         $description = $_POST['description'];
-        $locationDescription = $_POST['locationDescription'];
+        $locationDescription = !empty($_POST['locationDescription']) ? $_POST['locationDescription'] : null;
         
                                                         // Read raw coordinates from the map's hidden inputs
-        $latitude  = $_POST['latitude'] ?? '';
-        $longitude = $_POST['longitude'] ?? '';
+        $latitude  = $_POST['latitude'] ?? null;
+        $longitude = $_POST['longitude'] ?? null;
 
                                                         // FALLBACK PROTECTION: If map coordinates are completely empty, inject street defaults
         if (empty($latitude) || empty($longitude)) {
@@ -36,6 +38,7 @@
         $imagePath = null; 
 
                                                         // Handle file uploads if any
+        $imagePath = null;                              //store the image path
         if (isset($_FILES['evidence_image']) && $_FILES['evidence_image']['error'] === UPLOAD_ERR_OK) {
             $fileTmpPath = $_FILES['evidence_image']['tmp_name'];
             $fileName    = $_FILES['evidence_image']['name'];
@@ -45,9 +48,10 @@
             
             if (in_array($fileExtension, $allowedExtensions)) {
                 $newFileName = bin2hex(random_bytes(16)) . '.' . $fileExtension;
-                $uploadFileDir = './uploads/evidence/';
+                $uploadFileDir = './IncidentImage/';
                 
                 if (!is_dir($uploadFileDir)) {
+                    // Create the directory of doesn't exist.
                     mkdir($uploadFileDir, 0755, true);
                 }
                 
@@ -59,8 +63,9 @@
         }
 
                                                         // Secure database with prepared statements
-        $stmt = $conn->prepare("INSERT INTO faultTickets (wardId, locationDescription, category, latitude, longitude, description, imagePath) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("issddss", $wardId, $locationDescription, $category, $latitude, $longitude, $description, $imagePath);
+        $stmt = $conn->prepare("INSERT INTO incident_ticket (username, service_id, ward_id, address_id, status_id, incident_description, location_description, latitude, longitude) 
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("siiiissdd", $username, $serviceId, $wardId, $addressId, $statusId, $description, $locationDescription, $latitude, $longitude);
                                                         
                                                         // Display message to the user 
         if ($stmt->execute()) {

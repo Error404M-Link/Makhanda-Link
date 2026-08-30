@@ -8,69 +8,134 @@ $url = "https://api.weatherapi.com/v1/current.json?key=$apiKey&q=" . urlencode($
 $response = file_get_contents($url);
 
 if ($response === false) {
-    die("Could not connect to Weather API");
+    $temp = "--";
+    $condition = "Weather unavailable";
+    $icon = "";
+} else {
+
+    $data = json_decode($response, true);
+
+    if (isset($data['error'])) {
+        $temp = "--";
+        $condition = "Weather unavailable";
+        $icon = "";
+    } else {
+        $temp = $data['current']['temp_c'];
+        $condition = $data['current']['condition']['text'];
+        $icon = $data['current']['condition']['icon'];
+    }
 }
-
-$data = json_decode($response, true);
-
-if (isset($data['error'])) {
-    die("Weather API Error: " . $data['error']['message']);
-}
-
-$temp = $data['current']['temp_c'];
-$condition = $data['current']['condition']['text'];
-$icon = $data['current']['condition']['icon'];
 
 ?>
 
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Makhanda Link</title>
-<link rel="stylesheet" href="homepage.css">
+
+    <title>M-Link | Makhanda Community Link</title>
+
+    <link rel="stylesheet" href="Homepage.css">
+    <link rel="stylesheet" href="publicfaultBoard.css">
 
 </head>
 
- <body>
-    <!--Navigation bar code--->
-<nav class="navbar"> 
-        <div class="logo">
-            <img src="MakanaLogo.svg" alt="Makhanda logo">
-        </div> 
-        <ul class="nav-links">
-            <li><a href="#" class="link"> Home </a></li>
-            <li><a href="PublicFaultBoard.php" class="link"> Fault </a></li>
-            <li><a href="view_notices.php" class="link"> Notices  </a></li>
-            <li><a href="viewWards.html" class="link"> Wards </a></li>
-            <li><a href="about_us_page.html" class="link"> About us </a></li>
-            <li><a href="contactUs.html" class="link"> Contact us </a></li>
-            <div id="navbuttons">
-                <li><a href="register.html?mode=login" class="btn"> Login </a></li>
-                <li><a href="register.html?mode=register" class="btn"> Sign up </a></li>
+
+<body>
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+<header class="heroHeader">
+        <img src="MakhandaBackgroundPic.png" alt="Background" class="heroBgImage">
+        <div class="heroOverlay"></div>
+        <div class="heroContainer">
+            <div class="heroLogo">
+                <img src="MakanaLogo.svg" alt="Makhanda logo">
+            </div> 
+            <div class="heroText">
+                <h1>Makana Municipality</h1>
+                <p>Public Fault Board. Empowering our community together.</p>
             </div>
-        </ul> 
-    </nav>
+        </div>
+    </header>
 
-
-<section class="hero">
-    <div class="hero-overlay">
-        <h1>Welcome to Makhanda Link</h1>
-        <p>Connecting residents with Makana Local Municipality to improve service delivery.</p>
-
-        <div class="hero-buttons">
-            <a href="#" class="btn primary">Report a Fault</a>
-            <a href="#" class="btn secondary">Browse Wards</a>
-            <a href="#" class="btn secondary">View Notices</a>
+    <!-- RED UTILITY BAR -->
+    <div class="utilityBar">
+        <div class="utilityContainer">
+            <div class="utilityLeft">
+                <a href="#">Documentation</a>
+                <a href="#">Support</a>
+            </div>
+            <div class="utilityRight">
+                <a href="login.html" class="utilityBtn btn">Login</a>
+                <a href="register.html" class="utilityBtn btn">Sign Up</a>
+            </div>
         </div>
     </div>
+
+    <!--  WHITE MAIN NAVIGATION BAR -->
+    <nav class="mainNavbar"> 
+        <div class="navContainer">
+            <ul class="mainNavLinks">
+                <li><a href="#" class="navItem active">Home</a></li>
+                <li><a href="#" class="navItem">Faults</a></li>
+                <li><a href="viewWards.php" class="navItem"> Wards </a></li>
+                <li><a href="ABOUTUS.html" class="navItem">About Us</a></li>
+                <li><a href="view_notices.php" class="navItem">Notices</a></li>
+                <li><a href="contactUs.html" class="navItem">Contact us</a></li>
+            </ul> 
+        </div>
+    </nav>
+
+<!-- =========================================================
+     HERO SECTION
+========================================================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="hero-label">
+            M-LINK COMMUNITY PLATFORM
+        </span>
+
+        <h1>
+            Your Community.<br>
+            Your Voice.<br>
+            Your Makhanda.
+        </h1>
+
+        <p>
+            M-Link connects residents, ward councillors and the municipality
+            to improve communication and service delivery across Makhanda.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="login.html" class="hero-btn primary">
+                Report a Fault
+            </a>
+
+            <a href="viewWards.html" class="hero-btn secondary">
+                Browse Wards
+            </a>
+
+            <a href="view_notices.php" class="hero-btn secondary">
+                View Notices
+            </a>
+
+        </div>
+
+    </div>
+
 </section>
+
+
 <section class="overview-section">
 
     <!-- Header -->
@@ -79,34 +144,7 @@ $icon = $data['current']['condition']['icon'];
         <h2>Makana Overview</h2>
     </div>
 
-    <!-- Two-column layout -->
-    <div class="overview-container">
-
-        <!-- Hidden Ward Panel -->
-        <div id="wardPanel" class="ward-panel">
-
-            <h3>Wards</h3>
-
-            <ul>
-                <li><a href="ward1.php">Ward 1</a></li>
-                <li><a href="ward2.php">Ward 2</a></li>
-                <li><a href="ward3.php">Ward 3</a></li>
-                <li><a href="ward4.php">Ward 4</a></li>
-                <li><a href="ward5.php">Ward 5</a></li>
-                <li><a href="ward6.php">Ward 6</a></li>
-                <li><a href="ward7.php">Ward 7</a></li>
-                <li><a href="ward8.php">Ward 8</a></li>
-                <li><a href="ward9.php">Ward 9</a></li>
-                <li><a href="ward10.php">Ward 10</a></li>
-                <li><a href="ward11.php">Ward 11</a></li>
-                <li><a href="ward12.php">Ward 12</a></li>
-                <li><a href="ward13.php">Ward 13</a></li>
-                <li><a href="ward14.php">Ward 14</a></li>
-            </ul>
-
-        </div>
-
-        <!-- Overview -->
+    
         <div class="Overview">
 
             <h3>
@@ -137,71 +175,634 @@ $icon = $data['current']['condition']['icon'];
 
         </div>
 
+
     </div>
 
 </section>
 
+<!-- =========================================================
+     QUICK ACTIONS
+========================================================= -->
 
+<section class="quick-actions">
 
-<!-- COMMUNITY NOTICES SECTION -->
-<section class="notices">
-    <h2> Community Notices</h2>
+    <div class="section-heading">
 
-    <div class="notice-container">
+        <span class="span">Interesting Facts About Makhanda</span>
 
-        <div class="notice-card">
-            <h3>Water outage in Ward 4</h3>
-            <p>Temporary water interruption due to maintenance work.</p>
-        </div>
+        <h2 >
+            It was founded in 1812
+        </h2>
 
-        <div class="notice-card">
-            <h3>Electricity maintenance</h3>
-            <p>Planned electricity shutdown from 08:00 - 16:00.</p>
-        </div>
-
-        <div class="notice-card">
-            <h3>Road repairs on High Street</h3>
-            <p>Expect delays due to ongoing road maintenance.</p>
-        </div>
+        <p>
+           Grahamstown was established as a military
+            garrison by Colonel John Graham during the 
+            frontier conflicts in the Eastern Cape
+        </p>
 
     </div>
-</section>
- 
 
-    
-<!---- Town information---->
-    <section class="notices">
-    <h2>Town Information</h2>
 
-    <div class="notice-container">
-        <div class="notice-card">
-            <div class="Icon">
-                <h3>weather</h3>
-                <img src="https:<?= $icon ?>" alt="<?= htmlspecialchars($condition) ?>">
+    <div class="quick-action-container">
+
+        <!-- Report Fault -->
+
+        <a href="login.html" class="action-card">
+
+            <div class="action-icon">
+                🚨
             </div>
-            <h3><?= htmlspecialchars($condition) ?></h3>
-            <p><?= $temp ?>°C</p>
+
+            <div class="action-content">
+
+                <h3>
+                    Its Name is now Makhanda
+                </h3>
+
+                <p>
+                The city was renamed Makhanda, after the Xhosa prophet
+                 and warrior Makhanda (Nxele),
+                 who led an attack on the British garrison in 1819
+                </p>
+
+                
+
+            </div>
+
+        </a>
+
+
+        <!-- Track Fault -->
+
+        <a href="PublicFaultBoard.php" class="action-card">
+
+            <div class="action-icon">
+                🔎
+            </div>
+
+            <div class="action-content">
+
+                <h3>
+                    It is known as the “City of Saints” ⛪
+                </h3>
+
+                <p>
+                    Makhanda became famous 
+                    for its large number of churches and religious 
+                    institutions. The city has a particularly rich
+                     religious and architectural history
+                </p>
+
+                
+
+            </div>
+
+        </a>
+
+
+        <!-- Find Ward -->
+
+        <a href="viewWards.html" class="action-card">
+
+            <div class="action-icon">
+                🗺️
+            </div>
+
+            <div class="action-content">
+
+                <h3>
+                    The National Arts Festival started here 🎭
+                </h3>
+
+                <p>
+                   The National Arts Festival began
+                    in Makhanda in 1974. It grew from 
+                    an event associated with the 1820 Settlers 
+                    Monument into one of Africa's major arts festivals.
+                </p>
+
+            
+
+            </div>
+
+        </a>
+
+
+        <!-- Notices -->
+
+        <a href="view_notices.php" class="action-card">
+
+            <div class="action-icon">
+                📢
+            </div>
+
+            <div class="action-content">
+
+                <h3>
+                    The 1820 Settlers Monument has an interesting history
+                </h3>
+
+                <p>
+                    The monument opened in 1974 and became
+                     the home of the first National Arts Festival.
+                      It was badly damaged by fire in 1994 and 
+                      was later restored and rededicated by
+                       Nelson Mandela in 1996
+
+
+            </div>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     COMMUNITY ISSUES
+========================================================= -->
+
+<section class="community-issues">
+
+    <div class="section-heading">
+
+        <span>COMMUNITY SERVICE DELIVERY</span>
+
+        <h2>
+            What's happening in Makhanda?
+        </h2>
+
+        <p>
+            Stay informed about municipal issues being
+            reported across our communities.
+        </p>
+
+    </div>
+
+
+    <div class="issue-stat-container">
+
+        <!-- Active -->
+
+        <div class="issue-stat">
+
+            <div class="stat-icon">
+                🔴
+            </div>
+
+            <h3>
+                Active Issues
+            </h3>
+
+            <strong>
+                24
+            </strong>
+
+            <p>
+                Issues currently being addressed
+            </p>
+
         </div>
 
-        <div class="notice-card">
-            <div class="Icon">⚠️</div>
-            <h3>Safety Notices</h3>
-            <p>Avoid flooded roads.</p>
+
+        <!-- Resolved -->
+
+        <div class="issue-stat">
+
+            <div class="stat-icon">
+                🟢
+            </div>
+
+            <h3>
+                Resolved Issues
+            </h3>
+
+            <strong>
+                18
+            </strong>
+
+            <p>
+                Issues successfully resolved
+            </p>
+
         </div>
 
-        <div class="notice-card">
-            <div class="Icon">🎉</div>
-            <h3>Upcoming Event</h3>
-            <p>Youth Day Celebration</p>
+
+        <!-- Trending -->
+
+        <div class="issue-stat">
+
+            <div class="stat-icon">
+                🔥
+            </div>
+
+            <h3>
+                Trending Issues
+            </h3>
+
+            <strong>
+                7
+            </strong>
+
+            <p>
+                Issues receiving community attention
+            </p>
+
         </div>
 
     </div>
+
+
+    <div class="section-button">
+
+        <a href="PublicFaultBoard.php" class="btn primary">
+            View Public Fault Board
+        </a>
+
+    </div>
+
 </section>
+
+
+<!-- =========================================================
+     COMMUNITY NOTICES
+========================================================= -->
+
+<section class="community-notices">
+
+    <div class="section-heading">
+
+        <span>STAY INFORMED</span>
+
+        <h2>
+            Latest Notices & Alerts
+        </h2>
+
+        <p>
+            Important information and updates from
+            the municipality and your community.
+        </p>
+
+    </div>
+
+
+    <div class="notice-container">
+
+
+        <!-- Notice 1 -->
+
+        <article class="notice-card">
+
+            <div class="notice-category">
+                WATER
+            </div>
+
+            <h3>
+                Water Service Update
+            </h3>
+
+            <p>
+                Residents are encouraged to stay informed
+                about water interruptions and maintenance
+                affecting local communities.
+            </p>
+
+            <a href="view_notices.php">
+                Read More →
+            </a>
+
+        </article>
+
+
+        <!-- Notice 2 -->
+
+        <article class="notice-card">
+
+            <div class="notice-category">
+                SAFETY
+            </div>
+
+            <h3>
+                Community Safety Alert
+            </h3>
+
+            <p>
+                View the latest safety information and
+                alerts affecting residents in Makhanda.
+            </p>
+
+            <a href="view_notices.php">
+                Read More →
+            </a>
+
+        </article>
+
+
+        <!-- Notice 3 -->
+
+        <article class="notice-card">
+
+            <div class="notice-category">
+                MUNICIPALITY
+            </div>
+
+            <h3>
+                Municipal Announcement
+            </h3>
+
+            <p>
+                Stay updated with announcements and
+                important municipal communications.
+            </p>
+
+            <a href="view_notices.php">
+                Read More →
+            </a>
+
+        </article>
+
+    </div>
+
+
+    <div class="section-button">
+
+        <a href="view_notices.php" class="btn secondary">
+            View All Notices
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     EXPLORE YOUR WARD
+========================================================= -->
+
+<section class="wards-section">
+
+    <div class="section-heading">
+
+        <span>YOUR COMMUNITY</span>
+
+        <h2>Explore Your Ward</h2>
+
+        <p>
+            Find your ward and access information,
+            notices and community updates specific
+            to your area.
+        </p>
+
+    </div>
+
+
+    <div class="ward-container">
+
+        <!-- Ward 1 -->
+        <a href="ward1.php" class="ward-card">
+            <span>01</span>
+            <h3>Ward 1</h3>
+        </a>
+
+        <!-- Ward 2 -->
+        <a href="ward2.php" class="ward-card">
+            <span>02</span>
+            <h3>Ward 2</h3>
+        </a>
+
+        <!-- Ward 3 -->
+        <a href="ward3.php" class="ward-card">
+            <span>03</span>
+            <h3>Ward 3</h3>
+        </a>
+
+        <!-- Ward 4 -->
+        <a href="ward4.php" class="ward-card">
+            <span>04</span>
+            <h3>Ward 4</h3>
+        </a>
+
+        <!-- Ward 5 -->
+        <a href="ward5.php" class="ward-card">
+            <span>05</span>
+            <h3>Ward 5</h3>
+        </a>
+
+        <!-- Ward 6 -->
+        <a href="ward6.php" class="ward-card">
+            <span>06</span>
+            <h3>Ward 6</h3>
+        </a>
+
+        <!-- Ward 7 -->
+        <a href="ward7.php" class="ward-card">
+            <span>07</span>
+            <h3>Ward 7</h3>
+        </a>
+
+        <!-- Ward 8 -->
+        <a href="ward8.php" class="ward-card">
+            <span>08</span>
+            <h3>Ward 8</h3>
+        </a>
+
+        <!-- Ward 9 -->
+        <a href="ward9.php" class="ward-card">
+            <span>09</span>
+            <h3>Ward 9</h3>
+        </a>
+
+        <!-- Ward 10 -->
+        <a href="ward10.php" class="ward-card">
+            <span>10</span>
+            <h3>Ward 10</h3>
+        </a>
+
+        <!-- Ward 11 -->
+        <a href="ward11.php" class="ward-card">
+            <span>11</span>
+            <h3>Ward 11</h3>
+        </a>
+
+        <!-- Ward 12 -->
+        <a href="ward12.php" class="ward-card">
+            <span>12</span>
+            <h3>Ward 12</h3>
+        </a>
+
+        <!-- Ward 13 -->
+        <a href="ward13.php" class="ward-card">
+            <span>13</span>
+            <h3>Ward 13</h3>
+        </a>
+
+        <!-- Ward 14 -->
+        <a href="ward14.php" class="ward-card">
+            <span>14</span>
+            <h3>Ward 14</h3>
+        </a>
+
+    </div>
+
+
+    <div class="section-button">
+
+        <button class="btn primary" id="viewWardsBtn">
+            View All Wards
+        </button>
+
+    </div>
+
+</section>
+
+
+
+
+
+<!-- =========================================================
+     MAKHANDA TODAY
+========================================================= -->
+
+<section class="makhanda-today">
+
+    <div class="section-heading">
+
+        <span>MAKHANDA TODAY</span>
+
+        <h2>
+            Local Information
+        </h2>
+
+        <p>
+            Useful information about what's happening
+            in and around Makhanda.
+        </p>
+
+    </div>
+
+
+    <div class="today-container">
+
+
+        <!-- Weather -->
+
+        <div class="today-card weather-card">
+
+            <div class="today-icon">
+
+                <?php if (!empty($icon)): ?>
+
+                    <img
+                        src="https:<?= htmlspecialchars($icon) ?>"
+                        alt="<?= htmlspecialchars($condition) ?>"
+                    >
+
+                <?php else: ?>
+
+                    ☁️
+
+                <?php endif; ?>
+
+            </div>
+
+            <div>
+
+                <span>
+                    LOCAL WEATHER
+                </span>
+
+                <h3>
+                    <?= htmlspecialchars($condition) ?>
+                </h3>
+
+                <p class="temperature">
+                    <?= htmlspecialchars($temp) ?>°C
+                </p>
+
+                <p>
+                    Makhanda
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Safety -->
+
+        <div class="today-card">
+
+            <div class="today-icon">
+                ⚠️
+            </div>
+
+            <div>
+
+                <span>
+                    SAFETY
+                </span>
+
+                <h3>
+                    Community Safety
+                </h3>
+
+                <p>
+                    Stay aware of local safety notices
+                    and alerts affecting your community.
+                </p>
+
+                <a href="view_notices.php">
+                    View Alerts →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Events -->
+
+        <div class="today-card">
+
+            <div class="today-icon">
+                🎉
+            </div>
+
+            <div>
+
+                <span>
+                    COMMUNITY
+                </span>
+
+                <h3>
+                    Upcoming Events
+                </h3>
+
+                <p>
+                    Discover events and activities
+                    happening in Makhanda.
+                </p>
+
+                <a href="view_notices.php">
+                    View Events →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
 
 
     <!-- ================= DAM LEVELS ================= -->
 
-<section class="dam-levels">
+<section class="dam-levels
+">
 
     <div class="dam-title">
         <h2>💧 Dam Levels</h2>
@@ -296,70 +897,283 @@ $icon = $data['current']['condition']['icon'];
     </div>
 
 </section>
-        
-    
+
+<!-- =========================================================
+     ABOUT M-LINK
+========================================================= -->
+
+<section class="about-m-link">
+
+    <div class="about-content">
+
+        <span>
+            ABOUT M-LINK
+        </span>
+
+        <h2>
+            Building a more connected Makhanda
+        </h2>
+
+        <p>
+            M-Link provides a digital connection between
+            residents, community organisations, ward
+            councillors and the municipality.
+        </p>
+
+        <p>
+            Through M-Link, communities can report
+            municipal faults, follow service-delivery
+            issues, access ward information and stay
+            informed about important local notices.
+        </p>
+
+        <a href="about_us_page.html" class="btn primary">
+            Learn More About M-Link
+        </a>
+
+    </div>
+
+</section>
 
 
+<!-- =========================================================
+     CALL TO ACTION
+========================================================= -->
+
+<section class="final-cta">
+
+    <div>
+
+        <h2>
+            Be part of a better Makhanda.
+        </h2>
+
+        <p>
+            Create an account to report faults,
+            track your tickets and stay connected
+            with your community.
+        </p>
+
+        <div class="cta-buttons">
+
+            <a href="register.html" class="btn primary">
+                Create an Account
+            </a>
+
+            <a href="login.html" class="btn secondary">
+                Login
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
 
 
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer>
-        <div class="footerContainer">
-            <div class="makanaLogo">
-                <div class="logoBrand">
-                    <img src="MakanaLogo.svg" alt="Makhanda logo">
-                    
-                </div>
+
+    <div class="footerContainer">
+
+
+        <!-- Brand -->
+
+        <div class="makanaLogo">
+
+            <div class="logoBrand">
+
+                <img
+                    src="MakanaLogo.svg"
+                    alt="M-Link logo"
+                >
+
+            </div>
+
+            <p>
+                Empowering residents to take charge
+                in their neighbourhood and work together
+                to build a better, well-maintained
+                Makhanda community.
+            </p>
+
+
+            <div class="socials">
+
+                <a href="#" aria-label="X">
+                    <img src="x.svg" alt="X">
+                </a>
+
+                <a href="#" aria-label="Instagram">
+                    <img
+                        src="instagram.svg"
+                        alt="Instagram"
+                    >
+                </a>
+
+                <a href="#" aria-label="Facebook">
+                    <img
+                        src="facebook.svg"
+                        alt="Facebook"
+                    >
+                </a>
+
+            </div>
+
+
+            <a href="#" class="backToTopBtn">
+                <span class="arrow">↑</span>
+                BACK TO TOP
+            </a>
+
+        </div>
+
+
+        <!-- Sitemap -->
+
+        <div class="siteMap">
+
+            <h2>
+                Site Map
+            </h2>
+
+            <a href="homepage.php">
+                Homepage
+            </a>
+
+            <a href="about_us_page.html">
+                About Us
+            </a>
+
+            <a href="PublicFaultBoard.php">
+                Public Fault Board
+            </a>
+
+            <a href="view_notices.php">
+                Notices
+            </a>
+
+            <a href="viewWards.html">
+                Wards
+            </a>
+
+            <a href="contactUs.html">
+                Contact Us
+            </a>
+
+            <a href="FAQ.html">
+                FAQs
+            </a>
+
+        </div>
+
+
+        <!-- Contact -->
+
+        <div class="contact">
+
+            <h2>
+                Contact
+            </h2>
+
+            <a href="mailto:zkewuti@makana.gov.za">
+                Customer Care
+            </a>
+
+            <a href="mailto:info@makana.gov.za">
+                Service Delivery
+            </a>
+
+            <a href="mailto:enquiries@makana.gov.za">
+                Billing Related
+            </a>
+
+
+            <div class="address">
+
                 <p>
-                    Empowering you to take charge in your neighborhood and
-                    work together to build a better,
-                    well-maintained Makana community.
+                    City Hall, High Str,
+                    Grahamstown, 6139
                 </p>
 
-                <div class="socials">
-                    <a href="#"><img src="x.svg" alt="X"></a>
-                    <a href="#"><img src="instagram.svg" alt="Instagram"></a>
-                    <a href="#"><img src="facebook.svg" alt="Facebook"></a>
-                </div>
+                <p>
 
-                <a href="#top" class="backToTopBtn">
-                    <span class="arrow">↑</span> BACK TO TOP
-                </a>
+                    <img
+                        src="call.svg"
+                        alt="Phone"
+                    >
+
+                    +27 (0) 46 603 6134
+
+                </p>
+
             </div>
 
-            <div class="siteMap">
-                <h2>Site Map</h2>
-                <a href="#">Homepage</a>
-                <a href="#">About Us</a>
-                <a href="#">Report A Fault</a>
-                <a href="#">Contact Us</a>
-                <a href="FAQ.html">FAQs</a>
-            </div>
-
-            <div class="contact">
-                <h2>Contact</h2>
-                <a href="mailto:zkewuti@makana.gov.za">Customer Care</a>
-                <a href="mailto:info@makana.gov.za">Service Delivery</a>
-                <a href="mailto:enquiries@makana.gov.za">Billing Related</a>
-                
-                <div class="address">
-                    <p>City Hall, High Str, Grahamstown, 6139</p>
-                    <p><img src="call.svg" alt="phoneIcon"> +27 (0) 46 603 6134</p>
-                </div>
-            </div>
         </div>
 
-        <div class="copyrightBar">
-            <p>Copyright © 2026 makana. All Rights Reserved.</p>
-        </div>
-    </footer>
+    </div>
+
+
+    <div class="copyrightBar">
+
+        <p>
+            Copyright © 2026 M-Link.
+            All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
 <script>
-const menuBtn = document.getElementById("menuBtn");
-const wardPanel = document.getElementById("wardPanel");
 
-menuBtn.addEventListener("click", function () {
-    wardPanel.classList.toggle("show");
-});
+    const wardCards = document.querySelectorAll(".ward-card");
+    const viewWardsBtn = document.getElementById("viewWardsBtn");
+
+    // Initially hide Ward 6 to Ward 14
+    wardCards.forEach((card, index) => {
+        if (index >= 5) {
+            card.style.display = "none";
+        }
+    });
+
+
+    // View All / View Less button
+    viewWardsBtn.addEventListener("click", function () {
+
+        const isShowingAll = viewWardsBtn.textContent.trim() === "View Less";
+
+        wardCards.forEach((card, index) => {
+
+            if (index >= 5) {
+
+                if (isShowingAll) {
+                    card.style.display = "none";
+                } else {
+                    card.style.display = "block";
+                }
+
+            }
+
+        });
+
+
+        // Change button text
+        if (isShowingAll) {
+            viewWardsBtn.textContent = "View All Wards";
+        } else {
+            viewWardsBtn.textContent = "View Less";
+        }
+
+    });
+
 </script>
+
+
+
+
 </body>
+
 </html>

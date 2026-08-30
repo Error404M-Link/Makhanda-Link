@@ -3,170 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="stylesheet" href="about_us.css">
+    <title>About M-Link</title>
+    <link rel="stylesheet" href="about_mlink.css">
+    <link rel="stylesheet" href="publicfaultBoard.css">
 </head>
-<body>
-    <nav class="navbar"> 
-        <div class="logo">
-            <img src="MakanaLogo.svg" alt="Makhanda logo">
-        </div> 
-        <ul class="nav-links">
-            <li><a href="#" class="link"> Home </a></li>
-            <li><a href="#" class="link"> Fault </a></li>
-            <li><a href="#" class="link"> About us </a></li>
-            <li><a href="#" class="link"> Notices  </a></li>
-            <div id="navbuttons">
-                <li><a href="#" class="btn"> Login </a></li>
-                <li><a href="#" class="btn"> Sign up </a></li>
+
+<header class="heroHeader">
+        <img src="MakhandaBackgroundPic.png" alt="Background" class="heroBgImage">
+        <div class="heroOverlay"></div>
+        <div class="heroContainer">
+            <div class="heroLogo">
+                <img src="MakanaLogo.svg" alt="Makhanda logo">
+            </div> 
+            <div class="heroText">
+                <h1>Makana Municipality</h1>
+                <p>Public Fault Board. Empowering our community together.</p>
             </div>
-        </ul> 
+        </div>
+    </header>
+
+    <!-- RED UTILITY BAR -->
+    <div class="utilityBar">
+        <div class="utilityContainer">
+            <div class="utilityLeft">
+                <a href="#">Documentation</a>
+                <a href="#">Support</a>
+            </div>
+            <div class="utilityRight">
+                <a href="login.html" class="utilityBtn btn">Login</a>
+                <a href="register.html" class="utilityBtn btn">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <!--  WHITE MAIN NAVIGATION BAR -->
+    <nav class="mainNavbar"> 
+        <div class="navContainer">
+            <ul class="mainNavLinks">
+                <li><a href="index.php" class="navItem">Home</a></li>
+                <li><a href="#" class="navItem ">Faults</a></li>
+                <li><a href="viewWards.html" class="navItem"> Wards </a></li>
+                <li><a href="#" class="navItem">About Us</a></li>
+                <li><a href="view_notices.php" class="navItem">Notices</a></li>
+                <li><a href="contactUs.html" class="navItem">Contact us</a></li>
+            </ul> 
+        </div>
     </nav>
+<body>
+    <!-- =========================
+         ABOUT M-LINK
+    ========================== -->
+    <section class="about-section">
 
-    <hr>
-    
-    <br>
-    <h2 class="aboutus">ABOUT US</h2>
-    <br> 
-    <p>
-        Makhanda Link is a digital municipal fault reporting and community engagement platform designed to strengthen communication 
-        between resisdents, ward councilors and the local municipality. [include the mission here]
-    </p>
-    <br>
-    <h2>
-        Our Vision
-    </h2>
-    <br>
-    <p> 
-        [write eveything about the vision here]
-    </p>
-    <br> 
-    <h2>
-        OUR DEVELOPERS 
-    </h2>
-    <section class="developers-section">
-        <div class="developer-heading">
-            <p> 
-                The M-Link development team is made up of passionate Information Sytems students 
-                from Rhodes University. The comnined knowledge in system development, project managment, 
-                systems analysis, business analysis, infrastucture planning and change managment to build a platform that
-                strengthens communication between communities and the municipality. 
+        <div class="about-content">
+
+            <h2>About M-Link</h2>
+
+            <p>
+                Makhanda Link (M-LINK) is a web-based municipal information and service delivery
+                platform designed to strengthen communication between the citizens of Makhanda and
+                the Makana Local Municipality. The platform provides a central space where residents 
+                can access important community information, stay informed about minicipal notices and events, 
+                and events, and report municipal service delivery problems across wards. 
             </p>
-        </div>
-        <div class ="developer-container">
-            <!--Our Cards, Card 1-->
-            <div class="developer-card">
-                <img src="robin.png" alt="Faith Mlambo">  
 
-                <h3>Faith Mlambo</h3>
-                <h4>PROJECT MANAGER</h4>
+            <p>
+                M-Link brings communities, ward councillors and municipal officials together through a single
+                digital platform. Residents can report faults relating to services such as water, sanitation,
+                electricity, roads, parks and recreation, while ward councillors can manage, track and update
+                these reports to support more effective service delivery.
+            </p>
+
+            <div class="highlight-box">
+                <h3>
+                    Connecting communities through technology.
+                </h3>
                 <p>
-                    The team leader, responsible for planning, organizing and overseeing the entire project to ensure it is completed 
-                    on time and according to the client's requirements. Faith acts as the bridge between the client and the development
-                    team and other stakeholders
+                    Our goal is to make communication between residents
+                    and the municipality faster, easier and more
+                    transparent.
                 </p>
             </div>
-            <!--Our Cards, Card 2-->
-            <div class="developer-card">
-                <img src="beastboy.jpg" alt="Master Ganyali">  
-
-                <h3>Master Ganyali</h3>
-                <h4>SYSTEM ANALYST</h4>
-                <p>
-                    Master is reponsible for understanding the client's needs and transdalating them into clear system requirements and
-                    technical specifications. Master act as the link between the user and the development team, ensuring that the system 
-                    being built solves the intended problem.
-                </p>
-            </div>
-            <!--Our Cards, Card 3-->
-            <div class="developer-card">
-                <img src="starfire.png" alt="Qhamani Somhlahlo">  
-
-                <h3>Qhamani Somhlahlo</h3>
-                <h4>Change Manager analyst</h4>
-                <p>
-                    Qhamani is responsible for making sure that the developers in the team successfully adapt to a new system or techonology
-                    in a project 
-                </p>
-            </div>
-            <!--Our Cards, Card 4-->
-            <div class="developer-card">
-                <img src="reven.png" alt="Zevile Ngwabi">  
-
-                <h3>Zevile Ngwabi</h3>
-                <h4>Business Analyst</h4>
-                <p>
-                    Zevile is reponsible for understanding the business needs and translating then into clear requirements foe the system to 
-                    be bulit
-                </p>
-            </div>
-            <!--Our Cards, Card 5-->
-            <div class="developer-card">
-                <img src="cybog.jpg" alt="Hlompho Nyathi">  
-
-                <h3>Hlompho Nyathi</h3>
-                <h4>Infrastructure Manager</h4>
-                <p>
-                    Noah is responsible for making sure the technical enviroment that runs the website or system is reliable, secure and always available
-                </p>
-            </div>
-
-            </div>
-
         </div>
 
 
+        <div class="vision-content">
+
+            <h2>Our Vision</h2>
+
+            <p>
+                Our vision is to create a connected, informed and
+                empowered Makhanda community where residents can
+                communicate with their municipality and actively
+                participate in improving the Makana community.
+            </p>
+
+            <p>
+                M-Link aims to support better service delivery by
+                creating a transparent communication platform between
+                communities, ward councillors and municipal officials.
+            </p>
+
+
+
+        <div class="mission-container">
+            <h2>Our Mission</h2>
+            <p>
+                Our mission is to provide residents of Makhanda with
+                a reliable and user-friendly digital platform for
+                reporting municipal faults, accessing important
+                community information and communicating with their
+                local municipality.
+            </p>
+
+            <p>
+                Through technology, M-Link seeks to improve
+                transparency, encourage community participation and
+                help municipalities respond more effectively to
+                service delivery challenges.
+            </p>
+
         </div>
+
     </section>
-    
-<footer>
-        <div class="footerContainer">
-            <div class="makanaLogo">
-                <div class="logoBrand">
-                    <img src="MakanaLogo.svg" alt="Makhanda logo">
-                    
+
+        </div>
+
+    </section>
+
+     <!-- =========================
+         WHAT M-LINK OFFERS
+    ========================== -->
+    <section class="offers-section">
+
+        <div class="offers-heading">
+
+            <h2>What M-Link Offers</h2>
+
+            <p>
+                M-Link provides residents and communities with digital
+                tools that make it easier to communicate, report
+                problems, access information and stay connected with
+                their municipality.
+            </p>
+
+        </div>
+
+
+        <div class="offers-container">
+
+
+            <!-- REPORT FAULTS -->
+            <div class="offer-card">
+
+                <div class="offer-icon">
+                
                 </div>
+
+                <h3>Report Faults</h3>
+
                 <p>
-                    Empowering you to take charge in your neighborhood and
-                    work together to build a better,
-                    well-maintained Makana community.
+                    Residents can report municipal service problems
+                    affecting their wards, including water, sanitation,
+                    electricity, roads, parks and recreation.
                 </p>
 
-                <div class="socials">
-                    <a href="#"><img src="x.svg" alt="X"></a>
-                    <a href="#"><img src="instagram.svg" alt="Instagram"></a>
-                    <a href="#"><img src="facebook.svg" alt="Facebook"></a>
+            </div>
+
+
+            <!-- TRACK PROGRESS -->
+            <div class="offer-card">
+
+                <div class="offer-icon">
+                    <img src= >
                 </div>
 
-                <a href="#top" class="backToTopBtn">
-                    <span class="arrow">↑</span> BACK TO TOP
-                </a>
+                <h3>Track Progress</h3>
+
+                <p>
+                    Residents and ward councillors can monitor the
+                    progress of reported faults and see when issues
+                    move from open to reported and eventually resolved.
+                </p>
+
             </div>
 
-            <div class="siteMap">
-                <h2>Site Map</h2>
-                <a href="#">Homepage</a>
-                <a href="#">About Us</a>
-                <a href="#">Report A Fault</a>
-                <a href="#">Contact Us</a>
-            </div>
 
-            <div class="contact">
-                <h2>Contact</h2>
-                <a href="mailto:zkewuti@makana.gov.za">Customer Care</a>
-                <a href="mailto:info@makana.gov.za">Service Delivery</a>
-                <a href="mailto:enquiries@makana.gov.za">Billing Related</a>
+            <!-- COMMUNITY INFORMATION -->
+            <div class="offer-card">
+
+                <div class="offer-icon">
                 
-                <div class="address">
-                    <p>City Hall, High Str, Grahamstown, 6139</p>
-                    <p><img src="call.svg" alt="phoneIcon"> +27 (0) 46 603 6134</p>
                 </div>
+
+                <h3>Community Information</h3>
+
+                <p>
+                    Residents can access important town-wide and
+                    ward-level information, including municipal notices,
+                    events, safety information and other community
+                    updates.
+                </p>
+
             </div>
+
+
+            <!-- WARD COMMUNICATION -->
+            <div class="offer-card">
+
+                <div class="offer-icon">
+                
+                </div>
+
+                <h3>Ward Communication</h3>
+
+                <p>
+                    Dedicated ward spaces allow residents and ward
+                    councillors to share information and focus on
+                    issues affecting their specific communities.
+                </p>
+
+            </div>
+
+
+            <!-- TRANSPARENCY -->
+            <div class="offer-card">
+
+                <div class="offer-icon">
+                
+                </div>
+
+                <h3>Transparency</h3>
+
+                <p>
+                    M-Link supports greater transparency by making
+                    ward-level summaries and relevant municipal
+                    information available to the public.
+                </p>
+
+            </div>
+
         </div>
 
-        <div class="copyrightBar">
-            <p>Copyright © 2026 makana. All Rights Reserved.</p>
-        </div>
-</footer>
+    </section>
+        
+
 </body>
 </html>
