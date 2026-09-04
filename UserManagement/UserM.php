@@ -1,5 +1,5 @@
 <?php
-include 'dbconnection.php'; 
+include 'connection.php'; 
 
 if (isset($_GET['idnumber'])) {
     $user_id = $_GET['idnumber'];
@@ -7,7 +7,7 @@ if (isset($_GET['idnumber'])) {
   
     $sql_delete = "DELETE FROM myusers WHERE idnumber = ?";
     $stmt = $conn->prepare($sql_delete);
-    $stmt->bind_param("s", $user_id); r
+    $stmt->bind_param("s", $user_id); 
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
@@ -65,12 +65,10 @@ if ($result->num_rows > 0) {
     }
 
     echo "</table></center>";
-
-
-    echo"<p> <a href= \" "><button>Create Ticket </button></a></p>";
-    echo"<p> <a href= \" "><button>ticket History </button></a></p>";
-    echo"<p> <a href= \"signup.html\"><button>Register </button></a></p>";
-    echo"<p> <a href= \"signin.html\"><button>Back to Login </button></a></p>";
+    echo '<p><a href="CreateTicket.php"><button type="button">Create Ticket</button></a></p>';
+echo '<p><a href="ticketHistory.php"><button type="button">Ticket History</button></a></p>';
+echo '<p><a href="signup.html"><button type="button">Register</button></a></p>';
+echo '<p><a href="signin.html"><button type="button">Back to Login</button></a></p>';
 
 
 

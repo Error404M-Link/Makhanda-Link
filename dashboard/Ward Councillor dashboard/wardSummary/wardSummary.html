@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ward Summary</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            background: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: #8B5E3C;
+            color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        .box {
+            background: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        h2 {
+            margin-top: 0;
+            font-size: medium;
+            color: #8B5E3C;
+        }
+        .center-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #917e5a;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            padding: 10px 0;
+        }
+        .dropdown-content li {
+            display: block;
+        }
+        .dropdown-content li a {
+            color: #fff;
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        footer {
+            background-color: #334e4a;
+            color: #ffffff;
+            padding: 60px 0 0 0;
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .footerContainer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            /* left split for logo and description */
+            gap: 60px;
+            padding-bottom: 50px;
+        }
+
+        .makanaLogo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logoBrand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .logoBrand img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 30px;
+        }
+
+        .logoBrand h2 {
+            font-size: 20px;
+            letter-spacing: 2px;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .makanaLogo p {
+            color: #b3c2c0;
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0 0 25px 0;
+            max-width: 380px;
+        }
+
+        .socials {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 35px;
+        }
+
+        .socials img {
+            width: 18px;
+            height: 18px;
+            filter: invert(100%);
+            /* Turns dark icons clean white */
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .socials img:hover {
+            opacity: 1;
+        }
+
+        .backToTopBtn {
+            border: 1px solid #ffffff;
+            background: transparent;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            border-radius: 2px;
+        }
+
+        .backToTopBtn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .siteMap,
+        .contact {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .siteMap h2,
+        .contact h2 {
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-top: 0;
+            margin-bottom: 25px;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .siteMap a,
+        .contact a {
+            color: #b3c2c0;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .siteMap a:hover,
+        .contact a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .address {
+            margin-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+        }
+
+        .address p {
+            color: #8da3a0;
+            font-size: 13px;
+            margin: 4px 0;
+        }
+
+        .copyrightBar {
+            background-color: #917e5a;
+            padding: 15px 40px;
+            text-align: center;
+        }
+
+        .copyrightBar p {
+            margin: 0;
+            color: #0b342e;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .navbar {
+            background: #B5B35C;
+            font-family: sans-serif;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .navdiv {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo a {
+            font-size: 35px;
+            font-weight: 600;
+            color: white;
+        }
+
+        li {
+            list-style: none;
+            display: inline-block;
+        }
+
+        li a {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            margin-left: 25px;
+        }
+
+        button {
+            margin-left: 10px;
+            border-radius: 10px;
+            padding: 10px;
+            width: 90px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="navdiv">
+            <div class="logo"></div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Fault</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Notices</a></li>
+                <button><a href="#">Login</a></button>
+                <button><a href="#">Sign Up</a></button>
+            </ul>
+
+        </div>
+    </nav>
+    <header>
+        <h1>WARD SUMMARY</h1>
+               <li class="dropdown">
+                <a href="#">Wards ▼</a>
+                <ul class="dropdown-content">
+                    <li><a href="ward1.html">Ward 1</a></li>
+                    <li><a href="ward2.html">Ward 2</a></li>
+                    <li><a href="ward3.html">Ward 3</a></li>
+                    <li><a href="ward4.html">Ward 4</a></li>
+                </ul>
+            </li>
+    </header>
+
+    <div class="container">
+
+        <div class="box">
+            <h2>Ward Councillor</h2>
+            <img src="councillor1.jpg" alt="Ward Councillor" class="councillor-img">
+            <p id="councillor-info">Councillor details go here.</p>
+        </div>
+
+        <div class="box">
+            <h2>Ward Summary Report</h2>
+            <p id="summary-report">Reports will be generated here</p>
+            <button onclick="addSummary()">Add Summary</button>
+        </div>
+
+        <div id="edit-summary" style="display:none;">
+            <textarea id="summary-input" rows="4" cols="40"></textarea><br>
+            <button onclick="saveSummary()">Save</button>
+            <button onclick="cancelEdit()">Cancel</button>
+        </div>
+
+        <button onclick="showEdit()">Add/Edit Summary</button>
+    </div>
+    </div>
+    </div>
+
+
+    <footer>
+
+        <body>
+            <!-- Footer Section -->
+            <footer>
+                <div class="footerContainer">
+
+                    <!-- Logo & Description -->
+                    <div class="makanaLogo">
+                        <div class="logoBrand">
+                            <img src="MakanaLogo.svg" alt="Makana Logo">
+                            <h2>Makana Municipality</h2>
+                        </div>
+                        <p>
+                            Building a connected community through transparency, service delivery, and innovation.
+                        </p>
+
+                        <!-- Social Icons -->
+                        <div class="socials">
+                            <a href="#"><img src="facebook.svg" alt="Facebook"></a>
+                            <a href="#"><img src="x.svg" alt="Twitter"></a>
+                            <a href="#"><img src="instagram.svg" alt="Instagram"></a>
+                        </div>
+
+                        <!-- Back to Top Button -->
+                        <a href="#top" class="backToTopBtn">
+                            ↑ Back to Top
+                        </a>
+                    </div>
+
+                    <!-- Site Map -->
+                    <div class="siteMap">
+                        <h2>Site Map</h2>
+                        <a href="#">Home</a>
+                        <a href="#">Fault</a>
+                        <a href="#">About Us</a>
+                        <a href="#">Notices</a>
+                        <a href="#">Contact</a>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="contact">
+                        <h2>Contact</h2>
+                        <a href="mailto:info@makana.gov.za">info@makana.gov.za</a>
+                        <a href="tel:+27000000000">+27 00 000 0000</a>
+
+                        <div class="address">
+                            <p>Makana Municipality</p>
+                            <p>High Street, Makhanda</p>
+                            <p>Eastern Cape, South Africa</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copyright Bar -->
+                <div class="copyrightBar">
+                    <p>© 2026 Makana Municipality. All Rights Reserved.</p>
+                </div>
+            </footer>
+        </body>
+
+    </footer>
+
+    <script>
+
+        document.getElementById("summary-report").textContent = "Ward 1 has 4 ongoing issues, 2 notices and 1 service update";
+        document.getElementById("councillor-info").textContent = "Cllr Phumelele Peter, Contact: ppeter@makana.gov.za/ pphumelele561@gmail.com";
+        function addSummary() {
+            let newSummary = prompt("Enter new ward summary:");
+            if (newSummary) {
+                document.getElementById("summary-report").textContent = newSummary;
+            }
+        }
+        function showEdit() {
+            document.getElementById("edit-summary").style.display = "block";
+            document.getElementById("summary-input").value =
+                document.getElementById("summary-report").textContent;
+        }
+
+        function saveSummary() {
+            let newSummary = document.getElementById("summary-input").value;
+            if (newSummary.trim() !== "") {
+                document.getElementById("summary-report").textContent = newSummary;
+            }
+            document.getElementById("edit-summary").style.display = "none";
+        }
+
+        function cancelEdit() {
+            document.getElementById("edit-summary").style.display = "none";
+        }
+    </script>
+
+
+    </script>
+
+    </script>
+</body>
+
+</html>

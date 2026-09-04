@@ -1,0 +1,568 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+
+/*################################ LAYOUT ########################*/
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+/*######################### SIDEBAR ############################*/
+
+.sidebar{
+    width:270px;
+    background:#e9ddcf;
+    border-right:1px solid #ddd;
+    padding:25px;
+    position:fixed;
+    height:100%;
+
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.logo h2{
+    color:#7b4d2d;
+    font-size:32px;
+    margin-bottom:5px;
+}
+
+.logo p{
+    color:#777;
+    font-size:15px;
+}
+.sidebar-logo img{
+  display: block;
+  max-width: 100%;   /* scales image to sidebar width */
+  height: auto;      /* keeps proportions */
+  margin: 0 auto;    /* centers the logo */
+  padding: 10px;     /* optional spacing inside sidebar */
+}
+
+.profile {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/*######################### PROFILE ######################### */
+
+.profile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 15px auto;
+    display: block;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile h3 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.profile p {
+    color: #bdc3c7;
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+.profile span {
+    color: #16a085;
+    font-weight: 600;
+}
+
+/* ############################ MENU ############################*/
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    margin-bottom: 12px;
+}
+
+.menu li a, 
+.menu li {
+    color: #bdc3c7;
+    text-decoration: none;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.menu li i {
+    width: 30px;
+    font-size: 1.1rem;
+    display: inline-block;
+}
+
+.menu li:hover {
+    background-color: #34495e;
+    color: #ffffff;
+    padding-left: 20px;
+}
+
+.active {
+    background-color: #34495e;
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+/* ===========================
+   MAIN CONTENT
+=========================== */
+
+.main-content{
+    width:100%;
+    padding:30px;
+}
+
+/* ===========================
+   TOP BAR
+=========================== */
+
+.topbar{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    margin-bottom:40px;
+}
+
+.icons{
+    display:flex;
+    gap:25px;
+    margin-right:40px;
+}
+
+.icon{
+    position:relative;
+    font-size:24px;
+    color:#555;
+}
+
+.icon span{
+    position:absolute;
+    top:-8px;
+    right:-10px;
+
+    width:18px;
+    height:18px;
+
+    background:#8b5e3c;
+    color:white;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:10px;
+}
+
+.user{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.user img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.user h4{
+    color:#333;
+}
+
+.user small{
+    color:#777;
+}
+
+/* ===========================
+   CARDS
+=========================== */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+
+    gap:25px;
+
+    margin-bottom:45px;
+
+}
+
+.card{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.card i{
+
+    font-size:35px;
+
+    color:#8b5e3c;
+
+    margin-bottom:15px;
+
+}
+
+.card h4{
+
+    color:#777;
+
+    font-size:16px;
+
+    margin-bottom:10px;
+
+}
+
+.card h2{
+
+    color:#222;
+
+    font-size:36px;
+
+}
+
+/* ===========================
+   WELCOME
+=========================== */
+
+.welcome{
+
+    background:white;
+
+    border-radius:20px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    padding:80px;
+
+    text-align:center;
+
+}
+
+.welcome-icon{
+
+    width:120px;
+
+    height:120px;
+
+    background:darkgreen;
+
+    border-radius:50%;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+}
+
+.welcome-icon i{
+
+    font-size:55px;
+
+    color:beige;
+
+}
+
+.welcome h1{
+
+    color:#333;
+
+    margin-bottom:15px;
+
+}
+
+.welcome p{
+
+    color:#666;
+
+    line-height:1.8;
+
+    font-size:17px;
+
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer{
+
+    text-align:center;
+
+    margin-top:50px;
+
+    color:#888;
+
+    font-size:15px;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+.sidebar{
+
+    width:220px;
+
+}
+
+.main-content{
+
+    margin-left:220px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.sidebar{
+
+    position:relative;
+
+    width:100%;
+
+    height:auto;
+
+}
+
+.container{
+
+    flex-direction:column;
+
+}
+
+.main-content{
+
+    margin-left:0;
+
+}
+
+.cards{
+
+    grid-template-columns:1fr;
+
+}
+
+.topbar{
+
+    justify-content:space-between;
+
+    flex-wrap:wrap;
+
+}
+
+.icons{
+
+    margin-right:0;
+
+}
+
+.welcome{
+
+    padding:40px 20px;
+
+}
+
+}
+
+/*################################ FOOTER ####################################*/
+
+footer {
+    background-color: #334e4a;
+    color: #ffffff;
+    padding: 60px 0 0 0;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.footerContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr; /* left split for logo and description */
+    gap: 60px;
+    padding-bottom: 50px;
+}
+
+.makanaLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.logoBrand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.logoBrand img{
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.logoBrand h2 {
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.makanaLogo p {
+    color: #b3c2c0;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 25px 0;
+    max-width: 380px;
+}
+
+.socials {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 35px;
+}
+
+.socials img {
+    width: 18px;
+    height: 18px;
+    filter: invert(100%); /* Turns dark icons clean white */
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.socials img:hover {
+    opacity: 1;
+}
+
+.backToTopBtn {
+    border: 1px solid #ffffff;
+    background: transparent;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    border-radius: 2px;
+}
+
+.backToTopBtn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.siteMap, .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.siteMap h2, .contact h2 {
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.siteMap a, .contact a {
+    color: #b3c2c0;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 14px;
+    transition: color 0.2s ease;
+}
+
+.siteMap a:hover, .contact a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.address {
+    margin-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+}
+
+.address p {
+    color: #8da3a0;
+    font-size: 13px;
+    margin: 4px 0;
+}
+
+.copyrightBar {
+    background-color: #917e5a;
+    padding: 15px 40px;
+    text-align: center;
+}
+
+.copyrightBar p {
+    margin: 0;
+    color: #0b342e; 
+    font-size: 12px;
+    font-weight: 500;
+}

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resident Dashboard | M-LINK</title>
+
+    <link rel="stylesheet" href="resience.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        <img src="MakanaLogo.svg" alt="">
+        <h2>M-LINK</h2>
+    </div>
+
+    <nav>
+
+        <a href="#">Dashboard</a>
+        <a href="#">Report Fault</a>
+        <a href="#">My Tickets</a>
+        <a href="#">My Ward</a>
+        <a href="#">Profile</a>
+
+    </nav>
+
+    <div class="user-area">
+
+        <div class="notification">
+            <i class="fa-regular fa-bell"></i>
+            <span>4</span>
+        </div>
+
+        <img src="profile.jpg" alt="Profile">
+
+    </div>
+
+</header>
+
+<!-- ================= WELCOME ================= -->
+
+<section class="welcome">
+
+    <div>
+
+        <h1>Welcome back, Faith 👋</h1>
+
+        <p>
+            Manage your municipal requests, track fault reports,
+            and stay connected with your ward.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= DASHBOARD STATS ================= -->
+
+<section class="stats">
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-ticket"></i>
+
+        <h3>Open Tickets</h3>
+
+        <h2>3</h2>
+
+    </div>
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-circle-check"></i>
+
+        <h3>Resolved</h3>
+
+        <h2>12</h2>
+
+    </div>
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-bell"></i>
+
+        <h3>Notifications</h3>
+
+        <h2>4</h2>
+
+    </div>
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-location-dot"></i>
+
+        <h3>My Ward</h3>
+
+        <h2>Ward 5</h2>
+
+    </div>
+
+</section>
+
+<!-- ================= QUICK ACTIONS ================= -->
+
+<section class="actions">
+
+    <h2>Quick Actions</h2>
+
+    <div class="action-grid">
+
+        <div class="action-card">
+
+            <i class="fa-solid fa-circle-plus"></i>
+
+            <h3>Report Fault</h3>
+
+        </div>
+
+        <div class="action-card">
+
+            <i class="fa-solid fa-ticket"></i>
+
+            <h3>View Tickets</h3>
+
+        </div>
+
+        <div class="action-card">
+
+            <i class="fa-solid fa-user"></i>
+
+            <h3>Edit Profile</h3>
+
+        </div>
+
+        <div class="action-card">
+
+            <i class="fa-solid fa-map-location-dot"></i>
+
+            <h3>My Ward</h3>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= MY FAULT REPORTS ================= -->
+
+<section class="reports">
+
+    <div class="section-title">
+
+        <h2>My Fault Reports</h2>
+
+        <a href="#">View All</a>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Reference</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th></th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+                <td>ML00125</td>
+                <td>Water Leak</td>
+                <td>18 Jul 2026</td>
+                <td><span class="progress">In Progress</span></td>
+                <td><button>View</button></td>
+
+            </tr>
+
+            <tr>
+
+                <td>ML00121</td>
+                <td>Pothole</td>
+                <td>15 Jul 2026</td>
+                <td><span class="submitted">Submitted</span></td>
+                <td><button>View</button></td>
+
+            </tr>
+
+            <tr>
+
+                <td>ML00112</td>
+                <td>Street Light</td>
+                <td>11 Jul 2026</td>
+                <td><span class="resolved">Resolved</span></td>
+                <td><button>View</button></td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<!-- ================= TWO COLUMN SECTION ================= -->
+
+<section class="dashboard-grid">
+
+    <div class="panel">
+
+        <h2>Recent Notifications</h2>
+
+        <ul>
+
+            <li>Your ticket ML00125 has been assigned.</li>
+
+            <li>Your pothole report is under review.</li>
+
+            <li>Your street light report was resolved.</li>
+
+        </ul>
+
+    </div>
+
+    <div class="panel">
+
+        <h2>My Ward</h2>
+
+        <p><strong>Ward:</strong> 5</p>
+
+        <p><strong>Councillor:</strong> John Doe</p>
+
+        <p><strong>Email:</strong> councillor@makana.gov.za</p>
+
+        <button>View Ward Summary</button>
+
+    </div>
+
+</section>
+
+<!-- ================= PROFILE ================= -->
+
+<section class="profile-summary">
+
+    <h2>Account Summary</h2>
+
+    <div class="profile-card">
+
+        <img src="profile.jpg" alt="">
+
+        <div>
+
+            <h3>Faith Mlambo</h3>
+
+            <p>faith@email.com</p>
+
+            <p>072 000 0000</p>
+
+        </div>
+
+        <button>Edit Profile</button>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <p>© 2026 M-LINK | Empowering Communities</p>
+
+</footer>
+
+<script src="resident-dashboard.js"></script>
+
+</body>
+</html>

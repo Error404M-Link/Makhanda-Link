@@ -1,0 +1,767 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #18212f;
+}
+
+
+/* ==========================================
+   TOP BAR
+========================================== */
+
+.topbar {
+    height: 76px;
+    background: #ffffff;
+    border-bottom: 1px solid #e6e9ef;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+.brand-icon {
+    width: 43px;
+    height: 43px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #111827;
+    color: white;
+
+    font-size: 22px;
+    font-weight: bold;
+}
+
+
+.brand h1 {
+    font-size: 19px;
+}
+
+
+.brand span {
+    color: #7b8494;
+    font-size: 12px;
+}
+
+
+.home-btn {
+    text-decoration: none;
+
+    padding: 10px 18px;
+
+    border-radius: 9px;
+
+    background: #f0f2f5;
+    color: #477969;
+
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   CONTAINER
+========================================== */
+
+.container {
+    width: min(1200px, 92%);
+    margin: 35px auto 70px;
+}
+
+
+/* ==========================================
+   WARD SELECTOR
+========================================== */
+
+.ward-selector {
+    background: white;
+
+    border: 1px solid #e5e8ee;
+
+    border-radius: 18px;
+
+    padding: 22px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+
+.section-label {
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: #7b8494;
+}
+
+
+.ward-selector h2 {
+    margin-top: 5px;
+    font-size: 22px;
+}
+
+
+#wardSelect {
+    min-width: 180px;
+
+    padding: 12px 15px;
+
+    border: 1px solid #d9dee7;
+
+    border-radius: 10px;
+
+    background: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+
+/* ==========================================
+   HERO
+========================================== */
+
+.ward-hero {
+    background: #477969;
+    color: white;
+
+    border-radius: 22px;
+
+    padding: 38px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 350px;
+
+    gap: 40px;
+
+    margin-bottom: 35px;
+}
+
+
+.ward-tag {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    opacity: .65;
+}
+
+
+.ward-info h2 {
+    font-size: 45px;
+    margin: 10px 0;
+}
+
+
+.ward-info p {
+    color: #c8ced8;
+    line-height: 1.7;
+    max-width: 560px;
+}
+
+
+.hero-buttons {
+    margin-top: 25px;
+}
+
+
+.map-btn {
+    display: inline-block;
+
+    padding: 12px 18px;
+
+    background: white;
+    color: #477969;
+
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+
+    transition: .2s;
+}
+
+
+.map-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   COUNCILLOR
+========================================== */
+
+.councillor-card {
+    background: rgba(255,255,255,.08);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    border-radius: 17px;
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+.councillor-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #efd357;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+
+.councillor-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+.photo-placeholder {
+    font-size: 35px;
+}
+
+
+.councillor-details span {
+    font-size: 10px;
+    letter-spacing: 1px;
+
+    color: #aeb6c3;
+}
+
+
+.councillor-details h3 {
+    margin: 6px 0;
+    font-size: 19px;
+}
+
+
+.councillor-details p {
+    color: #aeb6c3;
+}
+
+
+/* ==========================================
+   TOOLBAR
+========================================== */
+
+.summary-toolbar {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+
+.summary-toolbar h2 {
+    font-size: 27px;
+}
+
+
+.summary-toolbar p {
+    color: #7c8594;
+    margin-top: 5px;
+}
+
+
+.search-box {
+    width: 280px;
+
+    background: white;
+
+    border: 1px solid #dfe3e9;
+
+    border-radius: 10px;
+
+    padding: 11px 14px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.search-box span {
+    font-size: 21px;
+    color: #7d8795;
+}
+
+
+.search-box input {
+    border: none;
+    outline: none;
+
+    width: 100%;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   CARDS
+========================================== */
+
+.summary-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+.summary-card {
+    background: white;
+
+    border: 1px solid #e4e8ee;
+
+    border-radius: 17px;
+
+    padding: 23px;
+
+    min-height: 260px;
+
+    display: flex;
+    flex-direction: column;
+
+    transition: .25s;
+}
+
+
+.summary-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 30px rgba(20,30,50,.08);
+}
+
+
+.card-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+
+.summary-badge {
+    background: #eef1f5;
+
+    color: #4f5968;
+
+    padding: 6px 9px;
+
+    border-radius: 6px;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+}
+
+
+.summary-date {
+    font-size: 12px;
+    color: #929aa7;
+}
+
+
+.summary-card h3 {
+    font-size: 19px;
+
+    line-height: 1.35;
+
+    margin-bottom: 12px;
+}
+
+
+.summary-text {
+    color: #697382;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    flex: 1;
+}
+
+
+.read-btn {
+    border: none;
+
+    background: transparent;
+
+    padding: 0;
+
+    margin-top: 20px;
+
+    color: #111827;
+
+    font-weight: bold;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.read-btn span {
+    font-size: 20px;
+
+    transition: .2s;
+}
+
+
+.read-btn:hover span {
+    transform: translateX(5px);
+}
+
+
+/* ==========================================
+   EMPTY
+========================================== */
+
+.empty-state,
+.no-results {
+    background: white;
+
+    border: 1px dashed #d6dbe3;
+
+    border-radius: 17px;
+
+    padding: 60px 25px;
+
+    text-align: center;
+
+    grid-column: 1 / -1;
+}
+
+
+.empty-icon,
+.no-results div {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+
+.empty-state h3,
+.no-results h3 {
+    margin-bottom: 8px;
+}
+
+
+.empty-state p,
+.no-results p {
+    color: #7b8492;
+}
+
+
+/* ==========================================
+   NO RESULTS
+========================================== */
+
+.no-results {
+    display: none;
+}
+
+
+/* ==========================================
+   NAVIGATION
+========================================== */
+
+.ward-navigation {
+    margin-top: 35px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.nav-ward {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    text-decoration: none;
+
+    color: #18212f;
+}
+
+
+.nav-ward > span {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    border: 1px solid #e2e6ec;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.nav-ward small {
+    display: block;
+
+    color: #8b94a2;
+
+    font-size: 11px;
+}
+
+
+.nav-ward strong {
+    font-size: 14px;
+}
+
+
+.ward-position {
+    color: #858e9c;
+}
+
+
+.ward-position span {
+    color: #111827;
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   MODAL
+========================================== */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(10,15,25,.65);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 500;
+}
+
+
+.modal.show {
+    display: flex;
+}
+
+
+.modal-content {
+    background: white;
+
+    width: min(700px, 100%);
+
+    max-height: 80vh;
+
+    overflow-y: auto;
+
+    border-radius: 20px;
+
+    padding: 35px;
+
+    position: relative;
+}
+
+
+.close-modal {
+    position: absolute;
+
+    right: 18px;
+    top: 15px;
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
+
+    background: #f0f2f5;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+
+.modal-badge {
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    font-weight: bold;
+
+    color: #727b89;
+}
+
+
+.modal-content h2 {
+    margin: 12px 0 5px;
+
+    font-size: 28px;
+}
+
+
+.modal-date {
+    color: #89919d;
+
+    font-size: 13px;
+}
+
+
+.modal-message {
+    margin-top: 25px;
+
+    color: #4f5967;
+
+    line-height: 1.8;
+
+    white-space: pre-line;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 900px) {
+
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ward-hero {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .topbar {
+        padding: 0 4%;
+    }
+
+
+    .container {
+        width: 94%;
+    }
+
+
+    .ward-selector {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 18px;
+    }
+
+
+    #wardSelect {
+        width: 100%;
+    }
+
+
+    .ward-hero {
+        padding: 25px;
+    }
+
+
+    .ward-info h2 {
+        font-size: 35px;
+    }
+
+
+    .summary-toolbar {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 15px;
+    }
+
+
+    .search-box {
+        width: 100%;
+    }
+
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .ward-navigation {
+        gap: 15px;
+    }
+
+}

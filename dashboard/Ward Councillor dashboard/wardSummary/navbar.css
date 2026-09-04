@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.navbar{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px 2%;
+    background-color: #334e4a;
+    position: sticky;
+    top:0;
+    z-index: 1000;  /*Keeps keeps the naviagtion bar on top of everything*/
+}
+
+.nav-links{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5vw;
+    list-style: none;
+    flex-wrap: nowrap; /*this makes the links not jump to the nest line, this happend with the about us link*/
+}
+
+.nav-links a{
+    text-decoration: none; 
+    color: white;
+}
+
+.link{
+    text-decoration: none;
+    color: white;
+    position: relative;
+    font-size: 1.5vw;
+}
+
+
+/*underline hover for the links*/
+.link::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background-color: #917e5a;
+    transition: width 0.3s ease;
+}
+
+.link:hover{
+    color: #917e5a;
+}
+
+
+.link:hover::after{
+    width: 100%;
+}
+/*underline hover for thr links end here*/
+
+.logo img{
+    width: 10vw;
+    min-width: 80px;
+    max-width: 150px;
+    height: auto;
+}
+
+
+.btn{
+    background-color: #334e4a;
+    color:white;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 2px solid #917e5a;
+    transition: 0.4s;
+    font-size: 1.5vw;
+
+    white-space: nowrap;
+}
+
+.btn:hover{
+    background-color: #917e5a;
+    color: aliceblue;
+}
+#navbuttons{
+    display: flex;
+    gap:5px;
+    margin-left: 20px;
+}
+/*######################### RESPONSIVENESS ############### */
+
+@media screen and (max-width: 768px){
+    .nav-links{
+        display: block;
+        gap: 10px;
+        padding: 0;
+    }
+
+    .nav-links li {
+        margin-bottom: 10px; 
+    }
+
+    .navbar{
+        display: block;
+        gap: 10px;
+        width: 25%;
+    }
+
+    #navbuttons{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .btn{
+        display: inline-block;
+        width: max-content;
+        text-align: center;
+    }
+}
+
+hr{
+    height: 2px;
+    border: none;
+    background-color: #917e5a;
+ /*####################### Everything on top is the navigation bar ##############################*/ 

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>M-LINK Ward Councillor Dashboard</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="Wardcouncillo.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ================= TOP NAVIGATION ================= -->
+
+    <header class="topbar">
+
+        <!-- Hamburger Button -->
+        <button class="menu-btn" id="menuBtn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Logo -->
+        <div class="top-logo">
+            <h2>M-LINK</h2>
+            <p>Makhanda Connect</p>
+        </div>
+
+        <!-- Right Side -->
+        <div class="top-right">
+
+            <!-- Notifications -->
+            <div class="icon">
+                <i class="fa-regular fa-bell"></i>
+                <span>3</span>
+            </div>
+
+            <!-- Messages -->
+            <div class="icon">
+                <i class="fa-regular fa-envelope"></i>
+                <span>2</span>
+            </div>
+
+            <!-- User -->
+            <div class="user">
+
+                <img src="profile.jpg" alt="Profile">
+
+                <div>
+                    <h4>Faith Mlambo</h4>
+                    <small>Ward Councillor</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <!-- Profile -->
+        <div class="profile">
+
+            <img src="profile.jpg" alt="Profile">
+
+            <h3>Faith Mlambo</h3>
+
+            <p>Ward Councillor</p>
+
+            <span>Ward 5</span>
+
+        </div>
+
+
+        <!-- Navigation -->
+        <ul class="menu">
+
+            <li class="active">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </li>
+
+
+            <!-- COUNCILLOR -->
+            <li>
+                <i class="fa-solid fa-table-columns"></i>
+                <span>Councillor Overview</span>
+            </li>
+
+
+            <!-- TICKETS -->
+            <li class="menu-title">
+                TICKETS MANAGEMENT
+            </li>
+
+            <li>
+                <a href="WardTicketManagement.php">
+                <i class="fa-solid fa-ticket"></i> 
+                <span>Ward Tickets Management</span> </a>
+            </li>
+            
+
+
+            <!-- REPORTS -->
+            <li class="menu-title">
+                COMMUNICATION
+            </li>
+
+            <li>
+                <a href="wardSummary.html">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Generate Reports / Ward Summaries</span> </a>
+            </li>
+
+
+            <!-- ANALYTICS -->
+            <li class="menu-title">
+                ANALYTICS
+            </li>
+
+            <li>
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Analytics & Reports</span>
+            </li>
+
+
+            <!-- OTHER -->
+            <li class="menu-title">
+                ACCOUNT
+            </li>
+
+            <li>
+                <i class="fa-regular fa-bell"></i>
+                <span>Notifications</span>
+                <b class="badge">3</b>
+            </li>
+
+            <li>
+                <i class="fa-regular fa-envelope"></i>
+                <span>Messages</span>
+                <b class="badge">2</b>
+            </li>
+
+            <li>
+                <i class="fa-solid fa-user"></i>
+                <span>Profile</span>
+            </li>
+
+            <li>
+                <a href="settings.html">
+                <i class="fa-solid fa-gear"></i> </a>
+                <span>Settings</span>
+            </li>
+
+            <li>
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content" id="mainContent">
+
+
+        <!-- WELCOME -->
+
+        <section class="page-heading">
+
+            <div>
+
+                <h1>
+                    Welcome back, Faith Mlambo 👋
+                </h1>
+
+                <p>
+                    Here's what's happening in Ward 5 today.
+                </p>
+
+            </div>
+
+            <div class="date">
+                <i class="fa-regular fa-calendar"></i>
+                17 August 2026
+            </div>
+
+        </section>
+
+
+        <!-- ================= SUMMARY CARDS ================= -->
+
+        <section class="cards">
+
+
+            <!-- Open Faults -->
+
+            <div class="card">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <h4>Total Open Faults</h4>
+
+                <h2>145</h2>
+
+                <small>
+                    ↑ 12 from last week
+                </small>
+
+            </div>
+
+
+            <!-- Reported -->
+
+            <div class="card">
+
+                <i class="fa-solid fa-file-circle-plus"></i>
+
+                <h4>Reported Today</h4>
+
+                <h2>23</h2>
+
+                <small>
+                    ↑ 5 from yesterday
+                </small>
+
+            </div>
+
+
+            <!-- Resolved -->
+
+            <div class="card">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <h4>Resolved This Month</h4>
+
+                <h2>97</h2>
+
+                <small>
+                    ↑ 18% from last month
+                </small>
+
+            </div>
+
+
+            <!-- Notices -->
+
+            <div class="card">
+
+                <i class="fa-solid fa-bullhorn"></i>
+
+                <h4>Active Notices</h4>
+
+                <h2>12</h2>
+
+                <a href="#">
+                    View all notices →
+                </a>
+
+            </div>
+
+
+            <!-- Events -->
+
+            <div class="card">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+                <h4>Upcoming Events</h4>
+
+                <h2>8</h2>
+
+                <a href="#">
+                    View calendar →
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DASHBOARD INFORMATION ================= -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- Tickets Status -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h3>Ward Tickets Overview</h3>
+
+                    <a href="#">
+                        View all tickets →
+                    </a>
+
+                </div>
+
+                <div class="ticket-status">
+
+                    <div>
+                        <span class="dot open"></span>
+                        Open
+                        <strong>145</strong>
+                    </div>
+
+                    <div>
+                        <span class="dot progress"></span>
+                        In Progress
+                        <strong>82</strong>
+                    </div>
+
+                    <div>
+                        <span class="dot pending"></span>
+                        Pending
+                        <strong>53</strong>
+                    </div>
+
+                    <div>
+                        <span class="dot resolved"></span>
+                        Resolved
+                        <strong>97</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Problem Streets -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h3>Top Problem Streets</h3>
+
+                    <a href="#">
+                        Full report →
+                    </a>
+
+                </div>
+
+
+                <div class="street">
+
+                    <span>High Street</span>
+
+                    <div class="bar">
+                        <div style="width: 90%;"></div>
+                    </div>
+
+                    <strong>28</strong>
+
+                </div>
+
+
+                <div class="street">
+
+                    <span>Lower Road</span>
+
+                    <div class="bar">
+                        <div style="width: 70%;"></div>
+                    </div>
+
+                    <strong>21</strong>
+
+                </div>
+
+
+                <div class="street">
+
+                    <span>Fort Road</span>
+
+                    <div class="bar">
+                        <div style="width: 55%;"></div>
+                    </div>
+
+                    <strong>17</strong>
+
+                </div>
+
+
+                <div class="street">
+
+                    <span>Reid Street</span>
+
+                    <div class="bar">
+                        <div style="width: 45%;"></div>
+                    </div>
+
+                    <strong>14</strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Resolution -->
+
+            <div class="panel resolution">
+
+                <h3>Average Resolution Time</h3>
+
+                <h2>5.6 <span>days</span></h2>
+
+                <p>↓ 1.2 days from last month</p>
+
+                <div class="fake-chart">
+
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ================= RECENT TICKETS ================= -->
+
+        <section class="recent-tickets">
+
+            <div class="panel-header">
+
+                <h3>Recent Ward Tickets</h3>
+
+                <a href="#">
+                    View all →
+                </a>
+
+            </div>
+
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Ticket ID</th>
+                        <th>Issue</th>
+                        <th>Street</th>
+                        <th>Status</th>
+                        <th>Priority</th>
+                        <th>Reported On</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>#TKT-4582</td>
+
+                        <td>Water Leak</td>
+
+                        <td>High Street</td>
+
+                        <td>
+                            <span class="status open-status">
+                                Open
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="priority high">
+                                High
+                            </span>
+                        </td>
+
+                        <td>17 Aug 2026</td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>#TKT-4579</td>
+
+                        <td>Pothole</td>
+
+                        <td>Lower Road</td>
+
+                        <td>
+                            <span class="status progress-status">
+                                In Progress
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="priority medium">
+                                Medium
+                            </span>
+                        </td>
+
+                        <td>17 Aug 2026</td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>#TKT-4575</td>
+
+                        <td>Street Light Out</td>
+
+                        <td>Reid Street</td>
+
+                        <td>
+                            <span class="status pending-status">
+                                Pending
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="priority low">
+                                Low
+                            </span>
+                        </td>
+
+                        <td>16 Aug 2026</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+    <section class="quick-actions">
+
+    <h3>Quick Actions</h3>
+
+    <div class="actions">
+
+        <!-- View Ward Tickets -->
+        <button type="button" onclick="window.location.href='WardTicketManagement.php'">
+            <i class="fa-solid fa-ticket"></i>
+            View Ward Tickets
+        </button>
+
+        <!-- Generate Ward Summary -->
+        <button type="button" onclick="window.location.href='wardSummary.html'">
+            <i class="fa-solid fa-file-lines"></i>
+            Generate Ward Summary
+        </button>
+
+        <button type="button" onclick="window.location.href='ward_notices.php'">
+            <i class="fa-solid fa-ticket"></i>
+            Create Notices
+        </button>
+
+        <!-- View Analytics -->
+        <button type="button">
+            <i class="fa-solid fa-chart-column"></i>
+            View Analytics
+        </button>
+
+    </div>
+
+</section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <p>
+                © 2026 M-LINK | Empowering Communities
+            </p>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="wardcouncillor.js"></script>
+
+</body>
+
+</html>

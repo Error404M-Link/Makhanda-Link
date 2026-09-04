@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>M-LINK Resident Dashboard</title>
+
+    <link rel="stylesheet" href="residence.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ================= TOP BAR ================= -->
+
+    <header class="topbar">
+
+        <!-- Hamburger -->
+        <button class="menu-btn" id="menuBtn" type="button">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Logo -->
+        <div class="top-logo">
+            <h2>M-LINK</h2>
+            <p>Makhanda Connect</p>
+        </div>
+
+        <!-- Right side -->
+        <div class="top-right">
+
+            <div class="icon">
+                <i class="fa-regular fa-bell"></i>
+                <span>2</span>
+            </div>
+
+            <div class="user">
+
+                <img src="profile.jpg" alt="Resident Profile">
+
+                <div>
+                    <h4>Faith Mlambo</h4>
+                    <small>Resident</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <!-- Profile -->
+
+        <div class="profile">
+
+            <img src="profile.jpg" alt="Resident Profile">
+
+            <h3>Faith Mlambo</h3>
+
+            <p>Resident</p>
+
+            <span>Ward 5</span>
+
+        </div>
+
+
+        <!-- Navigation -->
+
+        <ul class="menu">
+
+            <!-- DASHBOARD -->
+
+            <li class="active">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>
+                    Resident Dashboard
+                </span>
+
+            </li>
+
+
+            <!-- TICKETS -->
+
+            <li class="menu-title">
+                TICKETS
+            </li>
+
+
+            <li>
+
+                <i class="fa-solid fa-circle-plus"></i>
+
+                <span>
+                    Create Ticket / Report a Fault
+                </span>
+
+            </li>
+
+
+            <li>
+
+                <i class="fa-solid fa-ticket"></i>
+
+                <span>
+                    Ticket History
+                </span>
+
+            </li>
+
+
+            <li>
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <span>
+                    Ticket Detail View
+                </span>
+
+            </li>
+
+
+            <!-- ACCOUNT -->
+
+            <li class="menu-title">
+                ACCOUNT
+            </li>
+
+
+            <li>
+
+                <i class="fa-solid fa-user"></i>
+
+                <span>
+                    Profile Settings
+                </span>
+
+            </li>
+
+
+            <!-- COMMUNITY -->
+
+            <li class="menu-title">
+                COMMUNITY
+            </li>
+
+
+            <li>
+
+                <i class="fa-solid fa-star"></i>
+
+                <span>
+                    Reviews & FAQ
+                </span>
+
+            </li>
+
+
+            <li>
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <span>
+                    Ward Information & Notices
+                </span>
+
+            </li>
+
+
+            <!-- LOGOUT -->
+
+            <li class="logout">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+
+        <!-- PAGE HEADING -->
+
+        <section class="page-heading">
+
+            <div>
+
+                <h1>
+                    Welcome back, Faith 👋
+                </h1>
+
+                <p>
+                    Here's what's happening in your community.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SUMMARY ================= -->
+
+        <section class="cards">
+
+
+            <!-- My Tickets -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    <i class="fa-solid fa-ticket"></i>
+                </div>
+
+                <h4>My Tickets</h4>
+
+                <h2>5</h2>
+
+                <p>
+                    Total tickets submitted
+                </p>
+
+            </div>
+
+
+            <!-- In Progress -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+
+                <h4>In Progress</h4>
+
+                <h2>2</h2>
+
+                <p>
+                    Currently being handled
+                </p>
+
+            </div>
+
+
+            <!-- Resolved -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <h4>Resolved</h4>
+
+                <h2>3</h2>
+
+                <p>
+                    Successfully resolved
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DASHBOARD CONTENT ================= -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- ================= MY TICKETS ================= -->
+
+            <div class="panel tickets-panel">
+
+                <div class="panel-header">
+
+                    <h3>
+                        My Recent Tickets
+                    </h3>
+
+                    <a href="#">
+                        View all →
+                    </a>
+
+                </div>
+
+
+                <!-- Ticket 1 -->
+
+                <div class="ticket">
+
+                    <div class="ticket-icon">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+
+                    <div class="ticket-info">
+
+                        <h4>
+                            #TKT-1023
+                        </h4>
+
+                        <p>
+                            Water Leak
+                        </p>
+
+                        <small>
+                            High Street · 17 Aug 2026
+                        </small>
+
+                    </div>
+
+                    <span class="status open-status">
+                        Open
+                    </span>
+
+                </div>
+
+
+                <!-- Ticket 2 -->
+
+                <div class="ticket">
+
+                    <div class="ticket-icon">
+                        <i class="fa-solid fa-road"></i>
+                    </div>
+
+                    <div class="ticket-info">
+
+                        <h4>
+                            #TKT-1018
+                        </h4>
+
+                        <p>
+                            Pothole
+                        </p>
+
+                        <small>
+                            Lower Road · 15 Aug 2026
+                        </small>
+
+                    </div>
+
+                    <span class="status progress-status">
+                        In Progress
+                    </span>
+
+                </div>
+
+
+                <!-- Ticket 3 -->
+
+                <div class="ticket">
+
+                    <div class="ticket-icon">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+
+                    <div class="ticket-info">
+
+                        <h4>
+                            #TKT-1009
+                        </h4>
+
+                        <p>
+                            Street Light
+                        </p>
+
+                        <small>
+                            Reid Street · 12 Aug 2026
+                        </small>
+
+                    </div>
+
+                    <span class="status resolved-status">
+                        Resolved
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= LATEST NOTICE ================= -->
+
+            <div class="panel notice-panel">
+
+                <div class="panel-header">
+
+                    <h3>
+                        Latest Notice
+                    </h3>
+
+                    <i class="fa-solid fa-bullhorn"></i>
+
+                </div>
+
+
+                <div class="notice-alert">
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    <div>
+
+                        <h4>
+                            Water Interruption
+                        </h4>
+
+                        <p>
+                            Residents in High Street and
+                            surrounding areas may experience
+                            temporary water interruptions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="notice-date">
+
+                    <i class="fa-regular fa-calendar"></i>
+
+                    <span>
+                        17 August 2026
+                    </span>
+
+                </div>
+
+
+                <a href="#" class="view-link">
+                    View all ward notices →
+                </a>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ================= WARD INFORMATION ================= -->
+
+        <section class="ward-panel">
+
+            <div class="ward-icon">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+            </div>
+
+
+            <div class="ward-content">
+
+                <h3>
+                    Ward Information
+                </h3>
+
+                <p>
+                    <strong>Ward 5</strong>
+                </p>
+
+                <p>
+                    Ward Councillor: Faith Mlambo
+                </p>
+
+                <p>
+                    Stay informed about important
+                    community updates, meetings and
+                    municipal notices in your ward.
+                </p>
+
+            </div>
+
+
+            <a href="#" class="ward-button">
+                View Ward Information
+            </a>
+
+        </section>
+
+
+        <!-- ================= QUICK REPORT ================= -->
+
+        <section class="report-section">
+
+            <div>
+
+                <h2>
+                    Have you noticed a problem?
+                </h2>
+
+                <p>
+                    Report a municipal fault and help
+                    improve your community.
+                </p>
+
+            </div>
+
+
+            <button class="report-button">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Report a Fault
+
+            </button>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <p>
+                © 2026 M-LINK | Empowering Communities
+            </p>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+<script src="residence.js"></script>
+
+</body>
+
+</html>
