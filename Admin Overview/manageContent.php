@@ -1,3 +1,28 @@
+<?php
+
+include "Error404Connection.php";
+
+/* SQL query to retrieve all incident tickets */
+
+$sql = "SELECT notice_id,
+               username,
+               notice_description,
+               date_posted
+        FROM   notices
+        ORDER BY date_posted DESC";
+
+/* Execute the SQL query */
+
+$result = $conn->query($sql);
+
+/* Check for SQL errors */
+
+if (!$result) {
+    die("Error retrieving tickets: " . $conn->error);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

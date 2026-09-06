@@ -442,13 +442,10 @@ $nextWard = $ward < 14 ? $ward + 1 : 1;
     ======================================= -->
 
     <section class="summary-toolbar">
-
         <div>
-
             <h2>
                 Ward Summaries
             </h2>
-
             <p>
                 <?php echo $summaryCount; ?>
                 <?php echo $summaryCount == 1 ? "summary" : "summaries"; ?>

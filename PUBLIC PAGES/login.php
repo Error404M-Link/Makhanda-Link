@@ -1,4 +1,5 @@
-<STYLE>/* /* /* /* ==================================================
+<STYLE>
+    /* /* /* /* ==================================================
    M-LINK LOGIN
    Matches Registration Page Style
 ================================================== */
@@ -580,115 +581,52 @@ body {
 }
 </STYLE>
 
+<form class="login-form" action="login_process.php" method="POST">
 
+    <div class="form-group">
+        <label for="username">Username</label>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="navbar">
-    <div class="logo">
-        <a href="#">
-            <img src="makanalogo.jpeg" alt="M-Link">
-        </a>
+        <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            required
+        >
     </div>
-</div>
 
-<div class="backNavWrapper">
-    <div class="backNavContainer">
-        <a href="#" class="backBtn">
-            ← Back
-        </a>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+
+        <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+        >
     </div>
-</div>
 
-<main class="login-page">
 
-    <div class="login-container">
+    <div class="remember-forgot">
 
-        <div class="login-header">
-            <h1>Account Login</h1>
-            <p>Sign in to your M-Link account to continue.</p>
-        </div>
+        <label>
+            <input type="checkbox" name="remember">
+            <span>Remember me</span>
+        </label>
 
-        <form class="login-form">
-
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    placeholder="Enter your username"
-                    required
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Enter your password"
-                    required
-                >
-            </div>
-
-            <div class="remember-forgot">
-
-                <label>
-                    <input type="checkbox" name="remember">
-                    <span>Remember me</span>
-                </label>
-
-                <a href="#">Forgot Password?</a>
-
-            </div>
-
-            <div class="formButtons">
-                <button type="submit" class="submitBtn">
-                    Login
-                </button>
-            </div>
-
-        </form>
-
-        <div class="account-register">
-            <p>
-                Don't have an account?
-                <a href="#">Register</a>
-            </p>
-        </div>
+        <a href="#">Forgot Password?</a>
 
     </div>
 
-</main>
+
+    <div class="formButtons">
+
+        <button type="submit" class="submitBtn">
+            Login
+        </button>
+
+    </div>
+
+</form>

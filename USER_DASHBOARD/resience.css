@@ -18,87 +18,6 @@ body{
 }
 
 /* =========================
-   NAVBAR
-========================= */
-
-.navbar{
-    background:#fff;
-    height:80px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:0 8%;
-    box-shadow:0 2px 12px rgba(0,0,0,.08);
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
-
-.logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.logo img{
-    width:45px;
-}
-
-.logo h2{
-    color:#2e7d32;
-}
-
-nav{
-    display:flex;
-    gap:30px;
-}
-
-nav a{
-    text-decoration:none;
-    color:#555;
-    font-weight:500;
-    transition:.3s;
-}
-
-nav a:hover{
-    color:#2e7d32;
-}
-
-.user-area{
-    display:flex;
-    align-items:center;
-    gap:20px;
-}
-
-.notification{
-    position:relative;
-    cursor:pointer;
-    font-size:22px;
-}
-
-.notification span{
-    position:absolute;
-    top:-8px;
-    right:-10px;
-    background:#d32f2f;
-    color:white;
-    width:18px;
-    height:18px;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:11px;
-}
-
-.user-area img{
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    object-fit:cover;
-}
-
-/* =========================
    WELCOME
 ========================= */
 
@@ -400,19 +319,6 @@ footer{
 ========================= */
 
 @media(max-width:900px){
-
-    .navbar{
-        flex-direction:column;
-        height:auto;
-        padding:20px;
-        gap:20px;
-    }
-
-    nav{
-        flex-wrap:wrap;
-        justify-content:center;
-        gap:15px;
-    }
 
     .dashboard-grid{
         grid-template-columns:1fr;

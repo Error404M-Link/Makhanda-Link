@@ -1,3 +1,27 @@
+<?php
+
+include "Error404Connection.php";
+
+/* SQL query to retrieve all incident tickets */
+
+$sql = "SELECT username,
+               last_login_date,
+               registered_date
+        FROM  admin
+        ORDER BY last_login_date DESC";
+
+/* Execute the SQL query */
+
+$result = $conn->query($sql);
+
+/* Check for SQL errors */
+
+if (!$result) {
+    die("Error retrieving tickets: " . $conn->error);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,7 +95,7 @@
                 </a>
             </li>
             <li>
-                <a href="manageContent.html">
+                <a href="manageContent.php">
                     <i class="fa-solid fa-calendar-days"></i>
                     <span>Manage Content</span>
                 </a>
@@ -89,7 +113,7 @@
                 </a>
             </li>
             <li>
-                <a href="homepage.php" class="logout-link">
+                <a href="homepage.php" class="logout-link" >
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <span>Logout</span>
                 </a>

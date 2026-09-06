@@ -1,86 +1,213 @@
 <?php
 
-session_start();
+include 'Error404Connection.php';
 
-include "dbconnection.php";
+$ticket = null;
 
-if(isset($_SESSION['userId'])){
-    header("Location: login.html");
-    exist();
-}
+/* Check if a ticket ID was provided */
+if (isset($_GET['ticketId'])) {
 
-$userId = $_SESSION['userId'];
+    $ticketId = intval($_GET['ticketId']);
 
-if(isset($_GET['ticketId'])){
-    die("Ticket ID is missing.");
-}
-
-$ticketId = intval($_GET['ticketId']);
-
-$sql = "SELECT * 
-        FROM faultTickets
-        WHERE ticketId = ?
-        AND userId = ?";
+    $sql = "SELECT incident_id, username, service_id, ward_id, address_id,
+                   status_id, incident_description, location_description,
+                   priority, date_reported, date_resolved, created_at
+            FROM incident_ticket
+            WHERE incident_id = ?";
 
     $stmt = $conn->prepare($sql);
 
-    if ($result->num_rows ==0 ){
-        die("Ticket not found.");
-    }
+    if ($stmt) {
 
-$ticket = $result->fetch_assoc();
+        $stmt->bind_param("i", $ticketId);
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $ticket = $result->fetch_assoc();
+        }
+
+        $stmt->close();
+    }
+}
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Ticket Details</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: darkgreen;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+        }
+
+        .back-button {
+            color: white;
+            text-decoration: none;
+        }
+
+        .ticket-card {
+            background-color: white;
+            padding: 30px;
+            margin: 20px auto;
+            border-radius: 10px;
+            max-width: 800px;
+        }
+
+        .ticket-card h3 {
+            color: darkgreen;
+        }
+
+        .message {
+            background-color: white;
+            padding: 30px;
+            margin: 20px auto;
+            border-radius: 10px;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .details-button {
+            display: inline-block;
+            background-color: darkgreen;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .details-button:hover {
+            background-color: green;
+        }
+
+    </style>
+
 </head>
+
 <body>
-     <hr><h3> Ticket #<?php echo $ticket ['ticketId']; ?> </h3>
 
-            <p> <strong>WARD:</strong>
-            <?php echo $ticket['wardId']; ?> </p>
+    <h1>Ticket Details</h1>
 
-            <p> <strong>CATEGORY:</strong>
-            <?php echo $ticket['category']; ?> </p>
+    <a class="back-button" href="ticketHistory.php">
+        Back to Ticket History
+    </a>
 
-            <p> <strong>LOCATION:</strong>
-            <?php echo $ticket['locationDescription']; ?> </p>
+    <br><br>
 
-            <p> <strong>Description:</strong>
-            <?php echo $ticket['description']; ?> </p>
+    <?php if ($ticket !== null) { ?>
 
-            <p> <strong>Status:</strong>
-            <?php echo $ticket['status']; ?> </p>
+        <div class="ticket-card">
 
-            <p> <strong>Date Reported:</strong>
-            <?php echo $ticket['createdAt']; ?> </p>
+            <h3>
+                Ticket #<?php echo $ticket['incident_id']; ?>
+            </h3>
 
-            <?php
+            <p>
+                <strong>USERNAME:</strong>
+                <?php echo $ticket['username']; ?>
+            </p>
 
-            if(!empty($ticket['imagePath'])) {
+            <p>
+                <strong>SERVICE ID:</strong>
+                <?php echo $ticket['service_id']; ?>
+            </p>
+
+            <p>
+                <strong>WARD:</strong>
+                <?php echo $ticket['ward_id']; ?>
+            </p>
+
+            <p>
+                <strong>ADDRESS ID:</strong>
+                <?php echo $ticket['address_id']; ?>
+            </p>
+
+            <p>
+                <strong>INCIDENT:</strong>
+                <?php echo $ticket['incident_description']; ?>
+            </p>
+
+            <p>
+                <strong>LOCATION:</strong>
+                <?php echo $ticket['location_description']; ?>
+            </p>
+
+            <p>
+                <strong>PRIORITY:</strong>
+                <?php echo $ticket['priority']; ?>
+            </p>
+
+            <p>
+                <strong>STATUS:</strong>
+                <?php echo $ticket['status_id']; ?>
+            </p>
+
+            <p>
+                <strong>DATE REPORTED:</strong>
+                <?php echo $ticket['date_reported']; ?>
+            </p>
+
+            <p>
+                <strong>DATE RESOLVED:</strong>
+                <?php
+                if (!empty($ticket['date_resolved'])) {
+                    echo $ticket['date_resolved'];
+                } else {
+                    echo "Not resolved yet";
+                }
                 ?>
+            </p>
 
+            <p>
+                <strong>CREATED AT:</strong>
+                <?php echo $ticket['created_at']; ?>
+            </p>
 
-<h3> Evidence Image </h3>
-<img src="<?php echo $ticket['imagePath']; ?>"
-            }
-    
+        </div>
 
+    <?php } else { ?>
 
+        <div class="message">
 
+            <h3>No Ticket Found</h3>
 
+            <p>
+                There are currently no ticket details to display.
+            </p>
 
+            <a class="details-button" href="ticketHistory.php">
+                View Ticket History
+            </a>
 
+        </div>
 
-
-
+    <?php } ?>
 
 </body>
+
 </html>
 
+<?php
 
+$conn->close();
+
+?>

@@ -1,4 +1,40 @@
-<?php include "reportFaultTicket.php"; ?>
+<?php 
+    require "reportFaultTicket.php"; 
+
+    /* ########## SELECT THE DISTICT SERVICES AND STREETS FOT THE DROPDOWN ############## */
+
+    $streetsResults = null; // Store the results of the streets from the database
+    $categoryResults = null; // Store the results of the Categoris (Services) from the database
+
+    if(isset($conn) && $conn){
+        // Select the street along with the ward for Auto filling the ward
+        $stmtStreets = $conn->prepare(" SELECT DISTINCT 
+                                            ad.address_id, 
+                                            ad.street_name, 
+                                            ad.ward_id, 
+                                            w.ward_number, 
+                                            w.ward_name
+                                        FROM address_directory ad
+                                        INNER JOIN ward w ON ad.ward_id = w.ward_id
+                                        ORDER BY ad.street_name ASC ");
+
+        if($stmtStreets){
+            $stmtStreets->execute();
+            $streetsResult = $stmtStreets->get_result();
+            $stmtStreets->close();
+        }
+
+        // Fetching the Categories/Services
+        $stmtCategory = $conn->prepare("SELECT DISTINCT service_type 
+                                        FROM municipal_service
+                                        ORDER BY service_type ASC");
+        if($stmtCategory){
+            $stmtCategory->execute();
+            $categoryResults = $stmtCategory->get_result();
+            $stmtCategory->close();
+        }
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,33 +87,51 @@
         <form action="" method="POST" enctype="multipart/form-data" id="faultForm">
             
             <div class="formGroup">
-                <label for="wardId">Ward: <span class="requiredAsterisk">*</span></label>
-                <select name="wardId" id="wardId" class="placeHolderSelect" required>
-                    <option value="" disabled selected hidden>select a ward</option>
-                    <option value="1">Ward 1</option>
-                    <option value="2">Ward 2</option>
-                    <option value="3">Ward 3</option>
-                </select>
+                <!-- ###### READ ONLY THE WARD #######--> 
+                 
+                <label for="wardDisplay">Ward:</label>
+                <input type="text" id="wardDisplay" class="placeHolderSelect" placeholder="Select a street first..." readonly required>
+                
+                <!-- Hidden input to submit ward_id to POST -->
+                <input type="hidden" name="wardId" id="wardId" required>
             </div>
 
             <div class="formGroup">
                 <label for="category">Category: <span class="requiredAsterisk">*</span></label>
+
+                <!-- ###################  PULL CATEGORY/SERVICE FROM DATABASE #################-->
                 <select name="category" id="category" class="placeHolderSelect" required>
                     <option value="" disabled selected hidden>select a fault category</option>
-                    <option value="Water Leak">Water Leak</option>
-                    <option value="Electricity">Electricity Outage</option>
-                    <option value="Pothole">Pothole</option>
+                    <?php 
+                        if($categoryResults && $categoryResults->num_rows > 0){
+                            while($row_category = $categoryResults->fetch_assoc()){
+                                $category = htmlspecialchars($row_category['service_type']);
+                                echo "<option value=\"{$category}\">{$category}</option>";
+                            }
+                        }
+                    ?>
                 </select>
             </div>
 
             <div class="formGroup">
                 <p class="formGroupHeader"> Select a street or click the button to use the map </p>
                 <label for="streetName">Street Name: <span class="requiredAsterisk">*</span></label>
+
+                    <!-- ########## PULL THE STREETS FROM THE DATABASE ############# -->
                 <select name="streetName" id="streetName" class="placeHolderSelect" required>
                     <option value="" disabled selected hidden>select a street</option>
-                    <option value="High Street">High Street</option>
-                    <option value="African Street">African Street</option>
-                    <option value="Raglan Road">Raglan Road</option>
+                    <?php 
+                        if ($streetsResult && $streetsResult->num_rows > 0) {
+                            while ($row_street = $streetsResult->fetch_assoc()) {
+                                $street = htmlspecialchars($row_street['street_name']);
+                                $wardId = htmlspecialchars($row_street['ward_id']);
+                                $wardNum = htmlspecialchars($row_street['ward_number']);
+                                $wardName = htmlspecialchars($row_street['ward_name']);
+
+                                echo "<option value=\"{$street}\" data-ward-id=\"{$wardId}\" data-ward-info=\"Ward {$wardNum} - {$wardName}\">{$street}</option>";
+                            }
+                        }
+                    ?>
                 </select>
 
                 <div class="inlineButtonActionRow">
@@ -124,118 +178,30 @@
         </form>
     </section>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script >
-        // Initialize map focused on Grahamstown/Makhanda coordinates
-const map = L.map('map').setView([-33.3106, 26.5256], 14);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    <script src="reportFaultTicket.js"></script>
 
-let currentMarker = null;
-
-// Capture the explicit coordinates from the map globally as well
-map.on('click', function(e) {
-    const lat = e.latlng.lat;
-    const lng = e.latlng.lng;
-
-    document.getElementById('latitude').value = lat;
-    document.getElementById('longitude').value = lng;
-
-    if (currentMarker) {
-        currentMarker.setLatLng(e.latlng);
-    } else {
-        currentMarker = L.marker(e.latlng).addTo(map);
-    }
-});
-
-// ##### Disable Map & UI Controls #####
-document.addEventListener("DOMContentLoaded", () => {
-    const useMapBtn = document.getElementById('useMapBtn'); // <-- Grabbed Use Map button
+    <script>
+        document.addEventListener('DOMContentLoaded', ()=>{
     const streetSelect = document.getElementById('streetName');
-    const mapWrapper = document.getElementById('mapWrapper');
-    const latInput = document.getElementById("latitude");
-    const lngInput = document.getElementById("longitude");
-    const clearMapBtn = document.getElementById("clearMapBtn");
-    const clearStreetBtn = document.getElementById("clearStreetButton");
+    const wardDisplay = document.getElementById('wardDisplay');
+    const wardIdInput = document.getElementById('wardId');
 
-    // --- NEW: Toggle Map Visibility Functionality ---
-    useMapBtn.addEventListener("click", () => {
-        // Check if the map is currently hidden
-        if (mapWrapper.style.display === "none" || mapWrapper.style.display === "") {
-            mapWrapper.style.display = "block"; // Show the map wrapper
-            useMapBtn.textContent = "Hide Map"; // Optional: change button text dynamically
-            
-            // Critical Leaflet fix: recalculate dimensions now that it's visible
-            setTimeout(() => {
-                map.invalidateSize();
-            }, 10);
-        } else {
-            mapWrapper.style.display = "none";  // Hide the map wrapper if clicked again
-            useMapBtn.textContent = "Use Map";
-        }
-    });
+    if(streetSelect && wardDisplay && wardIdInput){
+        streetSelect.addEventListener('change', function(){
+            const selectedOption = this.options[this.selectedIndex];
 
-    // Handle mutual exclusion states based on inputs
-    function toggleMutualExclusion(){
-        const hasStreet = streetSelect.value !== "";
-        const hasCoordinates = latInput.value !== "" && lngInput.value !== "";
+            const linkedWardId = selectedOption.getAttribute('data-ward-id');
+            const linkedWardInfo = selectedOption.getAttribute('data-ward-info');
 
-        if(hasStreet){
-            // If street is selected, disable map interactions visually
-            mapWrapper.classList.add("disabledMap");
-            streetSelect.removeAttribute("disabled");
-            streetSelect.required = true;
-
-            clearStreetBtn.style.display = "inline-block";
-            clearMapBtn.style.display = "none";
-        } else if(hasCoordinates){
-            // If map has coordinates, disable street dropdown
-            streetSelect.setAttribute("disabled", "true");
-            streetSelect.required = false;
-            mapWrapper.classList.remove("disabledMap");
-            clearMapBtn.style.display = "inline-block"; 
-
-            clearStreetBtn.style.display = "none";
-        } else {
-            // If both empty, enable both systems
-            streetSelect.removeAttribute("disabled");
-            streetSelect.required = true;
-            mapWrapper.classList.remove("disabledMap");
-            clearMapBtn.style.display = "none";
-            clearStreetBtn.style.display = "none";
-        }
+            if(linkedWardId && linkedWardInfo){
+                wardDisplay.value = linkedWardInfo;
+                wardIdInput.value = linkedWardId;
+            }else{
+                wardDisplay.value = '';
+                wardIdInput.value = '';
+            }
+        });
     }
-
-    // Listen to the street Dropdown change
-    streetSelect.addEventListener("change", toggleMutualExclusion);
-
-    clearStreetBtn.addEventListener("click", () => {
-        streetSelect.value = "";
-        toggleMutualExclusion();
-    });
-
-    // Reset map button functionality
-    clearMapBtn.addEventListener("click", () => {
-        latInput.value = "";
-        lngInput.value = "";
-
-        if (currentMarker !== null) {
-            map.removeLayer(currentMarker);
-            currentMarker = null; 
-        }
-
-        toggleMutualExclusion();
-    });
-
-    map.on("click", function(e) {
-        document.getElementById("latitude").value = e.latlng.lat;
-        document.getElementById("longitude").value = e.latlng.lng;
-
-        if(currentMarker !== null){
-            map.removeLayer(currentMarker);
-        }
-        currentMarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
-
-        toggleMutualExclusion();
-    });
 });
     </script>
 </body>

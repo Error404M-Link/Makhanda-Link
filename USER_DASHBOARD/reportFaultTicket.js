@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const clearMapBtn = document.getElementById("clearMapBtn");
     const clearStreetBtn = document.getElementById("clearStreetButton");
 
-    // --- NEW: Toggle Map Visibility Functionality ---
     useMapBtn.addEventListener("click", () => {
         // Check if the map is currently hidden
         if (mapWrapper.style.display === "none" || mapWrapper.style.display === "") {
@@ -109,4 +108,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
         toggleMutualExclusion();
     });
+});
+
+// DISPLAY THE WARD IN THE READ ONLY SPACE
+
+document.addEventListener('DOMContentLoaded', ()=>{
+    const streetSelect = document.getElementById('streetName');
+    const wardDisplay = document.getElementById('wardDisplay');
+    const wardIdInput = document.getElementById('wardId');
+
+    if(streetSelect && wardDisplay && wardIdInput){
+        streetSelect.addEventListener('change', function(){
+            const selectedOption = this.options[this.selectedIndex];
+
+            const linkedWardId = selectedOption.getAttribute('data-ward-id');
+            const linkedWardInfo = selectedOption.getAttribute('data-ward-info');
+
+            if(linkedWardId && linkedWardInfo){
+                wardDisplay.value = linkedWardInfo;
+                wardIdInput.value = linkedWardId;
+            }else{
+                wardDisplay.value = '';
+                wardIdInput.value = '';
+            }
+        });
+    }
 });

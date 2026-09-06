@@ -6,43 +6,38 @@
     <title>Resident Dashboard | M-LINK</title>
 
     <link rel="stylesheet" href="resience.css">
+    <link rel="stylesheet" href="dashboardSidebar.css">
 
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        
+    </style>
 </head>
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- ================= SIDEBAR ================= -->
 
-<header class="navbar">
+<input type="checkbox" id="sidebarToggle">
+<label for="sidebarToggle" class="hamburger">
+    <span></span><span></span><span></span>
+</label>
 
-    <div class="logo">
-        <img src="MakanaLogo.svg" alt="">
-        <h2>M-LINK</h2>
-    </div>
-
-    <nav>
-
-        <a href="#">Dashboard</a>
-        <a href="#">Report Fault</a>
-        <a href="#">My Tickets</a>
-        <a href="#">My Ward</a>
-        <a href="#">Profile</a>
-
+<aside class="sidebar">
+    <nav class="navigation">
+        <img src="MakanaLogo.svg" height="150" width="150" alt="M-link logo">
+        
+        <ul>
+            <li><a href="#home-section">Home</a></li>
+            <li><a href="#appointments-section">Appointments</a></li>
+            <li><a href="#patient-details-section">Patients</a></li>
+            <li><a href="#schedule-section">Schedule</a></li>
+        </ul>
     </nav>
-
-    <div class="user-area">
-
-        <div class="notification">
-            <i class="fa-regular fa-bell"></i>
-            <span>4</span>
-        </div>
-
-        <img src="profile.jpg" alt="Profile">
-
+    <div class="sidebar-footer">
+        <button class="logout-btn"><a href="DoctorLoginPage.html">Logout</a></button>
     </div>
-
-</header>
+</aside>
 
 <!-- ================= WELCOME ================= -->
 

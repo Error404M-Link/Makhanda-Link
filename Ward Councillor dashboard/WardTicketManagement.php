@@ -1,15 +1,32 @@
-
 <?php
 
+include "Error404Connection.php";
 
-include "dbconnections.php";
+/* SQL query to retrieve all incident tickets */
 
-// SQL query to retrieve all ward tickets
-$sql = "SELECT ticketId, wardId, category, locationDescription,
-               latitude, longitude, description, status,
-               imagePath, createdAt
-        FROM faultTickets
-        ORDER BY createdAt DESC";
+$sql = "SELECT incident_id,
+               ward_id,
+               service_id,
+               location_description,
+               latitude,
+               longitude,
+               incident_description,
+               priority,
+               status_id,
+               date_reported,
+               created_at
+        FROM incident_ticket
+        ORDER BY created_at DESC";
+
+/* Execute the SQL query */
+
+$result = $conn->query($sql);
+
+/* Check for SQL errors */
+
+if (!$result) {
+    die("Error retrieving tickets: " . $conn->error);
+}
 
 ?>
 
@@ -60,12 +77,6 @@ $sql = "SELECT ticketId, wardId, category, locationDescription,
             background-color: #f5f5f5;
         }
 
-        img {
-            width: 100px;
-            height: auto;
-            border-radius: 5px;
-        }
-
         .view-btn {
             display: inline-block;
             background-color: #239e56;
@@ -97,11 +108,11 @@ $sql = "SELECT ticketId, wardId, category, locationDescription,
 
         <tr>
 
-            <th>Ticket ID</th>
+            <th>Incident ID</th>
 
             <th>Ward ID</th>
 
-            <th>Category</th>
+            <th>Service ID</th>
 
             <th>Location</th>
 
@@ -111,104 +122,105 @@ $sql = "SELECT ticketId, wardId, category, locationDescription,
 
             <th>Description</th>
 
+            <th>Priority</th>
+
             <th>Status</th>
 
-            <th>Image</th>
-
-            <th>Date Created</th>
+            <th>Date Reported</th>
 
             <th>Action</th>
 
         </tr>
 
+
         <?php
 
-        // Check whether tickets were found
-        if (mysqli_num_rows($result) > 0) {
+        /* Check whether tickets were found */
 
-            // Display each ticket
-            while ($row = mysqli_fetch_assoc($result)) {
+        if ($result->num_rows > 0) {
 
-                echo "<tr>";
+            while ($row = $result->fetch_assoc()) {
 
-                echo "<td>" .
-                     htmlspecialchars($row['ticketId']) .
-                     "</td>";
+        ?>
 
-                echo "<td>" .
-                     htmlspecialchars($row['wardId']) .
-                     "</td>";
+                <tr>
 
-                echo "<td>" .
-                     htmlspecialchars($row['category']) .
-                     "</td>";
+                    <td>
+                        <?php echo htmlspecialchars($row['incident_id']); ?>
+                    </td>
 
-                echo "<td>" .
-                     htmlspecialchars($row['locationDescription']) .
-                     "</td>";
+                    <td>
+                        <?php echo htmlspecialchars($row['ward_id']); ?>
+                    </td>
 
-                echo "<td>" .
-                     htmlspecialchars($row['latitude']) .
-                     "</td>";
+                    <td>
+                        <?php echo htmlspecialchars($row['service_id']); ?>
+                    </td>
 
-                echo "<td>" .
-                     htmlspecialchars($row['longitude']) .
-                     "</td>";
+                    <td>
+                        <?php echo htmlspecialchars($row['location_description']); ?>
+                    </td>
 
-                echo "<td>" .
-                     htmlspecialchars($row['description']) .
-                     "</td>";
+                    <td>
+                        <?php echo htmlspecialchars($row['latitude']); ?>
+                    </td>
 
-                echo "<td>" .
-                     htmlspecialchars($row['status']) .
-                     "</td>";
+                    <td>
+                        <?php echo htmlspecialchars($row['longitude']); ?>
+                    </td>
 
-                // Display image if available
-                echo "<td>";
+                    <td>
+                        <?php echo htmlspecialchars($row['incident_description']); ?>
+                    </td>
 
-                if (!empty($row['imagePath'])) {
+                    <td>
+                        <?php echo htmlspecialchars($row['priority']); ?>
+                    </td>
 
-                    echo "<img src='" .
-                         htmlspecialchars($row['imagePath']) .
-                         "' alt='Ticket Image'>";
+                    <td>
+                        <?php echo htmlspecialchars($row['status_id']); ?>
+                    </td>
 
-                } else {
+                    <td>
+                        <?php echo htmlspecialchars($row['date_reported']); ?>
+                    </td>
 
-                    echo "No Image";
+                    <td>
 
-                }
+                        <a class="view-btn"
+                           href="ticketDetails.php?ticketId=<?php echo urlencode($row['incident_id']); ?>">
 
-                echo "</td>";
+                            View
 
-                echo "<td>" .
-                     htmlspecialchars($row['createdAt']) .
-                     "</td>";
+                        </a>
 
-                // View ticket details
-                echo "<td>";
+                    </td>
 
-                echo "<a class='view-btn'
-                         href='ticketDetails.php?ticketId=" .
-                         urlencode($row['ticketId']) .
-                         "'>
-                         View
-                      </a>";
+                </tr>
 
-                echo "</td>";
+        <?php
 
-                echo "</tr>";
             }
 
         } else {
 
-            echo "<tr>";
+        ?>
 
-            echo "<td colspan='11' class='no-tickets'>";
-            echo "No tickets found.";
-            echo "</td>";
+            <tr>
 
-            echo "</tr>";
+                <td colspan="11" class="no-tickets">
+
+                    No tickets found.
+
+                </td>
+
+            </tr>
+
+        <?php
+
         }
+
+        $conn->close();
 
         ?>
 
