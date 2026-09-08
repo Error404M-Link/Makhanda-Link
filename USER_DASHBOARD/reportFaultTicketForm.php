@@ -171,38 +171,79 @@
             <div class="formActions">
                 <div class="leftActions">
                     <button type="reset" class="btn resetBtn">Reset</button>
-                    <button type="button" class="btn cancelBtn">Cancel</button>
+                    <a href="residence.php"><button type="button" class="btn cancelBtn">Cancel</button></a>
                 </div>
                 <button type="submit" class="btn submitBtn">Submit</button>
             </div>
         </form>
     </section>
+
+    <!-- ################# CUSTOM WINDOW POPUP ################# -->
+    <div id="customModal" class="modal-overlay">
+        <div class="modal-box">
+            <h3 id="modalTitle">Notification</h3>
+            <p id="modalMessage"></p>
+            <div class="modal-actions" style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                <button type="button" class="modal-btn" id="modalCloseBtn">OK</button>
+                <a href="residence.php">
+                    <button type="button" class="modal-btn secondary-btn" id="modalDashboardBtn" style="background-color: #4b5563;">
+                        Back to Dashboard
+                    </button>
+                <a>
+            </div>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="reportFaultTicket.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', ()=>{
-    const streetSelect = document.getElementById('streetName');
-    const wardDisplay = document.getElementById('wardDisplay');
-    const wardIdInput = document.getElementById('wardId');
+        document.addEventListener('DOMContentLoaded', () => {
+            const streetSelect = document.getElementById('streetName');
+            const wardDisplay = document.getElementById('wardDisplay');
+            const wardIdInput = document.getElementById('wardId');
+            const cancelBtn = document.getElementById('cancelBtn');
+            const customModal = document.getElementById('customModal');
+            const modalMessage = document.getElementById('modalMessage');
+            const modalCloseBtn = document.getElementById('modalCloseBtn');
 
-    if(streetSelect && wardDisplay && wardIdInput){
-        streetSelect.addEventListener('change', function(){
-            const selectedOption = this.options[this.selectedIndex];
+            // Display the ward based on the street selected 
+            if (streetSelect && wardDisplay && wardIdInput) {
+                streetSelect.addEventListener('change', function () {
+                    const selectedOption = this.options[this.selectedIndex];
 
-            const linkedWardId = selectedOption.getAttribute('data-ward-id');
-            const linkedWardInfo = selectedOption.getAttribute('data-ward-info');
+                    const linkedWardId = selectedOption.getAttribute('data-ward-id');
+                    const linkedWardInfo = selectedOption.getAttribute('data-ward-info');
 
-            if(linkedWardId && linkedWardInfo){
-                wardDisplay.value = linkedWardInfo;
-                wardIdInput.value = linkedWardId;
-            }else{
-                wardDisplay.value = '';
-                wardIdInput.value = '';
+                    if (linkedWardId && linkedWardInfo) {
+                        wardDisplay.value = linkedWardInfo;
+                        wardIdInput.value = linkedWardId;
+                    } else {
+                        wardDisplay.value = '';
+                        wardIdInput.value = '';
+                    }
+                });
             }
+
+            // Window POPUP logic
+            function showModal(msg) {
+                if (modalMessage && customModal) {
+                    modalMessage.innerHTML = msg;
+                    customModal.style.display = 'flex';
+                }
+            }
+
+            if (modalCloseBtn) {
+                modalCloseBtn.addEventListener('click', () => {
+                    customModal.style.display = 'none';
+                });
+            }
+
+            // Trigger popup if PHP has a message.
+            <?php if (!empty($message)): ?>
+                showModal(<?php echo json_encode($message); ?>);
+            <?php endif; ?>
         });
-    }
-});
     </script>
 </body>
 </html>

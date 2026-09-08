@@ -1,6 +1,6 @@
 <?php
 
-include 'db.php';
+include 'Error404Connection.php';
 
 /* ==================================================
    GET STREETS FROM DATABASE
@@ -241,7 +241,31 @@ while ($row = mysqli_fetch_assoc($result)) {
 
                     </div>
 
+                   <!-- ROLE -->
 
+<div class="form-group">
+
+    <select id="resident_role" name="role" required>
+    <option value="">-- Select your role --</option>
+
+    <option value="admin">
+        ADMIN
+    </option>
+
+    <option value="ward_councillor">
+        WARD COUNCILLOR
+    </option>
+
+    <option value="communication_officer">
+        COMMUNICATION OFFICER
+    </option>
+</select>
+
+    <small>
+        Select the role you are registering for.
+    </small>
+
+</div>
                     <!-- CONTACT -->
 
                     <div class="form-group">
@@ -606,6 +630,10 @@ while ($row = mysqli_fetch_assoc($result)) {
                             placeholder="Enter the organisation's physical address"
                             maxlength="500"
                             disabled></textarea>
+                            
+                            <small>
+                            Optional. Include suburb and postal code where applicable.
+                        </small>
 
                     </div>
 

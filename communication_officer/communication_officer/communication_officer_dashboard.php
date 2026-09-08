@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "dbconnections.php";
+require_once "Error404Connection.php";
 
 function e($value)
 {
@@ -21,7 +21,7 @@ if ($result) {
 $totalWards = 0;
 $sql = "
     SELECT COUNT(*) AS total
-    FROM wards
+    FROM ward
 ";
 $result = $conn->query($sql);
 if ($result) {
@@ -31,7 +31,7 @@ if ($result) {
 $totalServices = 0;
 $sql = "
     SELECT COUNT(*) AS total
-    FROM municipal_servive
+    FROM municipal_service
 ";
 $result = $conn->query($sql);
 if ($result) {
@@ -59,7 +59,7 @@ $sql = "
         w.ward_name,
         COUNT(i.incident_id) AS total_incident_tickets_per_ward
     FROM incident_ticket i
-    JOIN wards w
+    JOIN ward w
         ON i.ward_id = w.ward_id
     GROUP BY w.ward_id, w.ward_name
     ORDER BY w.ward_id
@@ -75,27 +75,26 @@ if ($result) {
 $serviceLabels = [];
 $serviceData = [];
 $sql = "
-    SELECT
-        ms.service_name,
+SELECT
+        ms.service_type,
         COUNT(i.incident_id) AS total_service_problems_ticket
     FROM incident_ticket i
-    JOIN municipal_servive ms
+    JOIN municipal_service ms
         ON i.service_id = ms.service_id
-    GROUP BY ms.service_id, ms.service_name
+    GROUP BY ms.service_id, ms.service_type
     ORDER BY ms.service_id
 ";
 $result = $conn->query($sql);
 if ($result) {
     while ($row = $result->fetch_assoc()) {
-        $serviceLabels[] = $row['service_name'];
+        $serviceLabels[] = $row['service_type'];
         $serviceData[] = (int)$row['total_service_problems_ticket'];
     }
 }
 $priorityLabels = [];
 $priorityData = [];
 $sql = "
-    SELECT
-        priority,
+    SELECT priority,
         COUNT(*) AS total
     FROM incident_ticket
     GROUP BY priority
@@ -115,16 +114,16 @@ $recentIncidents = [];
 $sql = "
     SELECT
         i.incident_id,
-        ms.service_name,
+        ms.service_type,
         w.ward_name,
         i.incident_description,
         i.priority,
         i.date_reported
     FROM incident_ticket i
 
-    JOIN municipal_servive ms
+    JOIN municipal_service ms
         ON i.service_id = ms.service_id
-    JOIN wards w
+    JOIN ward w
         ON i.ward_id = w.ward_id
     ORDER BY i.date_reported DESC
     LIMIT 5
@@ -175,7 +174,7 @@ $dashboardData = [
         </a>
 
 
-        <a href="ticketHistory.php" class="nav-link">
+        <a href="all_incidents.php" class="nav-link">
             Incident Tickets
         </a>
 
@@ -216,14 +215,7 @@ $dashboardData = [
 </aside>
 
 
-<!-- =====================================================
-     MAIN
-====================================================== -->
-
 <main class="main-content">
-
-
-    <!-- TOP BAR -->
 
     <header class="topbar">
 
@@ -232,7 +224,6 @@ $dashboardData = [
             type="button"
             id="menuToggle"
         >
-            ☰
         </button>
 
 
@@ -252,20 +243,15 @@ $dashboardData = [
         <div class="topbar-actions">
 
             <a
-                href="ward_notices.php"
+                href="../../ManageContent/manageContent.html"
                 class="notice-button"
             >
-                + Add Notice
+                Add Notice
             </a>
 
         </div>
 
     </header>
-
-
-    <!-- =================================================
-         SYSTEM OVERVIEW
-    ================================================== -->
 
     <section class="overview-section">
 
@@ -294,8 +280,6 @@ $dashboardData = [
         <div class="overview-grid">
 
 
-            <!-- Total Incidents -->
-
             <article class="overview-card">
 
                 <div class="card-icon">
@@ -318,7 +302,6 @@ $dashboardData = [
                 </div>
 
             </article>
-            <!-- Total Wards -->
             <article class="overview-card">
                 <div class="card-icon">                
                 </div>
@@ -335,9 +318,6 @@ $dashboardData = [
                 </div>
 
             </article>
-
-
-            <!-- Total Services -->
 
             <article class="overview-card">
 
@@ -361,9 +341,6 @@ $dashboardData = [
                 </div>
 
             </article>
-
-
-            <!-- High Priority -->
 
             <article class="overview-card">
 
@@ -392,15 +369,7 @@ $dashboardData = [
 
     </section>
 
-
-    <!-- =================================================
-         CHARTS
-    ================================================== -->
-
     <section class="charts-section">
-
-
-        <!-- Ward Chart -->
 
         <article class="chart-card large-chart">
 
@@ -429,9 +398,6 @@ $dashboardData = [
 
         </article>
 
-
-        <!-- Service Chart -->
-
         <article class="chart-card large-chart">
 
             <div class="chart-heading">
@@ -458,9 +424,6 @@ $dashboardData = [
             </div>
 
         </article>
-
-
-        <!-- Priority Chart -->
 
         <article class="chart-card priority-chart-card">
 
@@ -491,11 +454,6 @@ $dashboardData = [
 
     </section>
 
-
-    <!-- =================================================
-         RECENT INCIDENTS
-    ================================================== -->
-
     <section class="incidents-section">
 
 
@@ -515,16 +473,13 @@ $dashboardData = [
 
 
             <a
-                href="incidents.php"
+                href="all_incidents.php"
                 class="view-all"
             >
                 View All
             </a>
 
         </div>
-
-
-        <!-- Search -->
 
         <div class="search-area">
 
@@ -597,7 +552,7 @@ $dashboardData = [
 
                             <td>
 
-                                <?= e($incident['service_name']) ?>
+                                <?= e($incident['service_type']) ?>
 
                             </td>
 
@@ -684,10 +639,6 @@ $dashboardData = [
 </main>
 
 
-<!-- =====================================================
-     DATABASE DATA FOR JAVASCRIPT
-====================================================== -->
-
 <script>
 
 window.dashboardData = <?= json_encode(
@@ -699,9 +650,6 @@ window.dashboardData = <?= json_encode(
 ) ?>;
 
 </script>
-
-
-<!-- Dashboard JavaScript -->
 
 <script src="communication_dashboard.js"></script>
 

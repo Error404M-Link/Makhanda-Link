@@ -77,7 +77,7 @@ if (!$result) {
                 </a>
             </li>
             <li>
-                <a href="#wards">
+                <a href="generateSummaryForm.php">
                     <i class="fa-solid fa-location-dot"></i>
                     <span>Wards</span>
                 </a>

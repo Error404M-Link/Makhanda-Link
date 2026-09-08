@@ -84,42 +84,33 @@ if (!$result) {
         <div class="ticket-card">
 
             <h3>
-                Ticket #<?php echo $ticket['ticketId']; ?>
+                Ticket #<?php echo $ticket['incident_id']; ?>
             </h3>
 
             <p>
                 <strong>WARD:</strong>
-                <?php echo $ticket['wardId']; ?>
+                <?php echo $ticket['ward_id']; ?>
             </p>
 
-            <p>
-                <strong>CATEGORY:</strong>
-                <?php echo $ticket['category']; ?>
-            </p>
 
             <p>
                 <strong>LOCATION:</strong>
-                <?php echo $ticket['locationDescription']; ?>
-            </p>
-
-            <p>
-                <strong>COORDINATES:</strong>
-                <?php echo $ticket['latitude'] . ", " . $ticket['longitude']; ?>
+                <?php echo $ticket['location_description']; ?>
             </p>
 
             <p>
                 <strong>DESCRIPTION:</strong>
-                <?php echo $ticket['description']; ?>
+                <?php echo $ticket['location_description']; ?>
             </p>
 
             <p>
                 <strong>STATUS:</strong>
-                <?php echo $ticket['status']; ?>
+                <?php echo $ticket['status_id']; ?>
             </p>
 
             <p>
                 <strong>DATE REPORTED:</strong>
-                <?php echo $ticket['createdAt']; ?>
+                <?php echo $ticket['created_at']; ?>
             </p>
 
             <?php if (!empty($ticket['imagePath'])) { ?>

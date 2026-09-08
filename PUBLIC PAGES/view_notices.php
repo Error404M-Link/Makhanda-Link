@@ -109,13 +109,13 @@
 
 
 <?php
-include("dbconnections.php");
+include("Error404Connection.php");
 
 $ward = $_GET["ward"] ?? ""; 
 
 if ($ward == "") {
     $sql = "SELECT * FROM notices 
-            ORDER BY notice_date DESC";
+            ORDER BY date_posted DESC";
 } else {
     $sql = "SELECT * FROM notices 
             WHERE ward = '$ward' 
@@ -128,22 +128,22 @@ $results = $conn->query($sql);
 <div class="notice-container">
 
 <?php
-while ($row = $results->fetch_assoc()) {
+if ($results && $results instanceof mysqli_result) {
+    while ($row = $results->fetch_assoc()) {
 ?>
 
-    <div class="notice-card">
-
-        <h3><?php echo "Ward: "  . $row['ward']; ?></h3>
-
-        <h3><?php echo "Title: " . $row['title']; ?></h3>
-
-        <h3><?php echo "Date: " . $row['notice_date']; ?></h3>
-
-        <p><?php echo $row['message']; ?></p>
-
-    </div>
+        <div class="notice-card">
+            <h3><?php echo "Ward: "  . htmlspecialchars($row['ward']); ?></h3>
+            <h3><?php echo "Title: " . htmlspecialchars($row['title']); ?></h3>
+            <h3><?php echo "Date: " . htmlspecialchars($row['date_posted']); ?></h3>
+            <p><?php echo htmlspecialchars($row['message']); ?></p>
+        </div>
 
 <?php
+    }
+} else {
+    // Show error message if the query fails
+    echo "<p>Error loading notices: " . $conn->error . "</p>";
 }
 ?>
 

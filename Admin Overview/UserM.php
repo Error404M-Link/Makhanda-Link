@@ -1,11 +1,11 @@
 <?php 
-include 'Error404Connection'.php';  
+include 'Error404Connection.php';  
  
-if (isset($_GET['idnumber'])) { 
-    $user_id = $_GET['idnumber']; 
+if (isset($_GET['username'])) { 
+    $user_id = $_GET['username']; 
  
    
-    $sql_delete = "DELETE FROM myusers WHERE idnumber = ?"; 
+    $sql_delete = "DELETE FROM user WHERE username = ?"; 
     $stmt = $conn->prepare($sql_delete); 
     $stmt->bind_param("s", $user_id);  
     $stmt->execute(); 
@@ -17,7 +17,7 @@ if (isset($_GET['idnumber'])) {
     } 
 } 
  
-$sql = "SELECT * FROM myusers"; 
+$sql = "SELECT * FROM user"; 
 $result = $conn->query($sql); 
  
 if ($result->num_rows > 0) {     
@@ -25,8 +25,8 @@ if ($result->num_rows > 0) {
      
     echo "<p><h2>  All records </h2></p>"; 
     echo "<center><table width=\"90%\" bgcolor=\"darkgreen\"><tr bgcolor=\"peach\"> 
-        <th>Id number</th> 
-        <th>First name</th> 
+        <th>Username</th> 
+        <th>First Name</th> 
         <th>Surname</th> 
         <th>Gender</th> 
         <th>User Name</th> 
@@ -55,10 +55,10 @@ if ($result->num_rows > 0) {
             . ($row["picture"] ?? "") . "</td><td>" 
             . $row["email"] . "</td><td>" 
  
-            . "<a href=\"UpdateUserrecord.php?idnumber=" 
+            . "<a href=\"UpdateUserrecord.php?username=" 
             . $row["idnumber"] . "\"><button>Update</button></a>" 
             . "</td><td>" 
-            . "<a href=\"displayusers.php?idnumber=" 
+            . "<a href=\"displayusers.php?username=" 
             . $row["idnumber"] . "\"><button>Delete</button></a>" 
             . "</td></tr>"; 
     } 
@@ -81,3 +81,19 @@ $conn->close();
 echo "<p><a href=\"recordSearchForm.html\"><button>Search a record </button></a></p>"; 
  
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <body>
+    <a class="back-button" href="admindashboard.php">
+        Back to Dashboard
+    </a>
+    </body>
+</html>

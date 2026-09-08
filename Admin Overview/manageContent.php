@@ -48,7 +48,7 @@ if (!$result) {
                 <img src="MakanaLogo.svg" height="150" width="150" alt="M-link logo">
                 
                 <ul>
-                    <li><a href="#home-section">Home</a></li>
+                    <li><a href="admindashboard.php">Dashboard</a></li>
                     <li><a href="#appointments-section">Appointments</a></li>
                     <li><a href="#patient-details-section">Patients</a></li>
                     <li><a href="#schedule-section">Schedule</a></li>

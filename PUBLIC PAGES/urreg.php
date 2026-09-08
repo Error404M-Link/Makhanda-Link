@@ -2,12 +2,12 @@
 
 session_start();
 
-require_once "db.php";
+require_once "Error404Connection.php";
 
 
-/* =========================================
+/* 
    CHECK REQUEST
-========================================= */
+ */
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
@@ -17,16 +17,16 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 }
 
 
-/* =========================================
+/*
    GET ACCOUNT TYPE
-========================================= */
+ */
 
 $accountType = $_POST["accountType"] ?? "";
 
 
-/* =========================================
+/* 
    ONLY TEST RESIDENT FOR NOW
-========================================= */
+ */
 
 if ($accountType !== "resident") {
 
@@ -35,9 +35,9 @@ if ($accountType !== "resident") {
 }
 
 
-/* =========================================
+/* 
    GET RESIDENT DETAILS
-========================================= */
+ */
 
 $firstName = trim($_POST["first_name"] ?? "");
 
@@ -56,9 +56,9 @@ $addressId = $_POST["address_id"] ?? "";
 $address = trim($_POST["address"] ?? "");
 
 
-/* =========================================
+/* 
    REQUIRED FIELDS
-========================================= */
+*/
 
 if (
     empty($firstName) ||
@@ -75,9 +75,9 @@ if (
 }
 
 
-/* =========================================
+/* 
    CHECK CONTACT
-========================================= */
+ */
 
 if (!preg_match('/^[0-9]{10}$/', $contact)) {
 
@@ -86,9 +86,7 @@ if (!preg_match('/^[0-9]{10}$/', $contact)) {
 }
 
 
-/* =========================================
-   CHECK PASSWORD
-========================================= */
+/* CHECK PASSWORD*/
 
 if ($password !== $confirmPassword) {
 
@@ -104,9 +102,9 @@ if (strlen($password) < 8) {
 }
 
 
-/* =========================================
+/* 
    GET WARD FROM STREET
-========================================= */
+*/
 
 $stmt = $conn->prepare("
     SELECT ward_id, street_name
@@ -132,9 +130,9 @@ $addressData = $result->fetch_assoc();
 $stmt->close();
 
 
-/* =========================================
+/* 
    CHECK STREET
-========================================= */
+ */
 
 if (!$addressData) {
 
@@ -146,9 +144,8 @@ if (!$addressData) {
 $wardId = $addressData["ward_id"];
 
 
-/* =========================================
-   CHECK USERNAME
-========================================= */
+/* 
+   CHECK USERNAME */
 
 $stmt = $conn->prepare("
     SELECT username
@@ -182,9 +179,9 @@ if ($result->num_rows > 0) {
 $stmt->close();
 
 
-/* =========================================
+/* 
    HASH PASSWORD
-========================================= */
+*/
 
 $passwordHash = password_hash(
     $password,
@@ -192,18 +189,36 @@ $passwordHash = password_hash(
 );
 
 
-/* =========================================
-   DEFAULT USER ROLE
-========================================= */
 
-$userRole = "Resident";
+/* 
+   GET USER ROLE
+ */
+
+$userRole = trim($_POST["role"] ?? "");
+
+
+/* 
+   VALIDATE USER ROLE
+ */
+
+$allowedRoles = [
+    "resident",
+    "admin",
+    "ward_councillor",
+    "communication_officer"
+];
+
+if (!in_array($userRole, $allowedRoles, true)) {
+
+    die("Please select a valid role.");
+
+}
+
 
 $active = 1;
-
-
-/* =========================================
+/* 
    INSERT USER
-========================================= */
+ */
 
 $sql = "
     INSERT INTO user
@@ -259,9 +274,9 @@ $stmt->bind_param(
 );
 
 
-/* =========================================
+/* 
    EXECUTE
-========================================= */
+ */
 
 if (!$stmt->execute()) {
 
@@ -278,9 +293,9 @@ $stmt->close();
 $conn->close();
 
 
-/* =========================================
+/*
    SUCCESS
-========================================= */
+ */
 
 header("Location: login.php?registered=1");
 

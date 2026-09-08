@@ -306,3 +306,60 @@ body {
   outline: none;
   box-shadow: 0 0 0 2px #07cd92;
 }
+
+/* ############### POP WINDOW when the submit button is clicked ########*/
+
+.modal-overlay {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.65); /* Darkened dim background */
+    z-index: 999999; 
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-box {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 10px;
+    max-width: 420px;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+    z-index: 1000000;
+}
+
+.modal-box h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #1f2937;
+    font-size: 1.25rem;
+}
+
+.modal-box p {
+    margin-bottom: 20px;
+    color: #4b5563;
+    font-size: 0.95rem;
+}
+
+.modal-btn {
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.modal-btn:hover {
+    background-color: #1d4ed8;
+}

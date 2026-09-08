@@ -2,17 +2,28 @@
 
     // #################### DISPLAY ALL THE UNREOLVED FAULT TICKETS ##################
 
-    include "connection.php";
+    require "../Error404Connection.php";
                                         // fetch all the unresolved faults
-    $query = "SELECT * FROM faultTickets 
-            WHERE LOWER(status) != 'resolved' 
-            ORDER BY createdAt DESC";
+    $query = "SELECT 
+                i.*,
+                CASE 
+                    WHEN ts.resolved IS NOT NULL THEN 'Resolved'
+                    WHEN ts.InProgress IS NOT NULL THEN 'In Progress'
+                    WHEN ts.pending IS NOT NULL THEN 'Pending'
+                    ELSE 'Unknown'
+                END AS ticket_status
+              FROM incident_ticket i
+              LEFT JOIN ticket_status ts ON i.status_id = ts.status_id
+              WHERE ts.resolved IS NULL OR ts.status_id IS NULL
+              ORDER BY i.created_at DESC";
 
     $result = $conn->query($query);
 
     $unresolvedTickets = [];
     if($result && $result->num_rows > 0){
         $unresolvedTickets = $result->fetch_all(MYSQLI_ASSOC); 
+    }else{
+        die("No Open Ticket Found: " . $conn->error);
     }
 
 ?>
@@ -92,70 +103,67 @@
         </div>
 
         <section class="faultGrid">
-            <?php 
-                if(!empty($unresolvedTickets)):
-                    foreach($unresolvedTickets as $ticket):
-                        // Normalise status values for CSS selectors (e.g., "In Progress" -> "in-progress")
-                        $statusClass = strtolower(str_replace(' ', '-', $ticket['status']));
-                        
-                        // Checking image path configurations
-                        $imageStyle = !empty($ticket['imagePath']) ? "background-image: url('" . htmlspecialchars($ticket['imagePath']) . "');" : "";
-            ?>
-
-            <div class="faultCard">
-                <?php 
-                    // if an image exists then the it will be used for the fault card
+        <?php 
+            if(!empty($unresolvedTickets)):
+                foreach($unresolvedTickets as $ticket):
+                    $statusText = $ticket['ticket_status'] ?? 'Pending';
+                    
+                    //Normalise status values for CSS selectors (e.g., "In Progress" -> "in-progress")
+                    $statusClass = strtolower(str_replace(' ', '-', $statusText));
+                    
+                    //Fallback for category if municipal_service hasn't joined properly
+                    $categoryText = $ticket['category'] ?? 'General Incident';
+                    
+                    //Checking image path configuration (or default fallback logo)
                     if (!empty($ticket['imagePath'])) {
                         $imageUrl = htmlspecialchars($ticket['imagePath']);
                     } else {
                         $imageUrl = 'MakanaLogo.svg'; 
-                        
-                        /* 
-                        // Option B: Dynamic default based on category (Uncomment if you want specific icons!)
-                        switch($ticket['category']) {
-                            case 'Roads & Streets': $imageUrl = 'default-roads.jpg'; break;
-                            case 'Water & Sewer': $imageUrl = 'default-water.jpg'; break;
-                            case 'Electricity & Lighting': $imageUrl = 'default-electricity'; break;
-                            default: $imageUrl = 'default-generic.jpg';
-                        }
-                        */
                     }
                     $imageStyle = "background-image: url('" . $imageUrl . "');";
-                ?>
+        ?>
 
-                <!-- Container holding the picture  -->
-                <div class="cardImageWrapper" style="<?php echo $imageStyle; ?>">
-                    <span class="statusBadge <?php echo $statusClass; ?>">
-                        <?php echo htmlspecialchars($ticket['status']); ?>
-                    </span>
-                </div>
-
-                <!-- Container holding the content for the ticket -->
-                <div class="cardContent">
-                    <h3>
-                        <?php echo htmlspecialchars($ticket['category']); ?>
-                    </h3>
-
-                    <div class="location">
-                        <?php echo htmlspecialchars($ticket['description']); ?>
-                    </div>
-
-                    <a href="view_ticket.php?id=<?php echo $ticket['ticketId']; ?>" class="viewBtn">View Details</a>
-                </div>
+        <div class="faultCard">
+            <!-- Container holding the picture -->
+            <div class="cardImageWrapper" style="<?php echo $imageStyle; ?>">
+                <span class="statusBadge <?php echo $statusClass; ?>">
+                    <?php echo htmlspecialchars($statusText); ?>
+                </span>
             </div>
-            
-            <?php 
-                    endforeach; 
-                else: 
-            ?>
-                <p style="grid-column: 1/-1; text-align: center; color: #555; font-size: 1.2rem; padding: 60px 20px; border: 2px dashed #ccc; border-radius: 8px; max-width: 600px; margin: 0 auto;">
-                    There is no outstanding unresolved reported right now.
+
+            <!-- Container holding the content for the ticket -->
+            <div class="cardContent">
+                <h3>
+                    <?php echo htmlspecialchars($categoryText); ?>
+                </h3>
+
+                <p class="description" style="margin: 5px 0; font-weight: 500;">
+                    <?php echo htmlspecialchars($ticket['incident_description'] ?? ''); ?>
                 </p>
-            <?php 
-                endif; 
+
+                <div class="location" style="color: #666; font-size: 0.9rem;">
+                    Location: <?php echo htmlspecialchars($ticket['location_description'] ?? 'N/A'); ?>
+                </div>
+                <a href="view_ticket.php?id=<?php echo $ticket['incident_id']; ?>" class="viewBtn">View Details</a>
+            </div>
+        </div>
+        
+        <?php 
+                endforeach; 
+            else: 
+        ?>
+            <p style="grid-column: 1/-1; text-align: center; color: #555; font-size: 1.2rem; padding: 60px 20px; border: 2px dashed #ccc; border-radius: 8px; max-width: 600px; margin: 0 auto;">
+                There are no outstanding unresolved reports right now.
+            </p>
+        <?php 
+            endif; 
+            
+            // Safety check before closing connection
+            if (isset($conn) && $conn instanceof mysqli) {
                 $conn->close();
-            ?>
-        </section>
+            }
+        ?>
+    </section>
         <footer>
             <div class="footerContainer">
                 <div class="makanaLogo">

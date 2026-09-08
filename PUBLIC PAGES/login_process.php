@@ -2,17 +2,14 @@
 
 session_start();
 
-require_once "db.php";
-
+require_once "Error404Connection.php";
 
 /* ==================================================
-   CHECK REQUEST
+   CHECK THAT LOGIN FORM WAS SUBMITTED
 ================================================== */
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-
     header("Location: login.php");
-
     exit;
 }
 
@@ -22,54 +19,34 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 ================================================== */
 
 $username = trim($_POST["username"] ?? "");
-
 $password = $_POST["password"] ?? "";
 
 
 /* ==================================================
-   CHECK EMPTY FIELDS
+   VALIDATE INPUT
 ================================================== */
 
 if ($username === "" || $password === "") {
-
     die("Please enter your username and password.");
-
 }
 
 
 /* ==================================================
    FIND USER
 ================================================== */
-/*
-   COULD NOT LOGIN => REMOVED ORGANISATION COLUMN SINCE IT DOESNT EXIST IN THE TABLE YET
-*/
+
 $sql = "
-    SELECT
-        profile_id,
-        username,
-        first_Name,
-        surname,
-        
-        contact,
-        password_hash,
-        User_role,
-        ward_id,
-        address,
-        active
+    SELECT *
     FROM `user`
     WHERE username = ?
+    LIMIT 1
 ";
-
 
 $stmt = $conn->prepare($sql);
 
-
 if (!$stmt) {
-
     die("Login SQL Error: " . $conn->error);
-
 }
-
 
 $stmt->bind_param("s", $username);
 
@@ -77,33 +54,26 @@ $stmt->execute();
 
 $result = $stmt->get_result();
 
-
-/* ==================================================
-   CHECK USER EXISTS
-================================================== */
-
-if ($result->num_rows === 0) {
-
-    $stmt->close();
-
-    die("Incorrect username or password.");
-
-}
-
-
 $user = $result->fetch_assoc();
 
 $stmt->close();
 
 
 /* ==================================================
-   CHECK ACCOUNT ACTIVE
+   CHECK USER EXISTS
 ================================================== */
 
-if ((int)$user["active"] !== 1) {
+if (!$user) {
+    die("Invalid username or password.");
+}
 
-    die("Your account is not active. Please contact the administrator.");
 
+/* ==================================================
+   CHECK ACCOUNT IS ACTIVE
+================================================== */
+
+if (isset($user["active"]) && (int)$user["active"] !== 1) {
+    die("Your account is currently inactive.");
 }
 
 
@@ -112,9 +82,7 @@ if ((int)$user["active"] !== 1) {
 ================================================== */
 
 if (!password_verify($password, $user["password_hash"])) {
-
-    die("Incorrect username or password.");
-
+    die("Invalid username or password.");
 }
 
 
@@ -131,98 +99,83 @@ session_regenerate_id(true);
 
 $_SESSION["logged_in"] = true;
 
-$_SESSION["profile_id"] = $user["profile_id"];
+$_SESSION["profile_id"] = $user["profile_id"] ?? null;
 
-$_SESSION["username"] = $user["username"];
+$_SESSION["username"] = $user["username"] ?? "";
 
-$_SESSION["first_name"] = $user["first_Name"];
+$_SESSION["first_name"] = $user["first_Name"] ?? "";
 
-$_SESSION["surname"] = $user["surname"];
+$_SESSION["surname"] = $user["surname"] ?? "";
 
-// COMMENTED OUT ORGANISATION, DOESNT EXIST AS OF YET.
+$_SESSION["organisation_name"] =
+    $user["organisation_name"] ?? "";
 
-// $_SESSION["organisation"] = $user["organisation"];
+$_SESSION["contact"] = $user["contact"] ?? "";
 
-$_SESSION["contact"] = $user["contact"];
+$_SESSION["user_role"] =
+    $user["User_role"] ?? "";
 
-$_SESSION["user_role"] = $user["User_role"];
+$_SESSION["ward_id"] =
+    $user["ward_id"] ?? null;
 
-$_SESSION["ward_id"] = $user["ward_id"];
-
-$_SESSION["address"] = $user["address"];
+$_SESSION["address"] =
+    $user["address"] ?? "";
 
 
 /* ==================================================
-   DIRECT USER TO CORRECT DASHBOARD
+   GET USER ROLE
 ================================================== */
 
-$userRole = strtolower(trim($user["User_role"]));
+$userRole = strtolower(
+    trim($user["User_role"] ?? "")
+);
 
 
-/* --------------------------------------------------
-   RESIDENT
--------------------------------------------------- */
+/* ==================================================
+   REDIRECT RESIDENT
+================================================== */
 
 if ($userRole === "resident") {
-   /* 
-      IF USER EXISTS, 
-      REDIRECTING TO THE USER_DASHBOARD TO TEST THE REPORT TICKET FORM
-      
-      => YOU CAN DELETE THIS FAITH, I WAS JUST TESTING REPORT TICKET :)
-      => DON'T FORGET I REMOVED THE ORGANISATION INORDER FOR ME TO LOGIN
-      
-   */
-    header("Location: ../USER_DASHBOARD/reportFaultTicketForm.php");
 
+    header("Location: ../USER_DASHBOARD/residence.php");
     exit;
+
 }
 
 
-/* --------------------------------------------------
-   ORGANISATION
--------------------------------------------------- */
-
-if ($userRole === "organisation") {
-
-    header("Location: organisationDashboard.php");
-
-    exit;
-}
-
-
-/* --------------------------------------------------
-   ADMIN
--------------------------------------------------- */
+/* ==================================================
+   REDIRECT ADMIN
+================================================== */
 
 if ($userRole === "admin") {
 
-    header("Location: adminDashboard.php");
-
+    header("Location: ../Admin Overview/admindashboard.php");
     exit;
+
 }
 
 
-/* --------------------------------------------------
-   MUNICIPALITY
--------------------------------------------------- */
+/* ==================================================
+   REDIRECT WARD COUNCILLOR
+================================================== */
 
-if ($userRole === "municipality") {
+if ($userRole === "ward_councillor") {
 
-    header("Location: municipalityDashboard.php");
-
+    header("Location: ../ward_councillor_dashboard/wardcouncilorDashboard.html");
     exit;
+
 }
 
 
-/* --------------------------------------------------
-   OTHER ROLES
--------------------------------------------------- */
+/* ==================================================
+   REDIRECT COMMUNICATION OFFICER
+================================================== */
 
-if ($userRole === "ward councillor") {
+if ($userRole === "communication_officer") {
 
-    header("Location: councillorDashboard.php");
-
+    header("Location: ../COMMUNICATION_OFFICER_DASHBOARD/communicationOfficerDashboard.php");
     exit;
+
 }
 
 
@@ -230,9 +183,7 @@ if ($userRole === "ward councillor") {
    UNKNOWN ROLE
 ================================================== */
 
-die(
-    "Login successful, but your account does not have a valid dashboard role. " .
-    "Current role: " . htmlspecialchars($user["User_role"])
-);
+session_unset();
+session_destroy();
 
-?>
+die("Your account has an invalid user role.");

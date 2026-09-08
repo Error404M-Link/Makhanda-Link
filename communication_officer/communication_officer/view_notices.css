@@ -1,412 +1,252 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.notice-container{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
 }
-
-body {
-    min-height: 100vh;
-    padding: 0 6% 60px;
-
-    background: linear-gradient(
-        135deg,
-        #f7f5ef 0%,
-        #eef2ef 100%
-    );
-
-    color: #293633;
-
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-
-/* ================================
-   TOP LINE
-================================ */
-
-body > hr:first-child {
-    width: 100%;
-    height: 5px;
-
-    margin: 0 0 45px;
-
-    border: none;
-
-    background: linear-gradient(
-        90deg,
-        #334e4a,
-        #917e5a
-    );
-}
-
-
-/* ================================
-   PAGE TITLE
-================================ */
-
-h2 {
-    max-width: 1000px;
-
-    margin: 0 auto;
-
-    color: #263b38;
-
-    font-size: clamp(28px, 4vw, 42px);
-
-    font-weight: 700;
-
-    letter-spacing: -0.8px;
-}
-
-h2::after {
-    content: "";
-
-    display: block;
-
-    width: 60px;
-    height: 4px;
-
-    margin-top: 12px;
-
+.notice-card{
+    border: 2px solid transparent;
     border-radius: 10px;
-
-    background: #917e5a;
+    background-color:#0d4d43;
+    padding: 20px;
+    
+    
 }
 
 
-/* ================================
-   OLD BR SPACING
-================================ */
-
-h2 + br,
-h2 + br + br {
-    display: none;
+.notice-card:hover h3,
+.notice-card:hover p {
+    color: bisque;
+    
 }
 
-
-/* ================================
-   FILTER FORM
-================================ */
-
-form {
-    max-width: 1000px;
-
-    margin: 35px auto 25px;
-
-    padding: 22px 25px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 15px;
-
-    background: #ffffff;
-
-    border: 1px solid #dedfd9;
-
-    border-radius: 14px;
-
-    box-shadow: 0 8px 25px rgba(51, 78, 74, 0.10);
-}
-
-
-/* ================================
-   LABEL
-================================ */
-
-form label {
-    color: #263b38;
-
-    font-size: 14px;
-
-    font-weight: 700;
-
-    white-space: nowrap;
-}
-
-
-/* ================================
-   SELECT
-================================ */
-
-form select {
-    flex: 1;
-
-    min-width: 180px;
-
-    padding: 12px 14px;
-
-    background: #ffffff;
-
-    color: #293633;
-
-    border: 1px solid #dedfd9;
-
-    border-radius: 8px;
-
-    font-size: 14px;
-
-    outline: none;
-
-    cursor: pointer;
-
-    transition: 0.2s ease;
-}
-
-form select:hover {
-    border-color: #917e5a;
-}
-
-form select:focus {
-    border-color: #334e4a;
-
-    box-shadow:
-        0 0 0 3px
-        rgba(51, 78, 74, 0.12);
-}
-
-
-/* ================================
-   BUTTON
-================================ */
-
-form button {
-    padding: 12px 22px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    background: linear-gradient(
-        135deg,
-        #334e4a,
-        #263b38
-    );
-
-    color: #ffffff;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    white-space: nowrap;
-
-    transition: 0.2s ease;
-}
-
-form button:hover {
-    background: #917e5a;
-
-    box-shadow:
-        0 7px 18px
-        rgba(145, 126, 90, 0.25);
-
-    transform: translateY(-2px);
-}
-
-
-/* ================================
-   LINE BELOW FILTER
-================================ */
-
-form + hr {
-    max-width: 1000px;
-
-    margin: 25px auto 30px;
-
-    border: none;
-
-    height: 1px;
-
-    background: #dedfd9;
-}
-
-
-/* ================================
-   NOTICE CONTENT
-================================ */
-
-body > h3 {
-    max-width: 1000px;
-
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-/* ================================
-   NOTICE WARD
-================================ */
-
-body > h3:nth-of-type(4n + 1) {
-    margin-top: 35px;
-
-    padding: 20px 25px 0;
-
-    color: #917e5a;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    letter-spacing: 1.2px;
-
-    text-transform: uppercase;
-}
-
-
-/* ================================
-   NOTICE TITLE
-================================ */
-
-body > h3:nth-of-type(4n + 2) {
-    padding: 7px 25px 0;
-
-    color: #263b38;
-
-    font-size: 24px;
-
-    line-height: 1.35;
-}
-
-
-/* ================================
-   NOTICE DATE
-================================ */
-
-body > h3:nth-of-type(4n + 3) {
-    padding: 8px 25px 0;
-
-    color: #737b77;
-
-    font-size: 12px;
-
-    font-weight: 500;
-}
-
-
-/* ================================
-   NOTICE MESSAGE
-================================ */
-
-body > h3:nth-of-type(4n + 4) {
-    margin-bottom: 0;
-
-    padding: 16px 25px 24px;
-
-    background: #ffffff;
-
-    border-left: 4px solid #334e4a;
-
-    border-radius: 0 12px 12px 0;
-
-    box-shadow: 0 8px 25px rgba(51, 78, 74, 0.10);
-
-    color: #59635f;
-
-    font-size: 14px;
-
-    font-weight: 400;
-
-    line-height: 1.75;
-}
-
-
-/* ================================
-   NOTICE SEPARATOR
-================================ */
-
-body > hr:not(:first-child):not(form + hr) {
-    max-width: 1000px;
-
-    margin: 28px auto;
-
-    border: none;
-
-    height: 1px;
-
-    background: linear-gradient(
-        90deg,
-        #917e5a,
-        #dedfd9,
-        transparent
-    );
-}
-
-
-/* ================================
-   TABLET
-================================ */
 
 @media screen and (max-width: 768px) {
-
-    body {
-        padding: 0 4% 50px;
-    }
-
-    form {
-        flex-direction: column;
-
-        align-items: stretch;
-
-        gap: 12px;
-
-        padding: 20px;
-    }
-
-    form label {
-        white-space: normal;
-    }
-
-    form select,
-    form button {
-        width: 100%;
-    }
-
-    body > h3:nth-of-type(4n + 1),
-    body > h3:nth-of-type(4n + 2),
-    body > h3:nth-of-type(4n + 3),
-    body > h3:nth-of-type(4n + 4) {
-        padding-left: 20px;
-        padding-right: 20px;
+    .notice-container {
+        grid-template-columns: 1fr;
     }
 }
 
+body{
+    background-color: beige;
+}
 
-/* ================================
-   MOBILE
-================================ */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.navbar{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px 2%;
+    background-color: #334e4a;
+    position: sticky;
+    top:0;
+    z-index: 1000;  /*Keeps keeps the naviagtion bar on top of everything*/
+}
 
-@media screen and (max-width: 480px) {
+.nav-links{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5vw;
+    list-style: none;
+    flex-wrap: nowrap; /*this makes the links not jump to the nest line, this happend with the about us link*/
+}
 
-    body {
-        padding: 0 18px 40px;
+.nav-links a{
+    text-decoration: none;
+    color: white;
+}
+
+.link{
+    text-decoration: none;
+    color: white;
+    position: relative;
+    font-size: 1.5vw;
+}
+
+
+/*underline hover for the links*/
+.link::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background-color: #917e5a;
+    transition: width 0.3s ease;
+}
+
+.link:hover{
+    color: #917e5a;
+}
+
+
+.link:hover::after{
+    width: 100%;
+}
+/*underline hover for thr links end here*/
+
+.logo img{
+    width: 10vw;
+    min-width: 80px;
+    max-width: 150px;
+    height: auto;
+}
+
+h2{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.btn{
+    background-color: #334e4a;
+    color:white;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 2px solid #917e5a;
+    transition: 0.4s;
+    font-size: 16px;
+
+    white-space: nowrap;
+}
+
+.btn:hover{
+    background-color: #917e5a;
+    color: aliceblue;
+}
+#navbuttons{
+    display: flex;
+    gap:5px;
+    margin-left: 20px;
+}
+/*######################### RESPONSIVENESS ############### */
+
+@media screen and (max-width: 768px){
+    .nav-links{
+        display: block;
+        gap: 10px;
+        padding: 0;
     }
 
-    body > hr:first-child {
-        margin-bottom: 30px;
+    .nav-links li {
+        margin-bottom: 10px; 
     }
 
-    h2 {
-        font-size: 29px;
+    .navbar{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 25%;
     }
 
-    body > h3:nth-of-type(4n + 2) {
-        font-size: 20px;
+    #navbuttons{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
     }
 
-    body > h3:nth-of-type(4n + 4) {
-        font-size: 13px;
-
-        line-height: 1.65;
+    .btn{
+        display: inline-block;
+        width: max-content;
+        text-align: center;
     }
+}
 
-    form {
-        margin-top: 25px;
+.backNavWrapper {
+    width: 100%;
+    margin: 20px 0;
+}
 
-        padding: 18px;
-    }
+.backNavContainer {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.backBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    background-color: #334e4a;
+    color: white;
+
+    padding: 10px 18px;
+
+    border: 2px solid #917e5a;
+    border-radius: 20px;
+
+    text-decoration: none;
+    font-size: 16px;
+
+    transition: 0.3s;
+}
+
+.backBtn:hover {
+    background-color: #917e5a;
+    color: white;
+}
+
+.backBtn svg {
+    width: 18px;
+    height: 18px;
+}
+
+form {
+    margin: 20px;
+}
+
+form label {
+    font-size: 18px;
+    color: #334e4a;
+    margin-right: 10px;
+}
+
+#ward {
+    padding: 10px 15px;
+    border: 2px solid #917e5a;
+    border-radius: 8px;
+    background-color: white;
+    color: #334e4a;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+}
+
+#ward:focus {
+    border-color: #334e4a;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: 2px solid #917e5a;
+    border-radius: 20px;
+    background-color: #334e4a;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #917e5a;
+}
+
+.notice-card h3 {
+    font-size: 18px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.notice-card p {
+    font-size: 16px;
+    color: white;
+    line-height: 1.5;
 }

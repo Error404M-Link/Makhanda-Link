@@ -119,7 +119,6 @@
             $latitude, 
             $longitude
         );
-        $stmt->execute();
 
         if(!$serviceId || !$address_id || !$wardId){
             $message = "<div style='color: red; font-weight: bold;'>Error: Missing required ward, service, or address lookup information.</div>";
