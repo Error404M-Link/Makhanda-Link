@@ -948,44 +948,37 @@ footer {
     }
 
     .ward-panel {
-
         flex-direction: column;
-
         align-items: flex-start;
     }
-
     .report-section {
-
         flex-direction: column;
-
         align-items: flex-start;
-
         gap: 20px;
     }
-
 }
 
-
 @media (max-width: 600px) {
-
     .topbar {
-
         padding: 0 15px;
     }
-
     .top-logo p {
-
         display: none;
     }
-
     .user div {
-
         display: none;
     }
-
     .main-content {
-
         padding: 20px;
     }
+}
 
+/*Logout button*/
+li.logout a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }

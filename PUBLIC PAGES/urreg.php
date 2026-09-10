@@ -4,62 +4,71 @@ session_start();
 
 require_once "Error404Connection.php";
 
-
-/* 
-   CHECK REQUEST
- */
-
+//check if the form was submitted
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
-    header("Location: register.php");
     exit;
 
 }
 
+//get the user role from the registration form
+$userRole = strtolower(trim($_POST["role"] ?? ""));
 
-/*
-   GET ACCOUNT TYPE
- */
+//check if the role is allowed
+$allowedRoles = [
+    "resident",
+    "ward_councillor",
+    "municipal_staff",
+    "organisation"
+];
 
-$accountType = $_POST["accountType"] ?? "";
+if (!in_array($userRole, $allowedRoles, true)) {
 
-
-/* 
-   ONLY TEST RESIDENT FOR NOW
- */
-
-if ($accountType !== "resident") {
-
-    die("For now, please select Resident.");
+    die("Please select a valid role.");
 
 }
 
-
-/* 
-   GET RESIDENT DETAILS
- */
-
+//get user details from the registration form
 $firstName = trim($_POST["first_name"] ?? "");
-
 $surname = trim($_POST["surname"] ?? "");
-
 $username = trim($_POST["username"] ?? "");
-
 $contact = trim($_POST["contact"] ?? "");
 
 $password = $_POST["password"] ?? "";
-
 $confirmPassword = $_POST["confirm_password"] ?? "";
 
 $addressId = $_POST["address_id"] ?? "";
-
 $address = trim($_POST["address"] ?? "");
 
+//check if the email address is valid
+if (!filter_var($username, FILTER_VALIDATE_EMAIL)) {
 
-/* 
-   REQUIRED FIELDS
-*/
+    die("Please enter a valid email address.");
 
+}
+
+//check if the contact number has 10 digits
+if (!preg_match('/^[0-9]{10}$/', $contact)) {
+
+    die("Contact number must contain exactly 10 digits.");
+
+}
+
+//check if the passwords match
+if ($password !== $confirmPassword) {
+
+    die("Passwords do not match.");
+
+}
+
+//check if the password is at least 8 characters
+if (strlen($password) < 8) {
+
+    die("Password must be at least 8 characters.");
+
+}
+
+//check if all required fields were entered
 if (
     empty($firstName) ||
     empty($surname) ||
@@ -74,50 +83,18 @@ if (
 
 }
 
+//get the ward from the selected street
+$sql = "SELECT ward_id, street_name
+        FROM address_directory
+        WHERE address_id = ?";
 
-/* 
-   CHECK CONTACT
- */
+$stmt = $conn->prepare($sql);
 
-if (!preg_match('/^[0-9]{10}$/', $contact)) {
-
-    die("Contact number must contain exactly 10 digits.");
-
-}
-
-
-/* CHECK PASSWORD*/
-
-if ($password !== $confirmPassword) {
-
-    die("Passwords do not match.");
-
-}
-
-
-if (strlen($password) < 8) {
-
-    die("Password must be at least 8 characters.");
-
-}
-
-
-/* 
-   GET WARD FROM STREET
-*/
-
-$stmt = $conn->prepare("
-    SELECT ward_id, street_name
-    FROM address_directory
-    WHERE address_id = ?
-");
-
-if (!$stmt) {
+if ($stmt === false) {
 
     die("Street SQL Error: " . $conn->error);
 
 }
-
 
 $stmt->bind_param("i", $addressId);
 
@@ -129,43 +106,34 @@ $addressData = $result->fetch_assoc();
 
 $stmt->close();
 
-
-/* 
-   CHECK STREET
- */
-
+//check if the selected street exists
 if (!$addressData) {
 
     die("Selected street was not found.");
 
 }
 
-
+//get the ward id
 $wardId = $addressData["ward_id"];
 
+//check if the username already exists
+$sql = "SELECT username
+        FROM user
+        WHERE username = ?";
 
-/* 
-   CHECK USERNAME */
+$stmt = $conn->prepare($sql);
 
-$stmt = $conn->prepare("
-    SELECT username
-    FROM user
-    WHERE username = ?
-");
-
-if (!$stmt) {
+if ($stmt === false) {
 
     die("Username SQL Error: " . $conn->error);
 
 }
-
 
 $stmt->bind_param("s", $username);
 
 $stmt->execute();
 
 $result = $stmt->get_result();
-
 
 if ($result->num_rows > 0) {
 
@@ -175,91 +143,29 @@ if ($result->num_rows > 0) {
 
 }
 
-
 $stmt->close();
 
+//hash the password
+$passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-/* 
-   HASH PASSWORD
-*/
-
-$passwordHash = password_hash(
-    $password,
-    PASSWORD_DEFAULT
-);
-
-
-
-/* 
-   GET USER ROLE
- */
-
-$userRole = trim($_POST["role"] ?? "");
-
-
-/* 
-   VALIDATE USER ROLE
- */
-
-$allowedRoles = [
-    "resident",
-    "admin",
-    "ward_councillor",
-    "communication_officer"
-];
-
-if (!in_array($userRole, $allowedRoles, true)) {
-
-    die("Please select a valid role.");
-
-}
-
-
+//set account to active
 $active = 1;
-/* 
-   INSERT USER
- */
 
-$sql = "
-    INSERT INTO user
-    (
-        username,
-        first_Name,
-        surname,
-        contact,
-        password_hash,
-        ward_id,
-        User_role,
-        address,
-        active
-    )
-    VALUES
-    (?, ?, ?, ?, ?, ?, ?, ?, ?)
-";
-
+//insert the new user into the database
+$sql = "INSERT INTO user
+        (username, first_Name, surname, contact, password_hash,
+         ward_id, User_role, address, active)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
 
-
-if (!$stmt) {
+if ($stmt === false) {
 
     die("Registration SQL Error: " . $conn->error);
 
 }
 
-
-/* 
-   username      = s
-   firstName     = s
-   surname       = s
-   contact       = s
-   passwordHash  = s
-   wardId        = i
-   userRole      = s
-   address       = s
-   active        = i
-*/
-
+//bind the values to the SQL statement
 $stmt->bind_param(
     "sssssissi",
     $username,
@@ -273,32 +179,23 @@ $stmt->bind_param(
     $active
 );
 
+//execute the SQL statement
+if ($stmt->execute()) {
 
-/* 
-   EXECUTE
- */
+    //registration was successful
+    header("Location: login.php?registered=1");
+    exit;
 
-if (!$stmt->execute()) {
+} else {
 
-    die(
-        "Registration failed: " .
-        $stmt->error
-    );
+    //registration failed
+    die("Registration failed: " . $stmt->error);
 
 }
 
-
+//close the connection
 $stmt->close();
-
 $conn->close();
 
-
-/*
-   SUCCESS
- */
-
-header("Location: login.php?registered=1");
-
-exit;
-
 ?>
+

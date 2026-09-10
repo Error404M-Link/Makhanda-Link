@@ -4,7 +4,13 @@
         session_start();
     }
     
-    require "../Error404Connection.php";
+    require_once "../Error404Connection.php";
+
+    if (!isset($_SESSION['username'])) {
+        header("Location: settings.php?status=error&msg=" . urlencode("Unauthorized access"));
+        exit;
+    }
+
     $username = $_SESSION['username'];
     
     /* A Query to dynamically identify the user currently logged in */
@@ -24,19 +30,21 @@
         WHERE 
             u.username = ?";
 
+    $userData = [];
+
     if ($stmt = $conn->prepare($sql)) {
-        // 's' specifies that $username is a string parameter
-        $userData = $stmt->fetch(PDO::FETCH_ASSOC) ?: [];
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
-        $userData = $result->fetch_assoc();
+        if ($result && $row = $result->fetch_assoc()) {
+            $userData = $row;
+        }
         $stmt->close();
     } else {
         die("Database Error: " . $conn->error);
     }
 
-    // Fallback in case the data isn't set or ward is null
+    // FALLBACK DATA IF USER DETAILS ARE MISSING OR GUEST
     $profileImg = !empty($userData['image_path']) ? htmlspecialchars($userData['image_path']) : 'profile.jpg'; // Default profile image
     $fullName  = $userData ? htmlspecialchars($userData['first_Name'] . ' ' . $userData['surname']) : 'Guest';
     $firstName  = $userData ? htmlspecialchars($userData['first_Name']) : 'Guest';

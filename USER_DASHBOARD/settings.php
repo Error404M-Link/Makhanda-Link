@@ -2,8 +2,7 @@
     session_start();
 
     require_once "Error404Connection.php";
-    require "detailsOfTheLoggedInUser.php";
-    require "updateProfile.php";
+    require_once "detailsOfTheLoggedInUser.php";
 
     $query = " SELECT 
                 u.username,
@@ -113,6 +112,15 @@
                     <i class="fa-solid fa-pen"></i>
                 </label>
             </div>
+
+            <!-- STANDALONE FORM FOR PROFILE PICTURE 
+                => SUBMITS IMMEDIATELY IT IS SELECTED 
+            -->
+                
+            <form id="profileImageForm" action="updateProfile.php" method="POST" enctype="multipart/form-data" style="display:none;">
+                <input type="hidden" name="action" value="update_profile_picture">
+                <input type="file" id="imageUpload" name="profile_image" accept="image/*">
+            </form>
             
             <h3 class="userName" id="displayFullName">
                 <?php echo htmlspecialchars(($userData['first_Name'] ?? '') . ' ' . ($userData['surname'] ?? '')); ?>
@@ -139,9 +147,8 @@
             <!-- PERSONAL INFORMATION FORM -->
             <section id="personalInfoSection" class="tabSection">
                 <h2>Personal Information</h2>
-                <form id="profileForm" action="update_profile.php" method="POST" enctype="multipart/form-data" class="settingsForm">
-
-                    <input type="file" id="imageUpload" name="profile_image" accept="image/*" class="fileInputHidden">
+                <form id="profileForm" action="updateProfile.php" method="POST" enctype="multipart/form-data" class="settingsForm">
+                    <input type="hidden" name="action" value="update_profile">
 
                     <div class="formGrid">
                         <div class="inputGroup">
@@ -195,16 +202,13 @@
                 </form>
             </section>
 
-            <!-- PASSWORD CHANGE -->
+            <!-- CHANGE PASSWORD -->
             <section id="passwordSection" class="tabSection hiddenSection">
                 <h2>Change Password</h2>
-                <form id="passwordForm" action="change_password.php" method="POST" class="settingsForm">
+                <form id="passwordForm" action="updateProfile.php" method="POST" class="settingsForm">
+                    <input type="hidden" name="action" value="change_password">
+                    
                     <div class="formGrid">
-                        <div class="inputGroup fullWidth">
-                            <label for="currentPassword">Current Password</label>
-                            <input type="password" id="currentPassword" name="currentPassword" required>
-                        </div>
-
                         <div class="inputGroup fullWidth">
                             <label for="newPassword">New Password</label>
                             <input type="password" id="newPassword" name="newPassword" required>
@@ -216,9 +220,12 @@
                         </div>
                     </div>
 
+                    <!-- HIDDEN CONFIRM PASSWORD FIELD (used by the popup, mirrors the profile form) -->
+                    <input type="hidden" id="confirmPasswordInputPwd" name="confirm_password">
+
                     <div class="formActions">
                         <button type="button" id="btnDiscardPassword" class="btnDiscard">Cancel</button>
-                        <button type="submit" class="btnSave">Update Password</button>
+                        <button type="button" id="btnTriggerPasswordModal" class="btnSave">Update Password</button>
                     </div>
                 </form>
             </section>
@@ -231,8 +238,8 @@
         <div class="modalContent">
             <h3>Confirm Changes</h3>
             <p>Please enter your account password to confirm these changes.</p>
-            <input type="password" id="modalConfirmPassword" placeholder="Enter password" class="modalInput">
-            <p id="modalError" class="modalErrorText hiddenError">Password is required.</p>
+            <input type="password" id="modalConfirmPassword" class="modalInput" placeholder="Enter password">
+            <p id="modalError" class="modalErrorText hiddenError">Please enter your password to continue.</p>
             <div class="modalActions">
                 <button type="button" id="btnCancelModal" class="btnDiscard">Cancel</button>
                 <button type="button" id="btnConfirmModal" class="btnSave">Confirm & Save</button>

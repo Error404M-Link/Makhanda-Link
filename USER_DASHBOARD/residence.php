@@ -285,7 +285,9 @@ if (!empty($wardId)) {
                 <!-- LOGOUT -->
                 <li class="logout">
                     <span>
-                        Logout
+                        <a href="logout.php">
+                            Logout
+                        </a>
                     </span>
                 </li>
             </ul>

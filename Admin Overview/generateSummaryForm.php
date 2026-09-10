@@ -7,9 +7,7 @@
                                             username, 
                                             ward_id, 
                                             date_appointed, 
-                                        FROM ward_councillor 
-                                        INNER JOIN ward w ON ad.ward_id = w.ward_id
-                                        ORDER BY ad.street_name ASC ");
+                                        FROM ward_councillor;
 
         if($stmtCouncillor){
             $stmtStreets->execute();

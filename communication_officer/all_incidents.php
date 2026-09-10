@@ -6,22 +6,15 @@ function e($value) {
     return htmlspecialchars((string)$value, ENT_QUOTES, 'UTF-8');
 }
 
-$sql = "
-    SELECT 
-        i.incident_id,
-        ms.service_type,
-        w.ward_name,
-        i.incident_description,
-        i.priority,
-        i.date_reported
+$sql = "SELECT i.incident_id, ms.service_type, w.ward_name, i.incident_description, i.priority, i.date_reported
     FROM incident_ticket i
     LEFT JOIN municipal_service ms ON i.service_id = ms.service_id
     LEFT JOIN ward w ON i.ward_id = w.ward_id
-    ORDER BY i.date_reported DESC
-";
+    ORDER BY i.date_reported DESC";
 
 $result = $conn->query($sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,9 +24,7 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="all_incidents.css">
 </head>
 <body>
-
     <div class="tracker-container">
-
         <div class="tracker-header">
             <div>
                 <span class="sub-heading">SYSTEM-WIDE TICKET TRACKING</span>
@@ -41,14 +32,8 @@ $result = $conn->query($sql);
             </div>
             <a href="communication_officer_dashboard.php" class="view-all-link">Back to Dashboard</a>
         </div>
-
         <div class="search-container">
-            <input 
-                type="text" 
-                id="ticketSearch" 
-                placeholder="Search incident tickets..." 
-                onkeyup="filterTickets()"
-            >
+            <input type="text" id="ticketSearch" placeholder="Search incident tickets..." onkeyup="filterTickets()">
         </div>
 
         <div class="table-wrapper">
@@ -68,7 +53,7 @@ $result = $conn->query($sql);
                     <?php if ($result && $result->num_rows > 0): ?>
                         <?php while ($row = $result->fetch_assoc()): ?>
                             <tr>
-                                <td class="ticket-id"># <?= e($row['incident_id']) ?></td>
+                                <td class="ticket-id"><?= e($row['incident_id']) ?></td>
                                 <td><?= e($row['service_type'] ?? 'N/A') ?></td>
                                 <td><?= e($row['ward_name'] ?? 'N/A') ?></td>
                                 <td class="description-cell"><?= e($row['incident_description']) ?></td>

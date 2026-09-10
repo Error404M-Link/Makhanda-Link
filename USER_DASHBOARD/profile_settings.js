@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Elements
+    // DOM Elements
     const personalInfoSection = document.getElementById("personalInfoSection");
     const passwordSection = document.getElementById("passwordSection");
     const navPersonalInfo = document.getElementById("navPersonalInfo");
@@ -11,101 +11,179 @@ document.addEventListener("DOMContentLoaded", () => {
     const profileImage = document.getElementById("profileImage");
     
     const btnTriggerModal = document.getElementById("btnTriggerModal");
+    const btnTriggerPasswordModal = document.getElementById("btnTriggerPasswordModal");
     const modal = document.getElementById("passwordModal");
     const modalConfirmBtn = document.getElementById("btnConfirmModal");
     const modalCancelBtn = document.getElementById("btnCancelModal");
     const modalPasswordInput = document.getElementById("modalConfirmPassword");
     const modalError = document.getElementById("modalError");
     const confirmPasswordInput = document.getElementById("confirmPasswordInput");
+    const confirmPasswordInputPwd = document.getElementById("confirmPasswordInputPwd");
+
+    // Tracks which form the modal should submit once confirmed:
+    // "profile" or "password"
+    let pendingAction = null;
 
     // Cache initial form values for Discard functionality
-    const originalImageSrc = profileImage.src;
+    const originalImageSrc = profileImage ? profileImage.src : "";
     const initialFormData = {
-        firstName: document.getElementById("first_Name").value,
-        surname: document.getElementById("surname").value,
-        address: document.getElementById("address").value,
-        contact: document.getElementById("contact").value,
-        ward_id: document.getElementById("ward_id").value
+        firstName: document.getElementById("first_Name") ? document.getElementById("first_Name").value : "",
+        surname: document.getElementById("surname") ? document.getElementById("surname").value : "",
+        address: document.getElementById("address") ? document.getElementById("address").value : "",
+        contact: document.getElementById("contact") ? document.getElementById("contact").value : "",
+        ward_id: document.getElementById("ward_id") ? document.getElementById("ward_id").value : ""
     };
 
-    // 1. TAB NAVIGATION SWITCHING
-    navPersonalInfo.addEventListener("click", (e) => {
-        e.preventDefault();
-        navPersonalInfo.classList.add("active");
-        navPassword.classList.remove("active");
-        personalInfoSection.classList.remove("hiddenSection");
-        passwordSection.classList.add("hiddenSection");
-    });
-
-    navPassword.addEventListener("click", (e) => {
-        e.preventDefault();
-        navPassword.classList.add("active");
-        navPersonalInfo.classList.remove("active");
-        passwordSection.classList.remove("hiddenSection");
-        personalInfoSection.classList.add("hiddenSection");
-    });
-
-    // 2. PROFILE IMAGE INSTANT PREVIEW
-    imageUploadInput.addEventListener("change", (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                profileImage.src = event.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-
-    // 3. DISCARD CHANGES
-    document.getElementById("btnDiscardProfile").addEventListener("click", () => {
-        document.getElementById("first_Name").value = initialFormData.firstName;
-        document.getElementById("surname").value = initialFormData.surname;
-        document.getElementById("address").value = initialFormData.address;
-        document.getElementById("contact").value = initialFormData.contact;
-        document.getElementById("ward_id").value = initialFormData.ward_id;
-        
-        profileImage.src = originalImageSrc;
-        imageUploadInput.value = "";
-    });
-
-    document.getElementById("btnDiscardPassword").addEventListener("click", () => {
-        passwordForm.reset();
-    });
-
-    // 4. SHOW CONFIRMATION MODAL
-    btnTriggerModal.addEventListener("click", () => {
-        modalPasswordInput.value = "";
-        modalError.classList.add("hiddenError");
-        modal.classList.remove("hiddenModal");
-    });
-
-    modalCancelBtn.addEventListener("click", () => {
-        modal.classList.add("hiddenModal");
-    });
-
-    // 5. CONFIRM PASSWORD & SUBMIT PROFILE FORM
-    modalConfirmBtn.addEventListener("click", () => {
-        const passwordValue = modalPasswordInput.value.trim();
-        if (!passwordValue) {
-            modalError.classList.remove("hiddenError");
-            return;
-        }
-
-        // Attach password to hidden form input and submit traditionally
-        confirmPasswordInput.value = passwordValue;
-        modal.classList.add("hiddenModal");
-        profileForm.submit();
-    });
-
-    // 6. PASSWORD FORM VALIDATION BEFORE SUBMISSION
-    passwordForm.addEventListener("submit", (e) => {
-        const newPwd = document.getElementById("newPassword").value;
-        const confirmPwd = document.getElementById("confirmNewPassword").value;
-
-        if (newPwd !== confirmPwd) {
+    // TAB NAVIGATION SWITCHING
+    if (navPersonalInfo && navPassword) {
+        navPersonalInfo.addEventListener("click", (e) => {
             e.preventDefault();
-            alert("New passwords do not match.");
-        }
-    });
+            navPersonalInfo.classList.add("active");
+            navPassword.classList.remove("active");
+            personalInfoSection.classList.remove("hiddenSection");
+            passwordSection.classList.add("hiddenSection");
+        });
+
+        navPassword.addEventListener("click", (e) => {
+            e.preventDefault();
+            navPassword.classList.add("active");
+            navPersonalInfo.classList.remove("active");
+            passwordSection.classList.remove("hiddenSection");
+            personalInfoSection.classList.add("hiddenSection");
+        });
+    }
+
+    // PREVIEW PROFILE PICTURE
+    if (imageUploadInput && profileImage) {
+        imageUploadInput.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    profileImage.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    // DISCARD CHANGES
+    const btnDiscardProfile = document.getElementById("btnDiscardProfile");
+    if (btnDiscardProfile) {
+        btnDiscardProfile.addEventListener("click", () => {
+            if (document.getElementById("first_Name")) document.getElementById("first_Name").value = initialFormData.firstName;
+            if (document.getElementById("surname")) document.getElementById("surname").value = initialFormData.surname;
+            if (document.getElementById("address")) document.getElementById("address").value = initialFormData.address;
+            if (document.getElementById("contact")) document.getElementById("contact").value = initialFormData.contact;
+            if (document.getElementById("ward_id")) document.getElementById("ward_id").value = initialFormData.ward_id;
+            
+            if (profileImage) profileImage.src = originalImageSrc;
+            if (imageUploadInput) imageUploadInput.value = "";
+        });
+    }
+
+    const btnDiscardPassword = document.getElementById("btnDiscardPassword");
+    if (btnDiscardPassword && passwordForm) {
+        btnDiscardPassword.addEventListener("click", () => {
+            passwordForm.reset();
+        });
+    }
+
+    // SHOW CONFIRMATION MODAL (PROFILE SAVE)
+    if (btnTriggerModal && modal) {
+        btnTriggerModal.addEventListener("click", (e) => {
+            e.preventDefault();
+            pendingAction = "profile";
+            if (modalPasswordInput) modalPasswordInput.value = "";
+            if (modalError) modalError.classList.add("hiddenError");
+            modal.classList.remove("hiddenModal");
+            if (modalPasswordInput) modalPasswordInput.focus();
+        });
+    }
+
+    // SHOW CONFIRMATION MODAL (PASSWORD UPDATE)
+    if (btnTriggerPasswordModal && modal) {
+        btnTriggerPasswordModal.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            // Run the existing "new passwords match" check before opening the modal
+            const newPwd = document.getElementById("newPassword") ? document.getElementById("newPassword").value : "";
+            const confirmPwd = document.getElementById("confirmNewPassword") ? document.getElementById("confirmNewPassword").value : "";
+            if (newPwd !== confirmPwd) {
+                alert("New passwords do not match.");
+                return;
+            }
+
+            pendingAction = "password";
+            if (modalPasswordInput) modalPasswordInput.value = "";
+            if (modalError) modalError.classList.add("hiddenError");
+            modal.classList.remove("hiddenModal");
+            if (modalPasswordInput) modalPasswordInput.focus();
+        });
+    }
+
+    // CLOSE MODAL (CANCEL BUTTON)
+    if (modalCancelBtn && modal) {
+        modalCancelBtn.addEventListener("click", () => {
+            modal.classList.add("hiddenModal");
+        });
+    }
+
+    // CLOSE MODAL (CLICK OUTSIDE OVERLAY)
+    if (modal) {
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                modal.classList.add("hiddenModal");
+            }
+        });
+    }
+
+    // CONFIRM PASSWORD & SUBMIT WHICHEVER FORM TRIGGERED THE MODAL
+    if (modalConfirmBtn) {
+        modalConfirmBtn.addEventListener("click", () => {
+            const passwordValue = modalPasswordInput ? modalPasswordInput.value.trim() : "";
+            
+            if (!passwordValue) {
+                if (modalError) modalError.classList.remove("hiddenError");
+                return;
+            }
+
+            if (modal) {
+                modal.classList.add("hiddenModal");
+            }
+
+            if (pendingAction === "profile") {
+                if (confirmPasswordInput) confirmPasswordInput.value = passwordValue;
+                if (profileForm) profileForm.submit();
+            } else if (pendingAction === "password") {
+                if (confirmPasswordInputPwd) confirmPasswordInputPwd.value = passwordValue;
+                if (passwordForm) passwordForm.submit();
+            }
+
+            pendingAction = null;
+        });
+    }
+
+    // ALLOW SUBMITTING MODAL WITH ENTER KEY
+    if (modalPasswordInput) {
+        modalPasswordInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                if (modalConfirmBtn) modalConfirmBtn.click();
+            }
+        });
+    }
+
+    // CHANGE PASSWORD TAB FORM VALIDATION
+    if (passwordForm) {
+        passwordForm.addEventListener("submit", (e) => {
+            const newPwd = document.getElementById("newPassword") ? document.getElementById("newPassword").value : "";
+            const confirmPwd = document.getElementById("confirmNewPassword") ? document.getElementById("confirmNewPassword").value : "";
+
+            if (newPwd !== confirmPwd) {
+                e.preventDefault();
+                alert("New passwords do not match.");
+            }
+        });
+    }
 });

@@ -1,3 +1,32 @@
+<?php
+
+session_start();
+
+$error = $_GET["error"] ?? "";
+$success = $_GET["success"] ?? "";
+
+$errorMessages = [
+
+    "invalid" => "Invalid username or password.",
+
+    "inactive" => "Your account is currently inactive. Please contact the administrator.",
+
+    "missing" => "Please enter your username and password.",
+
+    "role" => "Your account has an invalid user role.",
+
+    "system" => "A system error occurred. Please try again later."
+
+];
+
+$successMessages = [
+
+    "registered" => "Your account has been created successfully. You can now log in."
+
+];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -328,6 +357,7 @@
                 gap: 14px;
             }
         }
+        
     </style>
 
 </head>
@@ -359,6 +389,22 @@
                 <h1>Login</h1>
                 <p>Sign in to your M-LINK account.</p>
             </div>
+            <?php if (!empty($error) && isset($errorMessages[$error])): ?>
+
+    <div class="login-error">
+        <?= htmlspecialchars($errorMessages[$error]); ?>
+    </div>
+
+<?php endif; ?>
+
+
+<?php if (!empty($success) && isset($successMessages[$success])): ?>
+
+    <div class="login-success">
+        <?= htmlspecialchars($successMessages[$success]); ?>
+    </div>
+
+<?php endif; ?>
 
             <form class="login-form" action="login_process.php" method="POST" autocomplete="off">
 
