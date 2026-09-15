@@ -65,6 +65,8 @@ if ($response === false) {
     </header>
 
     <!-- RED UTILITY BAR -->
+
+     <!--
     <div class="utilityBar">
         <div class="utilityContainer">
             <div class="utilityLeft">
@@ -77,6 +79,7 @@ if ($response === false) {
             </div>
         </div>
     </div>
+    -->
 
     <!--  WHITE MAIN NAVIGATION BAR -->
     <nav class="mainNavbar"> 
