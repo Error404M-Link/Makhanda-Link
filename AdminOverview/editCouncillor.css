@@ -1,0 +1,302 @@
+/* =====================================================
+   EDIT COUNCILLOR PAGE
+===================================================== */
+
+
+/* -----------------------------
+   GENERAL PAGE
+----------------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    color: #12284a;
+}
+
+
+/* -----------------------------
+   MAIN CONTENT
+----------------------------- */
+
+.contentWorkspace {
+    width: 100%;
+    min-height: 100vh;
+    padding: 32px;
+}
+
+
+/* -----------------------------
+   FORM CARD
+----------------------------- */
+
+.tableContainer {
+    width: 100%;
+    max-width: 1460px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #e0e5eb;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+
+/* -----------------------------
+   PAGE TITLE
+----------------------------- */
+
+.tableContainer > h1 {
+    margin: 0 0 35px 0;
+    font-size: 36px;
+    font-weight: 700;
+    color: #12284a;
+}
+
+
+/* -----------------------------
+   FORM
+----------------------------- */
+
+form {
+    width: 100%;
+}
+
+
+/* -----------------------------
+   LABELS
+----------------------------- */
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #53677f;
+}
+
+
+/* -----------------------------
+   INPUTS
+----------------------------- */
+
+form input {
+    width: 100%;
+    height: 55px;
+    padding: 0 18px;
+
+    border: 1px solid #ccd6e2;
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    font-size: 16px;
+    color: #12284a;
+
+    outline: none;
+
+    transition: all 0.2s ease;
+}
+
+
+/* Input hover */
+
+form input:hover {
+    border-color: #aebdce;
+}
+
+
+/* Input focus */
+
+form input:focus {
+    border-color: #2859b8;
+    box-shadow: 0 0 0 3px rgba(40, 89, 184, 0.10);
+}
+
+
+/* Readonly username */
+
+form input[readonly] {
+    background: #f5f7fa;
+    color: #53677f;
+    cursor: not-allowed;
+}
+
+
+/* -----------------------------
+   REMOVE BR TAG SPACING
+----------------------------- */
+
+form br {
+    display: none;
+}
+
+
+/* -----------------------------
+   LABEL + INPUT SPACING
+----------------------------- */
+
+form label {
+    margin-top: 25px;
+}
+
+form label:first-of-type {
+    margin-top: 0;
+}
+
+
+/* -----------------------------
+   BUTTON AREA
+----------------------------- */
+
+form button,
+form a {
+    margin-top: 35px;
+}
+
+
+/* -----------------------------
+   UPDATE BUTTON
+----------------------------- */
+
+form button {
+    height: 52px;
+    padding: 0 28px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #2859c7;
+    color: white;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+
+/* Button hover */
+
+form button:hover {
+    background: #1f49a8;
+    box-shadow: 0 4px 10px rgba(40, 89, 199, 0.20);
+}
+
+
+/* Button click */
+
+form button:active {
+    transform: translateY(1px);
+}
+
+
+/* -----------------------------
+   CANCEL / BACK LINK
+----------------------------- */
+
+form a {
+    display: inline-block;
+
+    margin-left: 12px;
+
+    padding: 15px 25px;
+
+    border: 1px solid #ccd6e2;
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #53677f;
+
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+
+/* Cancel hover */
+
+form a:hover {
+    background: #f5f7fa;
+    border-color: #aebdce;
+    color: #12284a;
+}
+
+
+/* =====================================================
+   RESPONSIVE DESIGN
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .contentWorkspace {
+        padding: 20px;
+    }
+
+    .tableContainer {
+        padding: 22px;
+    }
+
+    .tableContainer > h1 {
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+
+    form input {
+        height: 50px;
+    }
+
+    form button,
+    form a {
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    form a {
+        margin-top: 12px;
+    }
+}
+
+
+/* =====================================================
+   SMALL MOBILE DEVICES
+===================================================== */
+
+@media (max-width: 480px) {
+
+    .contentWorkspace {
+        padding: 12px;
+    }
+
+    .tableContainer {
+        padding: 18px;
+        border-radius: 8px;
+    }
+
+    .tableContainer > h1 {
+        font-size: 24px;
+    }
+
+    form label {
+        font-size: 15px;
+    }
+
+    form input {
+        font-size: 15px;
+    }
+
+}
