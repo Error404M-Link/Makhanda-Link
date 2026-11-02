@@ -1,0 +1,52 @@
+/*######################## BACK BUTTON (Public Fault Board) ####################################*/
+/* Matches the utility bar / nav accent colours already used across the site:
+   dark green #334e4a, olive/gold accent #917e5a */
+
+.backNavWrapper {
+    max-width: 1200px;
+    margin: 20px auto 0 auto;
+    padding: 0 4%;
+    box-sizing: border-box;
+}
+
+.backNavContainer {
+    display: flex;
+}
+
+.backBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #334e4a;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 8px 18px;
+    border: 2px solid #917e5a;
+    border-radius: 20px;
+    background: #ffffff;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.backBtn svg {
+    stroke: #334e4a;
+    transition: stroke 0.3s ease;
+}
+
+.backBtn:hover {
+    background-color: #917e5a;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.backBtn:hover svg {
+    stroke: #ffffff;
+}
+
+@media screen and (max-width: 480px) {
+    .backBtn {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+    }
+}
