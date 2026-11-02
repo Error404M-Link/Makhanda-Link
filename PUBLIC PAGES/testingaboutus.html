@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - M-Link</title>
+  <style>
+    /* Reset and general styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    /* Slideshow Container */
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: 20px auto;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .mySlides {
+      display: none;
+      width: 100%;
+    }
+
+    .mySlides img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Navigation Buttons */
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 16px;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.3s ease;
+      user-select: none;
+      background-color: rgba(0, 0, 0, 0.5);
+      border: none;
+      text-decoration: none;
+    }
+
+    .prev {
+      left: 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .next {
+      right: 0;
+      border-radius: 4px 0 0 4px;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Fade Animation */
+    .fade {
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+      from { opacity: 0.4; } 
+      to { opacity: 1; }
+    }
+
+    /* Text Content Section */
+    .content-section {
+      text-align: center;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .content-section h2 {
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: #888;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .content-section h3 {
+      font-size: 32px;
+      color: #111;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .content-section p {
+      font-size: 18px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slide Show Section -->
+  <div class="slideshow-container">
+    
+    <div class="mySlides fade" style="display: block;">
+      <img src="About_Us/ux About_Us/06227793-2623-4b5f-83b1-914546d3721e.jpeg" alt="M-Link Team Slide 1">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="About_Us/0d291719-e2dd-4ddc-b439-99dce614288a.jpeg" alt="M-Link Team Slide 2">
+    </div>
+
+    <!-- Navigation Buttons -->
+    <a class="prev" onclick="plusSlides(-1)" aria-label="Previous Slide">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)" aria-label="Next Slide">&#10095;</a>
+  </div>
+
+  <!-- Text Section -->
+  <div class="content-section">
+    <h2>WHO WE ARE</h2>
+    <h3>ABOUT US</h3>
+    <p>Meet the team behind M-Link</p>
+  </div>
+
+  <script>
+    let slideIndex = 1;
+    let slideTimer;
+
+    // Initialize slideshow
+    showSlides(slideIndex);
+    resetTimer();
+
+    // Next/previous controls
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+      resetTimer(); // Reset auto-play countdown when user manually clicks
+    }
+
+    // Display appropriate slide
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      
+      if (n > slides.length) { slideIndex = 1; }    
+      if (n < 1) { slideIndex = slides.length; }
+      
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      
+      slides[slideIndex - 1].style.display = "block";  
+    }
+
+    // Auto transition logic
+    function resetTimer() {
+      clearInterval(slideTimer);
+      slideTimer = setInterval(() => {
+        plusSlides(1);
+      }, 5000); // Transitions every 5 seconds
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,404 @@
+/* =========================================
+   NOTICE PAGE CONTENT
+========================================= */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: #f4f0e7;
+    color: #263238;
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.backNavWrapper {
+    width: 100%;
+    padding-top: 22px;
+}
+
+.backNavContainer {
+    width: 92%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.backBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 18px;
+
+    background: #334e4a;
+    color: white;
+
+    border: 1px solid #917e5a;
+    border-radius: 22px;
+
+    text-decoration: none;
+    font-size: 14px;
+
+    transition: 0.2s ease;
+}
+
+.backBtn:hover {
+    background: #917e5a;
+}
+
+
+/* =========================================
+   PAGE TITLE
+========================================= */
+
+.notice-title {
+    text-align: center;
+
+    color: #334e4a;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    margin: 35px 0 8px;
+}
+
+.notice-title::after {
+    content: "";
+
+    display: block;
+
+    width: 55px;
+    height: 3px;
+
+    background: #917e5a;
+
+    margin: 12px auto 0;
+
+    border-radius: 5px;
+}
+
+
+/* =========================================
+   WARD FILTER
+========================================= */
+
+form {
+    width: 92%;
+    max-width: 750px;
+
+    margin: 30px auto 45px;
+
+    padding: 22px 25px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1ddd4;
+    border-radius: 10px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.06);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+form label {
+    color: #334e4a;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+form select {
+    width: 280px;
+
+    padding: 11px 14px;
+
+    background: #ffffff;
+    color: #333;
+
+    border: 1px solid #c8b991;
+    border-radius: 6px;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+form select:focus {
+    border-color: #334e4a;
+
+    box-shadow:
+        0 0 0 2px rgba(51, 78, 74, 0.08);
+}
+
+form button {
+    padding: 11px 20px;
+
+    border: none;
+    border-radius: 20px;
+
+    background: #334e4a;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+form button:hover {
+    background: #917e5a;
+}
+
+
+/* CLEAR BUTTON */
+
+form .btn {
+    padding: 10px 18px;
+
+    background: transparent;
+    color: #334e4a;
+
+    border: 1px solid #334e4a;
+    border-radius: 20px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+form .btn:hover {
+    background: #334e4a;
+    color: white;
+}
+
+
+/* =========================================
+   NOTICE CONTAINER
+========================================= */
+
+.notice-container {
+    width: 92%;
+    max-width: 1100px;
+
+    margin: 0 auto 80px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: 25px;
+}
+
+
+/* =========================================
+   NOTICE CARD
+========================================= */
+
+.notice-card {
+    position: relative;
+
+    background: #ffffff;
+
+    padding: 26px;
+
+    border-radius: 10px;
+
+    border: 1px solid #e5e0d5;
+    border-top: 4px solid #334e4a;
+
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.07);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.notice-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.11);
+}
+
+
+/* =========================================
+   CATEGORY
+========================================= */
+
+.notice-category {
+    display: inline-block;
+
+    background: #eee8db;
+    color: #6d5c3d;
+
+    padding: 6px 11px;
+
+    border-radius: 20px;
+
+    margin-bottom: 15px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.7px;
+}
+
+
+/* =========================================
+   NOTICE TITLE
+========================================= */
+
+.notice-card h3 {
+    margin: 0 0 12px;
+
+    color: #334e4a;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.notice-card > p {
+    margin: 0 0 20px;
+
+    color: #4d5654;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   NOTICE DETAILS
+========================================= */
+
+.notice-details {
+    margin-top: 20px;
+
+    padding-top: 16px;
+
+    border-top: 1px solid #ece8df;
+}
+
+.notice-details p {
+    margin: 7px 0;
+
+    color: #66706e;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+.notice-details strong {
+    color: #334e4a;
+
+    font-weight: 600;
+}
+
+
+/* AREA */
+
+.notice-details p:first-child {
+    color: #334e4a;
+}
+
+
+/* =========================================
+   EMPTY NOTICE
+========================================= */
+
+.notice-container > .notice-card:only-child {
+    max-width: 700px;
+}
+
+
+/* =========================================
+   REMOVE UNNECESSARY HR SPACE
+========================================= */
+
+body > hr {
+    border: none;
+
+    border-top: 1px solid #dedbd4;
+
+    margin: 20px 0;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .notice-title {
+        font-size: 24px;
+
+        margin-top: 28px;
+    }
+
+
+    form {
+        width: 90%;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        margin-top: 25px;
+    }
+
+
+    form label {
+        margin-bottom: 2px;
+    }
+
+
+    form select {
+        width: 100%;
+    }
+
+
+    form button,
+    form .btn {
+        width: 100%;
+
+        text-align: center;
+    }
+
+
+    .notice-container {
+        width: 90%;
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .notice-card {
+        padding: 22px;
+    }
+}

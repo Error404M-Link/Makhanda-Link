@@ -1,0 +1,838 @@
+/* =========================================
+   PAGE
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+
+/* =========================================
+   HERO HEADER
+========================================= */
+
+.heroHeader {
+    position: relative;
+    width: 100%;
+    min-height: 230px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    text-align: left;
+    background: #334e4a;
+}
+
+.heroBgImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.heroOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(25, 48, 44, 0.65);
+}
+
+.heroContainer {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.heroLogo img {
+    width: 120px;
+    height: auto;
+}
+
+.heroText h1 {
+    margin: 0 0 10px;
+    color: #ffffff;
+    font-size: 34px;
+}
+
+.heroText p {
+    margin: 0;
+    color: #f4f4f4;
+    font-size: 16px;
+}
+
+
+/* =========================================
+   UTILITY BAR
+========================================= */
+
+.utilityBar {
+    background: #917e5a;
+    width: 100%;
+}
+
+.utilityContainer {
+    max-width: 1200px;
+    margin: auto;
+    padding: 9px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.utilityLeft,
+.utilityRight {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.utilityBar a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.utilityBar a:hover {
+    text-decoration: underline;
+}
+
+.utilityBtn {
+    padding: 6px 14px;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+}
+
+
+/* =========================================
+   MAIN NAVIGATION
+========================================= */
+
+.mainNavbar {
+    background: #ffffff;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navContainer {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 30px;
+}
+
+.mainNavLinks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navItem {
+    display: block;
+    padding: 18px 4px;
+    color: #334e4a;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+}
+
+.navItem:hover {
+    color: #917e5a;
+}
+
+.navItem.active {
+    color: #917e5a;
+}
+
+.navItem.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background: #917e5a;
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.backNavWrapper {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.backNavContainer {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.backBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #334e4a;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 17px;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.backBtn:hover {
+    background: #917e5a;
+}
+
+
+/* =========================================
+   NOTICE PAGE TITLE
+========================================= */
+
+.notice-title {
+    text-align: center;
+    color: #334e4a;
+    margin: 35px 0 5px;
+    font-size: 28px;
+}
+
+
+/* =========================================
+   WARD FILTER
+========================================= */
+
+form {
+    width: 90%;
+    max-width: 850px;
+    margin: 15px auto 35px;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+form label {
+    color: #334e4a;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+form select {
+    min-width: 240px;
+    padding: 11px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #333;
+    font-size: 14px;
+    outline: none;
+}
+
+form select:focus {
+    border-color: #917e5a;
+}
+
+form button {
+    background: #334e4a;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 11px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+form button:hover {
+    background: #917e5a;
+}
+
+
+/* =========================================
+   GENERAL BUTTON
+========================================= */
+
+.btn {
+    background: #334e4a;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    transition: 0.3s;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.btn:hover {
+    background: #917e5a;
+    color: #ffffff;
+}
+
+
+/* =========================================
+   NOTICE CONTAINER
+========================================= */
+
+.notice-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto 70px;
+
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: 22px;
+}
+
+
+/* =========================================
+   NOTICE CARD
+========================================= */
+
+.notice-card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 24px;
+    border-left: 5px solid #917e5a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.notice-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================
+   NOTICE CATEGORY
+========================================= */
+
+.notice-category {
+    display: inline-block;
+    background: #eef1e7;
+    color: #334e4a;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+}
+
+
+/* =========================================
+   NOTICE TITLE
+========================================= */
+
+.notice-card h3 {
+    color: #334e4a;
+    margin: 0 0 15px;
+    font-size: 19px;
+    line-height: 1.4;
+}
+
+
+/* =========================================
+   NOTICE DESCRIPTION
+========================================= */
+
+.notice-card > p {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0 0 20px;
+}
+
+
+/* =========================================
+   NOTICE DETAILS
+========================================= */
+
+.notice-details {
+    border-top: 1px solid #e5e5e5;
+    margin-top: 20px;
+    padding-top: 15px;
+}
+
+.notice-details p {
+    margin: 8px 0;
+    color: #666;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.notice-details strong {
+    color: #334e4a;
+}
+
+
+/* =========================================
+   OLD WARD STYLES
+   KEPT FOR OTHER PAGES USING THIS CSS
+========================================= */
+
+.ward {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.wardmap {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.section-heading {
+    text-align: center;
+}
+
+.map-img {
+    height: 250px;
+    width: auto;
+    filter: drop-shadow(
+        0 2px 4px rgba(0, 0, 0, 0.5)
+    );
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 220px;
+    text-align: center;
+}
+
+.card h2 {
+    color: #004d40;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card ul li {
+    margin: 5px 0;
+}
+
+.councillor-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.councillor-card h2 {
+    margin-bottom: 10px;
+}
+
+.councillor-card img {
+    width: 120px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================================
+   OLD NAVBAR STYLES
+   KEPT FOR OTHER PAGES
+========================================= */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 2%;
+    background-color: #334e4a;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5vw;
+    list-style: none;
+    flex-wrap: nowrap;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    position: relative;
+    font-size: 1.5vw;
+}
+
+.link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background-color: #917e5a;
+    transition: width 0.3s ease;
+}
+
+.link:hover {
+    color: #917e5a;
+}
+
+.link:hover::after {
+    width: 100%;
+}
+
+.logo img {
+    width: 10vw;
+    min-width: 80px;
+    max-width: 150px;
+    height: auto;
+}
+
+#navbuttons {
+    display: flex;
+    gap: 5px;
+    margin-left: 20px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    background-color: #334e4a;
+    color: #ffffff;
+    padding: 60px 0 0;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.footerContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 50px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+}
+
+.makanaLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.logoBrand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.logoBrand img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.logoBrand h2 {
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.makanaLogo p {
+    color: #b3c2c0;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 25px;
+    max-width: 380px;
+}
+
+.socials {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 35px;
+}
+
+.socials img {
+    width: 18px;
+    height: 18px;
+    filter: invert(100%);
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.socials img:hover {
+    opacity: 1;
+}
+
+.backToTopBtn {
+    border: 1px solid #ffffff;
+    background: transparent;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    border-radius: 2px;
+}
+
+.backToTopBtn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.siteMap,
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.siteMap h2,
+.contact h2 {
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.siteMap a,
+.contact a {
+    color: #b3c2c0;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 14px;
+    transition: color 0.2s ease;
+}
+
+.siteMap a:hover,
+.contact a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.address {
+    margin-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+}
+
+.address p {
+    color: #8da3a0;
+    font-size: 13px;
+    margin: 4px 0;
+}
+
+.address img {
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+    margin-right: 5px;
+    filter: invert(100%);
+}
+
+.copyrightBar {
+    background-color: #917e5a;
+    padding: 15px 40px;
+    text-align: center;
+}
+
+.copyrightBar p {
+    margin: 0;
+    color: #0b342e;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .heroContainer {
+        width: 92%;
+    }
+
+    .heroLogo img {
+        width: 90px;
+    }
+
+    .heroText h1 {
+        font-size: 28px;
+    }
+
+    .mainNavLinks {
+        gap: 18px;
+        flex-wrap: wrap;
+    }
+
+    .footerContainer {
+        grid-template-columns: 1fr;
+        padding: 40px 8%;
+        gap: 35px;
+    }
+
+    .makanaLogo {
+        grid-column: auto;
+    }
+
+    .siteMap,
+    .contact {
+        align-items: flex-start;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .heroHeader {
+        min-height: 200px;
+    }
+
+    .heroContainer {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .heroLogo img {
+        width: 75px;
+    }
+
+    .heroText h1 {
+        font-size: 24px;
+    }
+
+    .heroText p {
+        font-size: 13px;
+    }
+
+
+    .utilityContainer {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 20px;
+    }
+
+
+    .mainNavLinks {
+        gap: 8px 15px;
+        padding: 8px 0;
+    }
+
+    .navItem {
+        padding: 9px 2px;
+        font-size: 12px;
+    }
+
+
+    .notice-title {
+        font-size: 23px;
+        margin-top: 25px;
+    }
+
+
+    form {
+        width: 92%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    form select {
+        width: 100%;
+        min-width: 0;
+    }
+
+    form button,
+    form .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+
+    .notice-container {
+        width: 92%;
+        grid-template-columns: 1fr;
+    }
+
+    .notice-card {
+        padding: 20px;
+    }
+
+
+    .footerContainer {
+        padding: 35px 25px;
+    }
+
+    .copyrightBar {
+        padding: 15px 20px;
+    }
+}

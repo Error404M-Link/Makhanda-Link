@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | M-Link</title>
+    <link rel="stylesheet" href="ABOUTUS.CSS">
+    <link rel="stylesheet" href="publicfaultBoard.css">
+<style>
+    /* =========================
+       SLIDESHOW CONTAINER & STYLES
+    ========================== */
+    .about-hero {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        min-height: 400px; /* Adjust height as needed */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-slideshow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        animation: slideAnimation 50s infinite linear;
+    }
+
+    /* Relative paths directly from PUBLIC PAGES into teamphoto */
+    .slide:nth-child(1)  { background-image: url('teamphoto/team1.jpeg');  animation-delay: 0s; }
+    .slide:nth-child(2)  { background-image: url('teamphoto/team2.jpeg');  animation-delay: 5s; }
+    .slide:nth-child(3)  { background-image: url('teamphoto/team3.jpeg');  animation-delay: 10s; }
+    .slide:nth-child(4)  { background-image: url('teamphoto/team10.jpeg');  animation-delay: 15s; }
+    .slide:nth-child(5)  { background-image: url('teamphoto/team5.jpeg');  animation-delay: 20s; }
+    .slide:nth-child(6)  { background-image: url('teamphoto/team6.jpeg');  animation-delay: 25s; }
+    .slide:nth-child(7)  { background-image: url('teamphoto/team7.jpeg');  animation-delay: 30s; }
+    .slide:nth-child(8)  { background-image: url('teamphoto/team8.jpeg');  animation-delay: 35s; }
+    .slide:nth-child(9)  { background-image: url('teamphoto/team9.jpeg');  animation-delay: 40s; }
+    .slide:nth-child(10) { background-image: url('teamphoto/team4.jpeg'); animation-delay: 45s; }
+
+    /* Keyframes for smooth crossfade transitions across 10 images (50s total cycle) */
+    @keyframes slideAnimation {
+        0%   { opacity: 0; }
+        2%   { opacity: 1; }
+        10%  { opacity: 1; }
+        12%  { opacity: 0; }
+        100% { opacity: 0; }
+    }
+
+    /* Ensure overlay content sits on top of the slideshow */
+.hero-overlay {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+    background: transparent; /* Removes the dark box */
+    padding: 60px 20px;
+}
+</style>
+</head>
+
+<body>
+
+   <header class="heroHeader">
+        <img src="MakhandaBackgroundPic.png" alt="Background" class="heroBgImage">
+        <div class="heroOverlay"></div>
+        <div class="heroContainer">
+            <div class="heroLogo">
+                <img src="MakanaLogo.svg" alt="Makhanda logo">
+            </div> 
+            <div class="heroText">
+                <h1>Makana Municipality</h1>
+                <p>Public Fault Board. Empowering our community together.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- RED UTILITY BAR -->
+
+    <div class="utilityBar">
+        <div class="utilityContainer">
+            <div class="utilityLeft">
+                <a href="#">Documentation</a>
+                <a href="#">Support</a>
+            </div>
+            <div class="utilityRight">
+                <a href="login.php" class="utilityBtn btn">Login</a>
+                <a href="register.php" class="utilityBtn btn">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHITE MAIN NAVIGATION BAR -->
+    <nav class="mainNavbar"> 
+        <div class="navContainer">
+            <ul class="mainNavLinks">
+                <li><a href="index.php" class="navItem">Home</a></li>
+                <li><a href="PublicFaultBoard.php" class="navItem">Faults</a></li>
+                <li><a href="ward_summaries.php" class="navItem"> Wards </a></li>
+                <li><a href="ABOUTUS.html" class="navItem active">About Us</a></li>
+                <li><a href="about_us_page.html" class="navItem active">About M-Link</a></li>
+                <li><a href="view_notices.php" class="navItem">Notices</a></li>
+                <li><a href="contactUs.html" class="navItem">Contact us</a></li>
+            </ul> 
+        </div>
+    </nav>
+
+    <section class="about-hero">
+
+        <!-- 10 BACKGROUND SLIDES -->
+        <div class="hero-slideshow">
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+        </div>
+
+        <div class="hero-overlay">
+
+            <span>WHO WE ARE</span>
+
+            <h1>ABOUT US</h1>
+
+            <p>
+                Meet the team behind M-Link
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         OUR DEVELOPERS
+    ========================== -->
+    <section class="developers-section">
+
+        <div class="developer-heading">
+            <h2>MEET OUR TEAM</h2>
+            <p>
+                The M-Link development team is made up of passionate
+                Information Systems students from Rhodes University.
+                Our combined knowledge in system development, project
+                management, systems analysis, business analysis,
+                infrastructure planning and change management has
+                allowed us to build a platform that strengthens
+                communication between communities and the municipality.
+            </p>
+        </div>
+
+        <!-- =========================
+             DEVELOPER CARDS
+        ========================== -->
+
+        <div class="developer-container">
+
+
+            <!-- CARD 1 -->
+            <div class="developer-card">
+
+                <div class="developer-image">
+                    <img src="teamphoto/Faith.jpeg" alt="Faith Mlambo">
+                </div>
+
+                <div class="developer-info">
+
+                    <h3>Faith Mlambo</h3>
+
+                    <h4>
+                        PROJECT MANAGER<br>
+                        FULLSTACK DEVELOPER<br>
+                        DATABASE DEVELOPER
+                    </h4>
+
+                    <p>
+                        The team leader, responsible for planning,
+                        organising and overseeing the entire project
+                        to ensure it is completed on time and according
+                        to the client's requirements.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 2 -->
+            <div class="developer-card">
+
+                <div class="developer-image">
+                    <img src="teamphoto/Master.jpeg" alt="Master Ganyali">
+                </div>
+
+                <div class="developer-info">
+
+                    <h3>Master Ganyali</h3>
+
+                    <h4>
+                        SYSTEM ANALYST<br>
+                        FULLSTACK DEVELOPER
+                    </h4>
+
+                    <p>
+                        Responsible for understanding the client's
+                        needs and translating them into clear system
+                        requirements and technical specifications.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 3 -->
+            <div class="developer-card">
+
+                <div class="developer-image">
+                    <img src="teamphoto/qhamani.jpeg" alt="Qhamani Somhlahlo">
+                </div>
+
+                <div class="developer-info">
+
+                    <h3>Qhamani Somhlahlo</h3>
+
+                    <h4>
+                        CHANGE MANAGEMENT ANALYST<br>
+                        FRONTEND DEVELOPER
+                    </h4>
+
+                    <p>
+                        Responsible for helping the team successfully
+                        adapt to new systems, technologies and changes
+                        throughout the project.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 4 -->
+            <div class="developer-card">
+
+                <div class="developer-image">
+                    <img src="teamphoto/zevile.jpeg" alt="Zevile Ngwabi">
+                </div>
+
+                <div class="developer-info">
+
+                    <h3>Zevile Ngwabi</h3>
+
+                    <h4>
+                        BUSINESS ANALYST<br>
+                        FRONTEND DEVELOPER
+                    </h4>
+
+                    <p>
+                        Responsible for understanding the business
+                        needs and translating them into clear
+                        requirements for the system to be built.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 5 -->
+            <div class="developer-card">
+
+                <div class="developer-image">
+                    <img src="teamphoto/Noah.jpeg" alt="Noah Nyathi">
+                </div>
+
+                <div class="developer-info">
+
+                    <h3>Hlompho Nyathi</h3>
+
+                    <h4>
+                        INFRASTRUCTURE MANAGER<br>
+                        FULLSTACK DEVELOPER<br>
+                        UI & UX DESIGNER<br>
+                        TESTER<br>
+                        DATABASE DEVELOPER
+                    </h4>
+
+                    <p>
+                        Responsible for ensuring that the technical
+                        environment supporting the website and system
+                        remains reliable, secure and available.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+</html>

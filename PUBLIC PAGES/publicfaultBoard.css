@@ -1,0 +1,1532 @@
+body::-webkit-scrollbar {
+    /*##### Removing the scroll bar ######*/
+    display: none;
+}
+
+/* FONTS */
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: whitesmoke;
+    padding: 0;
+    margin: 0;
+}
+/*################### PAGE HEADER ###################*/
+
+.faultsHeader{
+    color: rgb(20, 45, 7);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+
+    margin: 50px;
+}
+
+.faultsHeader h2{
+    font-size: 2.2rem;
+    color: rgb(20, 45, 7);
+    font-weight: 700;
+    max-width: 600px;
+}
+
+/*########################### BACK BUTTON ################################*/
+
+.backLinkWrapper {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+.backLink {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+.backLink:hover {
+    text-decoration: underline;
+}
+
+
+/*################## HEADER AND NAVIGATION BAR #########################################*/
+
+/* Branding Section */
+.heroHeader {
+    position: relative;  
+    width: 100%;
+    overflow: hidden;      
+    display: flex;
+    align-items: center;
+    background-color: #334e4a;
+}
+
+/* The background image - constrained completely to the header limits */
+.heroBgImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    
+    object-position: center;
+    z-index: 1;          
+}
+
+/* The dark tint layer - matching your original background design */
+.heroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45));
+    z-index: 2;            /* Sits directly over the image but below the text */
+}
+
+/* Foreground content grid layout */
+.heroContainer {
+    position: relative;
+    z-index: 3;            /* Pushes your text and logo safely over the tint and picture layers */
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 60px 4%;      /* Spacing controls the height of your header block */
+}
+
+.heroLogo img {
+    height: 200px;
+    width: auto;
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
+}
+
+.heroText h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: white;
+    text-shadow: 0px 2px 4px rgba(0,0,0,0.6);
+}
+
+.heroText p {
+    font-size: 1rem;
+    color: white;
+    opacity: 0.9;
+    text-shadow: 0px 1px 3px rgba(0,0,0,0.6);
+}
+
+/* Red Utility Bar */
+.utilityBar {
+    background-color: #B5C29E;
+    color: white;
+    font-size: 0.85rem;
+}
+
+.utilityContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.utilityLeft a, .utilityRight a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.utilityLeft a:hover, .utilityRight a:hover {
+    color: white;
+}
+
+.utilityRight {
+    display: flex;
+    gap: 5px;
+}
+
+.utilityLeft{
+    /*margin-left: 3.3%;*/
+}
+
+.utilityRight a.utilityBtn {
+    background-color: transparent;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 15px;
+    border: 2px solid #8f7036;
+    transition: 0.4s;
+    font-size: 0.9vw;
+}
+
+.utilityRight a.utilityBtn:hover{
+    background-color: #604c25;
+    transform: translateY(-4px);
+    color: aliceblue;
+}
+
+/* White Main Navbar */
+.mainNavbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 60px;
+}
+
+.mainNavLinks {
+    display: flex;
+    list-style: none;
+    gap: 1.7vw;
+    height: 100%;
+    list-style: none;
+    flex-wrap: nowrap; 
+    align-items: center;
+}
+
+.navItem {
+    text-decoration: none;
+    color: #555555;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 20px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.navItem:hover, .navItem.active {
+    color: #917e5a;
+}
+
+/* Small visual dot indicator below active link */
+.navItem.active::after {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: #c64b39;
+    
+}
+
+/* ########### NAV BAR AND HEADER RESPONSIVENESS #######################*/
+@media screen and (max-width: 768px) {
+    .heroContainer {
+        flex-direction: column;
+        text-align: center;
+    }
+    .utilityContainer, .navContainer {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        gap: 10px;
+    }
+    .mainNavLinks {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+}
+/*######################################################################### */
+
+hr{
+    background-color: #917e5a;
+}
+/*######################## back button ####################################*/
+
+
+/*#################### Emegerncy contact and stuff ###########################*/
+
+.emergencyBanner {
+    background: none;
+    color: black;
+    text-align: center;
+    font-size: 0.9rem;
+}
+.emergencyBanner a {
+    color: #ffd54f;
+    text-decoration: none;
+    font-weight: bold;
+}
+.emergencyContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.emergencyIcon {
+    font-size: 1.5rem;
+    color: red;
+}
+
+/*######################## SEACHING AND FILTER ############################## */
+
+.searchFilterWrapper{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: flex-end;
+    margin: 8px auto 20px auto;
+    box-sizing: border-box;
+    padding: 0 4%;
+}
+
+.filterDropdown{
+    box-sizing: border-box;
+}
+.searchBox, .filterDropdown select {
+    background: #ffffff;
+    border: 1px solid #5b510f;
+    border-radius: 30px;
+    height: 40px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #333333;
+    transition: border-color 0.2s ease;
+}
+.searchBox{
+    position: relative;
+    min-width: 200px;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 30px;
+    border: 1px solid #5b510f;
+}
+
+.searchBox input{
+    width: 80%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    padding-left: 20px;
+    outline: none;
+}
+
+.searchBox .searchIcon{
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+#categoryFilter, #statusFilter{
+    flex: 1;
+}
+
+.filterDropdown select {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 35px;
+    cursor: pointer;
+    outline: none;
+                    /* Custom dropdown */
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 14px) 50%;
+}
+
+.searchBox:hover, .filterDropdown select:hover{
+    border-color: #6c6565;
+}
+
+.searchBox:focus-within{
+    border-color: #272424;
+}
+
+/* ######################### MAP #################################*/
+#grahamstownMap {
+    max-height: 500px;
+    height: 500px;
+    width: 98%;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin: 0 auto 10px auto;
+    position: relative; 
+}
+
+/* The Gradient Overlay Layer */
+#grahamstownMap::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    
+    /* Gradient: Fully transparent at the top, fading to a smooth dark shadow at the bottom */
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 50%,     /* Stays clear for the top 60% of the map */
+        rgba(0, 0, 0, 0.15) 85%,  /* Begins turning into a subtle shadow */
+        rgba(0, 0, 0, 0.45) 100%  /* Darkest point at the very bottom */
+    );
+    
+    z-index: 999;
+}
+.leaflet-control-attribution {
+    display: none !important;
+}
+.leaflet-control-zoom {
+    display: none !important;
+}
+
+
+/* ####################### Fault Card grid ########################## */
+
+.faultGrid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 50px 0px;
+    max-width: 1500px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.faultCard{
+    max-width: 340px;
+    width: 100%;
+    margin: 10px auto;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    transition: background-color 0.3s ease;
+}
+
+.faultCard:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08)
+}
+
+.cardImageWrapper{
+    height: 160px;
+    background-size: cover;
+    background-position: center;
+    background-color: #eaeaea;
+    position: relative;
+    border-bottom: 1px solid #e0e0e0;
+    background-image: linear-gradient(to top right, transparent 49.5%, #ccc 49.5%, #ccc 50.5%, transparent 50.5%),
+                      linear-gradient(to top left, transparent 49.5%, #ccc 49.5%, #ccc 50.5%, transparent 50.5%);
+}
+
+.statusBadge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    color: #333;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.statusBadge.open { border-left: 4px solid #dc3545; }
+.statusBadge.reported { border-left: 4px solid #fd7e14; }
+.statusBadge.in-progress { border-left: 4px solid #007bff; }
+.statusBadge.pending { border-left: 4px solid #ffc107; }
+.statusBadge.resolved { border-left: 4px solid #28a745; }
+.statusBadge.unknown { border-left: 4px solid #6c757d; }
+
+.cardContent{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: none;
+    border: 5px solid #ffffff;
+    padding: 30px;
+    width: 100%;
+    transition: 0.4s ease-in-out;
+    box-sizing: border-box;
+}
+
+.cardContent .location, .cardContent .timeElapsed {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0 0 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.cardContent h3{
+    font-size: 1.15rem;
+    margin: 0 0 10px 0;
+    color: #111;
+    line-height: 1.3;
+}
+
+.ticketBoardContainer{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+h2{
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #111;
+}
+
+.cardContent .time-elapsed {
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.viewBtn {
+    margin-top: auto;
+    text-align: center;
+    padding: 9px 12px;
+    border: 1px solid #bbb;
+    background: #ffffff;
+    border-radius: 4px;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: background 0.15s, border-color 0.15s;
+
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+}
+
+.viewBtn:hover {
+    background: #f5f5f5;
+    border-color: #888;
+}
+
+/* .viewBtn is now rendered as a <button> so the popup can hook into its click event */
+button.viewBtn {
+    font-family: inherit;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+#faultResultsContainer:empty {
+    padding: 0;
+}
+
+.centerBtnWrapper {
+    text-align: center;
+}
+
+.viewAllBtn {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #333;
+    background: rgb(91, 192, 173);
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.viewAllBtn:hover {
+    color: white;
+    background: rgb(65, 144, 129);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(19, 18, 18, 0.5); /* add depth*/
+}
+
+/*################### FLOATING Report a Fault button ########################## */
+
+.floatingBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    
+    width: 150px;
+    padding: 12px;
+    font-size: 18px;
+    background: rgb(105, 208, 189);
+    
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+
+    display: inline-block; 
+    transition: 0.3s ease;
+}
+.floatingBtn:hover {
+    background: rgb(65, 144, 129);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(19, 18, 18, 0.5); /* add depth*/
+}
+
+/*########################## How it works ############################## */
+
+.card1{
+    background-color: rgb(187, 216, 225);
+}
+.card1 img{
+    background-color: rgb(113, 200, 229);
+}
+
+.card2{
+    background-color: rgb(213, 160, 160);
+}
+.card2 img{
+    background-color: rgb(207, 119, 119);
+}
+
+.card3{
+    background-color: rgb(208, 187, 148);
+}
+.card3 img{
+    background-color: rgb(179, 139, 66);
+}
+
+.card4{
+    background-color: rgb(179, 209, 179);
+}
+.card4 img{
+    background-color: rgb(105, 186, 105);
+}
+
+#howItWorksWrapper{
+    width: 100%;
+    background-color: #e5e8ef;
+    margin: 50px auto 0px auto;
+    padding: 50px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.HowItWorksHeader{
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    width: 90%;
+    margin: auto;
+}
+
+.howItWorksGrid{
+    max-width: 1200px;
+    width: 90%;
+    margin: 40px auto;
+    display: flex;
+}
+
+.HowItWorksHeaderText strong{
+    font-size: 2.2rem;
+    color: #122853;
+    font-weight: 700;
+    max-width: 600px;
+}
+
+
+/* Class added via JavaScript to reveal the mobile popup window overlay */
+#howItWorksWrapper.show-modal {
+    display: block;
+}
+
+#howItWorksWrapper h3{
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #111;
+
+    padding: 20px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.howItWorksGrid{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.howItWorksCard{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 350px;
+    border: 5px solid #ffffff;
+    padding: 30px;
+    transition: 0.4s ease-in-out;
+}
+
+.howItWorksCard img {
+    font-size: 2rem;
+    color: #122853;
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.howItWorksCard strong{
+    color: #122853;
+    font-size: 1.4rem;
+    margin-top: 20px;
+}
+
+.howItWorksCard p{
+    color: #122853;
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.howItWorksCard:hover{
+    transition: 0.3s ease;
+    transform: translateY(-2px);
+}
+
+.howItWorksCard p:nth-of-type(1) {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 0 0 8px 0;
+    color: #111;
+}
+
+.howItWorksCard p:nth-of-type(2) {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.ServiceHelpButton{
+    color: #535353;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    text-align: center;
+    padding: 0px 10px;
+}
+.ServiceHelpButton a{
+    color: #014dd5;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+/*############################## Styling the stats ###########################*/
+
+
+#FaultStats {
+    padding: 48px 24px;
+    text-align: center;
+}
+
+#FaultStats h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 36px;
+}
+
+/* Row layout */
+.categoryList {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.categoryItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 28px 32px;
+    min-width: 160px;
+    flex: 1;
+    max-width: 220px;
+}
+
+/* Category label */
+.categoryItem > span {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: center;
+}
+
+/* Number counter box */
+.statCounter {
+    overflow: hidden;
+    height: 56px;          /* must match span height below */
+}
+
+.statReel {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.statReel span {
+    display: block;
+    height: 56px;
+    line-height: 56px;
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #222;
+    text-align: center;
+}
+
+/*########################## TICKET DETAIL POPUP (View Details) ##########################*/
+
+.ticketModalOverlay {
+    display: none;
+    position: fixed;
+    z-index: 10001;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.ticketModalOverlay.show-ticket-modal {
+    display: flex;
+}
+
+.ticketModalBox {
+    position: relative;
+    background: #ffffff;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 520px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+}
+
+.closeTicketModal {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s ease;
+}
+
+.closeTicketModal:hover {
+    color: #111;
+}
+
+.ticketModalBox h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.25rem;
+    color: #111;
+    padding-right: 20px;
+}
+
+.ticketModalDescription {
+    margin: 16px 0;
+    color: #444;
+    line-height: 1.5;
+}
+
+.ticketModalMeta {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid #eee;
+    padding-top: 14px;
+}
+
+.ticketModalMeta li {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.ticketModalMeta li strong {
+    color: #222;
+}
+
+.ticketModalImages {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    margin: 16px 0;
+}
+
+.ticketModalImages img {
+    height: 140px;
+    width: auto;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/*################################ FOOTER ####################################*/
+
+footer {
+    background-color: #334e4a;
+    color: #ffffff;
+    padding: 60px 0 0 0;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.footerContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* left split for logo and description */
+    gap: 60px;
+    padding-bottom: 50px;
+}
+
+.makanaLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.logoBrand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.logoBrand img{
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.logoBrand h2 {
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.makanaLogo p {
+    color: #b3c2c0;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 25px 0;
+    max-width: 380px;
+}
+
+.socials {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 35px;
+}
+
+.socials img {
+    width: 18px;
+    height: 18px;
+    filter: invert(100%); /* Turns dark icons clean white */
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.socials img:hover {
+    opacity: 1;
+}
+
+.backToTopBtn {
+    border: 1px solid #ffffff;
+    background: transparent;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    border-radius: 2px;
+}
+
+.backToTopBtn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.siteMap, .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.siteMap h2, .contact h2 {
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.siteMap a, .contact a {
+    color: #b3c2c0;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 14px;
+    transition: color 0.2s ease;
+}
+
+.siteMap a:hover, .contact a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.address {
+    margin-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+}
+
+.address p {
+    color: #8da3a0;
+    font-size: 13px;
+    margin: 4px 0;
+}
+
+.copyrightBar {
+    background-color: #917e5a;
+    padding: 15px 40px;
+    text-align: center;
+}
+
+.copyrightBar p {
+    margin: 0;
+    color: #0b342e; 
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/*#################### MEDIA QUERIES (RESPONSIVENESS) #########################*/
+
+@media screen and (min-width: 768px){
+    .mobileToggleWrapper{
+    display: none;
+    }
+    .closeHowItWorks{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px){
+
+    .heroHeader {
+        max-height: 200px;
+    }
+
+    .heroContainer {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        padding: 35px 20px;
+        gap: 15px;
+    }
+
+    .heroLogo img {
+        height: 65px;
+    }
+
+    .heroText h1 {
+        font-size: 1.75rem;
+    }
+
+    .heroText p {
+        font-size: 0.9rem;
+    }
+
+    .utilityContainer {
+        flex-direction: row;
+        justify-self: space-between;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 15px;
+    }
+
+    .utilityLeft{
+        justify-content: flex-start;
+        gap: 5px;
+    }
+    
+    .utilityRight {
+        justify-content: flex-end;
+        gap: 5px;
+    }
+
+    .navContainer::-webkit-scrollbar {
+        display: none; /* Hide scrollbar Chrome/Safari */
+    }
+
+    .mainNavLinks {
+        justify-content: flex-start;
+        width: 100%;
+        gap: 15px;
+    }
+
+    /* ################## Search and Stuff ##############*/
+
+    /* Hide search bar completely on mobile screens */
+    .searchBox {
+        display: none;                      
+    }
+
+    .searchFilterWrapper {
+        display: flex;                          
+        flex-direction: row;                    
+        justify-content: space-between;         
+        align-items: center;                    
+        gap: 8px;                              
+        margin: 11px auto;
+        width: 100%;                            
+    }
+
+    .filterDropdown {
+        display: flex;                        
+        flex: 1 1 50%;                          
+        min-width: 0;                          
+    }
+
+    .filterDropdown select {
+        width: 100%; 
+        height: 32px;                           
+        font-size: 11px;                        
+        padding-left: 50px;                     
+        padding-right: 22px;    
+        border-radius: 20px;
+        background-position: calc(100% - 8px) 50%;
+    }
+
+    /* ################# NAVIGATION BAR #################### */
+
+    .nav-links{
+        display: block;
+        gap: 10px;
+        padding: 0;
+    }
+
+    .nav-links li {
+        margin-bottom: 10px; 
+    }
+
+    .navbar{
+        display: block;
+        gap: 10px;
+        width: 25%;
+    }
+
+    #navbuttons{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .btn{
+        display: inline-block;
+        width: max-content;
+        text-align: center;
+    }
+
+
+    #grahamstownMap{
+        height: 350px;
+        margin-bottom: 30px;
+    }
+    .howItWorksGrid{
+        display: block;
+    }
+
+    /* ###### SEARCH AND FILTER ##############*/
+
+    .searchFilterWrapper{
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
+        justify-content: center;
+        margin: 25px auto 20px auto;
+        box-sizing: border-box;
+        padding: 0 4%;
+    }
+    /*################ Emergency contact ##################################*/
+
+    .emergencyContent {
+        display: flex;                         
+        flex-direction: row;                    
+        flex-wrap: nowrap;                      
+        justify-content: center;                
+        align-items: center;                    
+        gap: 8px;                              
+        padding: 0 10px;         
+    }
+
+    .emergencyBanner {
+        font-size: 0.75rem;                    
+    }
+
+    .emergencyIcon {
+        font-size: 1.1rem;                     
+        flex-shrink: 0;                         
+    }
+
+    .emergencyBanner a {
+        white-space: nowrap;                   
+        flex-shrink: 0;                         
+    }
+
+    .floatingBtn {   
+    width: 120px;
+    padding: 10px;
+    font-size: 15px;
+}
+
+/* ################# STATS ######################## */
+
+    #FaultStats {
+        padding: 20px 10px;        
+    }
+
+    #FaultStats h2 {
+        font-size: 1.05rem;                     
+        margin-bottom: 10px;                 
+    }
+
+    .categoryList {
+        display: flex;           
+        flex-direction: row;                    
+        flex-wrap: nowrap;                      
+        justify-content: space-between;        
+        gap: 5px;                               
+        width: 100%;                         
+        box-sizing: border-box;               
+    }
+
+    .categoryItem {
+        padding: 12px 4px;                     
+        min-width: 0;                          
+        max-width: none;                        
+        flex: 1 1 0px;                         
+    }
+
+    .categoryItem > span {
+        font-size: 0.7rem;                      
+        letter-spacing: 0.03em;                 
+    }
+
+    .statCounter {
+        height: 40px;                           
+    }
+
+    .statReel span {
+        height: 40px;                           
+        line-height: 40px;                      
+        font-size: 1.8rem;                      
+    }
+
+    /* ########################### FAULT CARD ##################################*/
+
+    .faultGrid {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 20px 10px;
+        box-sizing: border-box;
+    }
+
+    .faultCard {
+        flex: 1 1 calc(50% - 5px);
+        max-width: calc(50% - 5px);
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .cardImageWrapper {
+        height: 110px;
+    }
+
+    .statusBadge {
+        top: 6px;
+        right: 6px;
+        padding: 3px 6px;
+        font-size: 0.65rem;
+    }
+
+    .cardContent {
+        padding: 10px;                    
+        border: none;
+    }
+
+    .cardContent h3 {
+        font-size: 0.88rem;                   
+        margin-bottom: 6px;
+    }
+
+    .cardContent .location, 
+    .cardContent .timeElapsed {
+        font-size: 0.70rem;
+        margin-bottom: 6px;                     
+    }
+
+    .viewBtn {
+        padding: 6px 4px;                       
+        font-size: 0.72rem;                
+        width: 100%;                           
+        box-sizing: border-box;       
+        white-space: nowrap;         
+        overflow: hidden;                       
+        text-overflow: ellipsis;               
+        display: block;                         
+    }
+
+    /*####################### Mobile "How it works" #####################*/
+
+    .mobileToggleWrapper{
+        display: flex;
+        flex: 1;
+        text-align: center;
+        margin-bottom: 25px;
+        margin-top: 20px;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    #openhowItWorksBtn {
+        background-color: #ffffff;
+        border: 1px solid #333;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    #openhowItWorksBtn {
+        display: inline-block;
+        padding: 12px 30px;
+        border: 1px solid #333;
+        background: rgb(91, 192, 173);
+        color: #333;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 500;
+        transition: 0.3s ease;
+        font-weight: 550;
+    }
+
+    .centerBtnWrapper2{
+        display: none;
+    }
+
+    #openhowItWorksBtn:hover {
+        color: white;
+        background: rgb(65, 144, 129);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 10px rgba(19, 18, 18, 0.5); /* add depth*/
+    }
+
+    #howItWorksWrapper {
+        display: none; /* COMPLETELY HIDDEN BY DEFAULT ON MOBILE */
+        position: fixed;
+        z-index: 10000; /* Ensures it floats cleanly above the Leaflet map layers */
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); /* Centers the modal perfectly on viewport */
+        width: 80%;
+        max-width: 400px;
+        max-height: 90vh;
+        background-color: #ffffff;
+        border: 1px solid #d3d3d3;
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        box-sizing: border-box;
+        overflow-y: auto;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 20px 40px 20px;
+    }
+
+    footer {
+        padding-top: 35px;                   
+    }
+
+    .footerContainer {
+        grid-template-columns: 1fr;              
+        gap: 32px;                             
+        padding: 0 20px 35px 20px;        
+        text-align: center;                   
+    }
+
+    .makanaLogo, 
+    .siteMap, 
+    .contact {
+        align-items: center;                   
+        width: 100%;                       
+    }
+
+    .logoBrand {
+        justify-content: center;               
+        margin-bottom: 10px;                    
+    }
+
+    .logoBrand img {
+        max-width: 200px;                       
+        margin-bottom: 15px;                    
+    }
+
+    .makanaLogo p {
+        font-size: 13px;                        
+        margin-bottom: 20px;                    
+        max-width: 100%;                       
+    }
+
+    .socials {
+        justify-content: center;               
+        margin-bottom: 25px;                   
+        gap: 20px;                             
+    }
+
+    .socials img {
+        width: 22px;                            
+        height: 22px;                           
+    }
+
+    .siteMap h2, 
+    .contact h2 {
+        margin-bottom: 15px;                    
+        font-size: 13px;                        
+        text-transform: uppercase;              
+    }
+
+    .siteMap a, 
+    .contact a {
+        font-size: 13px;                        
+        margin-bottom: 12px;                    
+        padding: 2px 0;                        
+    }
+
+    .address {
+        width: 100%;                            
+        margin-top: 10px;                       
+        padding-top: 12px;                     
+    }
+
+    .address p {
+        font-size: 12px;                        
+    }
+
+    .backToTopBtn {
+        width: 100%;                            
+        justify-content: center;                
+        padding: 12px 16px;                     
+        box-sizing: border-box;                 
+    }
+
+    .copyrightBar {
+        padding: 12px 20px;                     
+    }
+
+    .copyrightBar p {
+        font-size: 11px;                       
+        line-height: 1.4;                       
+    }
+}
+
+/* Small Mobile Screens (480px and down) */
+@media screen and (max-width: 480px) {
+    .heroText h1 {
+        font-size: 1.5rem;
+    }
+
+    .heroLogo img {
+        height: 55px;
+    }
+
+    .utilityRight a.utilityBtn {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+    }
+    
+    .utilityLeft a {
+        font-size: 0.75rem;
+        margin-right: 0;
+    }
+
+    .logoBrand img {
+        max-width: 170px;                     
+    }
+}
