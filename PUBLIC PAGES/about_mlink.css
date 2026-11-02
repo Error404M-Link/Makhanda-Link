@@ -1,0 +1,411 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    background-color: #ffffff;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.about-section {
+    width: 86%;
+    margin: 0 auto;
+    padding: 70px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+}
+.about-content h2,
+.vision-content h2,
+.mission-container h2 {
+    font-size: 32px;
+    color: #456b61;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+.about-content p,
+.vision-content p,
+.mission-container p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 18px;
+}
+.highlight-box {
+    margin-top: 30px;
+    padding: 20px 25px;
+    border-left: 4px solid #456b61;
+    background-color: #f3f5f4;
+}
+
+.highlight-box h3 {
+    font-size: 21px;
+    color: #344f48;
+    margin-bottom: 8px;
+}
+.highlight-box p {
+    margin-bottom: 0;
+}
+
+/* =========================
+   WHAT M-LINK OFFERS
+========================= */
+
+.offers-section {
+    padding: 80px 8%;
+    background: #f5f7f8;
+    text-align: center;
+}
+
+.offers-heading {
+    max-width: 800px;
+    margin: 0 auto 50px;
+}
+
+.offers-heading h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.offers-heading p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #555;
+}
+
+.offers-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.offer-card {
+    background: white;
+    padding: 35px 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.offer-card:hover {
+    transform: translateY(-8px);
+}
+
+.offer-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.offer-card h3 {
+    font-size: 21px;
+    margin-bottom: 12px;
+}
+
+.offer-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #666;
+}
+
+.mission-container {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.mission-container h2 {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.mission-container p {
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* TEAM SECTION */
+
+.developers-section {
+    padding: 70px 4%;
+    background-color: #ffffff;
+}
+
+
+/* Heading */
+
+.developer-heading {
+    max-width: 850px;
+    margin: 0 auto 45px auto;
+    text-align: center;
+}
+
+.developer-heading h2 {
+    font-size: 34px;
+    color: #303b38;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.developer-heading h2::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 3px;
+    background-color: #456b61;
+    margin: 12px auto;
+}
+
+.developer-heading p {
+    font-size: 16px;
+    color: #666;
+}
+
+
+/* TEAM MEMBER CARDS */
+
+.developer-container {
+    width: 100%;
+    display: grid;
+
+    /*
+       Five cards across the page,
+       matching the wireframe.
+    */
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 15px;
+    align-items: stretch;
+}
+
+
+/* Individual card */
+
+.developer-card {
+    border: 1px solid #d8d8d8;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 20px 15px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.developer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Developer picture */
+
+.developer-card > img {
+    width: 105px;
+    height: 105px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto 18px auto;
+    border: 2px solid #456b61;
+}
+
+
+/* Developer name */
+
+.developer-card h3 {
+    font-size: 19px;
+    color: #303b38;
+    margin-bottom: 3px;
+}
+
+
+/* Developer position */
+
+.developer-card h4 {
+    font-size: 12px;
+    letter-spacing: 0.7px;
+    color: #456b61;
+    margin-bottom: 12px;
+}
+
+
+/* DEVELOPER DISCRIPTION  */
+
+.developer-card p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* TABLE */
+
+@media screen and (max-width: 1100px) {
+
+    .navbar {
+        padding: 15px 3%;
+    }
+
+    .tagline {
+        display: none;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .developer-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+
+/* MOBILE */
+
+@media screen and (max-width: 800px) {
+
+    /* NAVBAR */
+
+    .navbar {
+        min-height: 80px;
+        padding: 10px 5%;
+    }
+
+    .logo img {
+        width: 55px;
+        height: 55px;
+    }
+
+    .brand-text {
+        border-right: none;
+        padding-right: 0;
+    }
+
+    .brand-text h1 {
+        font-size: 23px;
+    }
+
+    .brand-text span {
+        font-size: 13px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+
+    /* HERO */
+
+    .about-hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 7%;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero-content h2 {
+        font-size: 42px;
+    }
+
+    .hero-image {
+        width: 100%;
+        height: 230px;
+        margin-top: 30px;
+    }
+
+
+    /* ABOUT*/
+
+    .about-section {
+        width: 86%;
+        grid-template-columns: 1fr;
+        gap: 45px;
+        padding: 50px 0;
+    }
+
+
+    /* TEAM MEMBERS*/
+
+    .developers-section {
+        padding: 50px 6%;
+    }
+
+    .developer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+
+    /* VALUES */
+
+    .values-section {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 35px 5%;
+    }
+
+
+    /* FOOTER */
+
+    .footerContainer {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 45px 0;
+    }
+
+}
+
+
+/* RESPOSIVENESS */
+
+@media screen and (max-width: 500px) {
+
+    .brand-text h1 {
+        font-size: 20px;
+    }
+
+    .brand-text span {
+        font-size: 11px;
+    }
+
+    .hero-content h2 {
+        font-size: 35px;
+    }
+
+    .developer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .developer-card {
+        padding: 25px;
+    }
+
+    .values-section {
+        grid-template-columns: 1fr;
+    }
+
+}
