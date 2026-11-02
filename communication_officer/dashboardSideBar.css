@@ -1,0 +1,175 @@
+/* ##################### NAVIGATION/SIDE BAR #################################### */
+
+.sidebar {
+    width: 280px; /*updated*/
+    background-color: rgb(9, 71, 92);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    flex-shrink: 0;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.navigation{margin-top: 45px;}
+
+.navigation img {
+    width: 80%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 2rem auto;
+}
+
+.navigation ul {
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+}
+
+.navigation ul li {
+    margin-bottom: 12px;
+}
+
+.navigation ul li a {
+    color: #bdc3c7;
+    text-decoration: none;
+    font-size: 1rem;
+    display: block;
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    white-space: nowrap;
+}
+
+.navigation ul li a:hover {
+    background-color: #34495e;
+    color: white;
+    padding-left: 20px;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #e74c3c;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.logout-btn a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#sidebarToggle { display: none; }
+
+#sidebarToggle:checked ~ .sidebar {
+    width: 25vw;
+    padding: 1.5rem; 
+    border: none;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: fixed;
+    top: 20px;
+    left: 15px;
+    z-index: 1000;
+    background: rgb(6, 49, 63);
+    border-radius: 8px;
+    padding: 10px 13px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+
+    transition: transform 0.3s ease, opacity 0.3s ease; 
+    transform-origin: center;
+}
+
+/* ######### MORPH INTO X WHEN CLOSED (NOT CHECKED) ######################*/
+
+/* Top Line */
+#sidebarToggle:checked ~ .hamburger span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+/* Middle Line */
+#sidebarToggle:checked ~ .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+#sidebarToggle:checked ~ .hamburger span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.dashboardContainer {
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    height: 100vh;
+}
+
+/* ############### MEDIA QUERIES/RESPONSIVENESS ################## */
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh; 
+        width: 70vw; 
+        z-index: 999;
+        
+        transform: translateX(-100%); 
+    }
+
+    #sidebarToggle:checked ~ .sidebar {
+        transform: translateX(0);
+        width: 40vw;
+        padding-left: 1.1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh; 
+        z-index: 999;
+        transform: translateX(-100%); 
+    }
+
+    #sidebarToggle:checked ~ .sidebar {
+        transform: translateX(0);
+        width: 15vw;
+        padding-left: 1.1rem;
+    }
+    
+}

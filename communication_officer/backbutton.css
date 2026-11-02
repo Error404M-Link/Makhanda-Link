@@ -1,0 +1,21 @@
+.backBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: #ffffff;
+    color: #1b442b;
+    border: 1px solid #e2e0d8;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.backBtn:hover {
+    background-color: #1b442b;
+    color: #ffffff;
+    border-color: #1b442b;
+}

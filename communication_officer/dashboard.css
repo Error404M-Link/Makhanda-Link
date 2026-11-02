@@ -1,0 +1,651 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --makana-green: #3f5f4a;
+    --makana-dark-green: #294334;
+    --makana-light-green: #e8eee9;
+
+    --makana-brown: #8a6848;
+    --makana-dark-brown: #62482f;
+    --makana-light-brown: #f0e8df;
+
+    --cream: #f7f5ef;
+    --white: #ffffff;
+    --text: #29342d;
+    --muted: #737a73;
+    --border: #dedfd8;
+
+    --shadow: 0 8px 24px rgba(41, 67, 52, 0.08);
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--cream);
+    color: var(--text);
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--makana-dark-green),
+            var(--makana-green)
+        );
+
+    color: var(--white);
+    padding: 28px 18px;
+
+    z-index: 1000;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 0 10px 30px;
+}
+
+.brand-mark {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--makana-brown);
+    border-radius: 10px;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.brand h2 {
+    font-size: 22px;
+}
+
+.brand span {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 11px;
+    opacity: 0.75;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 13px 15px;
+
+    color: rgba(255,255,255,0.82);
+    text-decoration: none;
+
+    border-radius: 9px;
+
+    transition: 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: rgba(255,255,255,0.13);
+    color: var(--white);
+}
+
+.logout-link {
+    margin-top: 25px;
+}
+
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.main-content {
+    margin-left: 250px;
+    min-height: 100vh;
+    padding: 30px 38px;
+}
+
+
+/* =====================================================
+   TOPBAR
+===================================================== */
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 38px;
+}
+
+.eyebrow {
+    color: var(--makana-brown);
+
+    font-size: 11px;
+    font-weight: bold;
+
+    letter-spacing: 1.3px;
+}
+
+.topbar h1 {
+    margin-top: 5px;
+    font-size: 28px;
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+}
+
+.notice-button,
+.view-button,
+.view-all {
+    text-decoration: none;
+}
+
+.notice-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 11px 18px;
+
+    border-radius: 8px;
+
+    background: var(--makana-brown);
+    color: var(--white);
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.notice-button:hover {
+    background: var(--makana-dark-brown);
+}
+
+.menu-toggle {
+    display: none;
+}
+
+
+/* =====================================================
+   SECTION HEADINGS
+===================================================== */
+
+.section-heading {
+    margin-bottom: 20px;
+}
+
+.section-heading h2 {
+    margin-top: 5px;
+    font-size: 23px;
+}
+
+.incident-description{
+    max-width: 350px;
+    white-space: normal; 
+    line-height: 1.5;
+}
+
+.section-heading p:not(.eyebrow) {
+    margin-top: 6px;
+    color: var(--muted);
+}
+
+
+/* =====================================================
+   OVERVIEW CARDS
+===================================================== */
+
+.overview-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 30px;
+}
+
+.overview-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding: 22px;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 13px;
+
+    box-shadow: var(--shadow);
+}
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--makana-light-green);
+
+    color: var(--makana-green);
+
+    border-radius: 12px;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.overview-card:nth-child(4) .card-icon {
+    background: var(--makana-light-brown);
+    color: var(--makana-brown);
+}
+
+.overview-card span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+.overview-card strong {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 27px;
+
+    color: var(--makana-dark-green);
+}
+
+.overview-card small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   CHARTS
+===================================================== */
+
+.charts-section {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+    margin-bottom: 32px;
+}
+
+.chart-card {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 13px;
+
+    padding: 22px;
+
+    box-shadow: var(--shadow);
+}
+
+.chart-heading {
+    margin-bottom: 18px;
+}
+
+.chart-heading h3 {
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+.chart-wrapper {
+    height: 300px;
+    position: relative;
+}
+
+.priority-chart-card {
+    grid-column: 1 / -1;
+}
+
+.priority-wrapper {
+    max-width: 480px;
+    margin: auto;
+}
+
+
+/* =====================================================
+   INCIDENTS
+===================================================== */
+
+.incidents-section {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 13px;
+
+    padding: 24px;
+
+    box-shadow: var(--shadow);
+
+    margin-bottom: 30px;
+}
+
+.incidents-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.view-all {
+    color: var(--makana-green);
+    font-weight: bold;
+}
+
+.search-area {
+    margin-bottom: 18px;
+}
+
+.search-area input {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+.search-area input:focus {
+    border-color: var(--makana-green);
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: var(--makana-light-green);
+}
+
+th {
+    padding: 13px 14px;
+
+    text-align: left;
+
+    color: var(--makana-dark-green);
+
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+td {
+    padding: 15px 14px;
+
+    border-bottom: 1px solid var(--border);
+
+    font-size: 13px;
+
+    white-space: nowrap;
+}
+
+tbody tr:hover {
+    background: #fafbf8;
+}
+
+.incident-id {
+    color: var(--makana-green);
+    font-weight: bold;
+}
+
+.priority-badge {
+    display: inline-block;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+.priority-low {
+    background: var(--makana-light-green);
+    color: var(--makana-green);
+}
+
+.priority-medium {
+    background: var(--makana-light-brown);
+    color: var(--makana-dark-brown);
+}
+
+.priority-high {
+    background: #ead8cd;
+    color: #70402c;
+}
+
+.view-button {
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    border: 1px solid var(--makana-green);
+
+    border-radius: 7px;
+
+    color: var(--makana-green);
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.view-button:hover {
+    background: var(--makana-green);
+    color: var(--white);
+}
+
+.no-data {
+    padding: 30px;
+
+    text-align: center;
+
+    color: var(--muted);
+}
+
+
+/* =====================================================
+   COMMUNICATION AREA
+===================================================== */
+
+.communication-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 25px 28px;
+
+    background:
+        linear-gradient(
+            120deg,
+            var(--makana-dark-green),
+            var(--makana-green)
+        );
+
+    border-radius: 13px;
+
+    color: var(--white);
+}
+
+.communication-section .eyebrow {
+    color: #d7c3ad;
+}
+
+.communication-section h2 {
+    margin-top: 5px;
+}
+
+.communication-section p:not(.eyebrow) {
+    margin-top: 7px;
+    opacity: 0.78;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1100px) {
+
+    .overview-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .charts-section {
+        grid-template-columns: 1fr;
+    }
+
+    .priority-chart-card {
+        grid-column: auto;
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        transform: translateX(-100%);
+        transition: 0.25s;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 22px;
+    }
+
+    .menu-toggle {
+        display: block;
+
+        margin-right: 14px;
+
+        border: none;
+        background: transparent;
+
+        font-size: 24px;
+
+        cursor: pointer;
+
+        color: var(--makana-dark-green);
+    }
+
+    .topbar {
+        align-items: flex-start;
+    }
+
+    .topbar {
+        position: relative;
+    }
+
+    .topbar > div:first-of-type {
+        flex: 1;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .overview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .main-content {
+        padding: 17px;
+    }
+
+    .topbar h1 {
+        font-size: 21px;
+    }
+
+    .topbar-actions {
+        display: none;
+    }
+
+    .incidents-heading {
+        align-items: flex-start;
+        gap: 15px;
+        flex-direction: column;
+    }
+
+    .communication-section {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}

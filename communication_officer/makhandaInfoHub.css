@@ -1,0 +1,364 @@
+/* =========================
+   GENERAL RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f2ee;
+    color: #302820;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar {
+    height: 72px;
+    background: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 45px;
+
+    border-bottom: 1px solid #e3ddd6;
+}
+
+.topbar h2 {
+    font-size: 21px;
+    font-weight: 700;
+    color: #4b3526;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #6b5543;
+    font-size: 14px;
+    font-weight: 600;
+
+    text-transform: capitalize;
+}
+
+.user i {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eee5dc;
+    color: #72543d;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+main {
+    max-width: 1250px;
+    margin: auto;
+
+    padding: 40px 45px 60px;
+}
+
+
+/* =========================
+   PAGE TITLE
+========================= */
+
+.title {
+    margin-bottom: 30px;
+}
+
+.title h1 {
+    font-size: 30px;
+    color: #35271e;
+    margin-bottom: 8px;
+}
+
+.title p {
+    color: #7b7067;
+    font-size: 14px;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+    background: #ffffff;
+
+    border: 1px solid #e5ded7;
+    border-radius: 12px;
+
+    padding: 25px;
+
+    margin-bottom: 25px;
+
+    box-shadow: 0 2px 8px rgba(54, 42, 32, 0.04);
+}
+
+.card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 17px;
+
+    color: #4b3526;
+
+    margin-bottom: 22px;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid #eee9e4;
+}
+
+.card h3 i {
+    color: #806047;
+    font-size: 17px;
+}
+
+
+/* =========================
+   LABELS
+========================= */
+
+label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #51463e;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+input,
+select,
+textarea {
+    width: 100%;
+
+    padding: 12px 13px;
+
+    margin-bottom: 18px;
+
+    border: 1px solid #d8d1ca;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #342a24;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: border 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #86664c;
+
+    box-shadow: 0 0 0 3px rgba(134, 102, 76, 0.10);
+}
+
+textarea {
+    resize: vertical;
+
+    min-height: 100px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #aaa29b;
+}
+
+
+/* =========================
+   GRID
+========================= */
+
+.grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+
+    align-items: start;
+}
+
+.grid2 {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    column-gap: 25px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    border: none;
+
+    border-radius: 7px;
+
+    padding: 12px 20px;
+
+    background: #6d4d36;
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease,
+                transform 0.1s ease;
+}
+
+button:hover {
+    background: #543a28;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================
+   STATISTICS
+========================= */
+
+.stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+.stats input {
+    font-size: 16px;
+
+    font-weight: 600;
+
+    background: #faf8f5;
+}
+
+
+/* =========================
+   WARD INFORMATION
+========================= */
+
+.card:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .topbar {
+        padding: 0 25px;
+    }
+
+    main {
+        padding: 30px 25px 50px;
+    }
+
+    .stats {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .topbar {
+        height: auto;
+
+        padding: 18px 20px;
+
+        gap: 15px;
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .topbar h2 {
+        font-size: 19px;
+    }
+
+    main {
+        padding: 25px 18px 40px;
+    }
+
+    .title h1 {
+        font-size: 25px;
+    }
+
+    .grid,
+    .grid2 {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}   
