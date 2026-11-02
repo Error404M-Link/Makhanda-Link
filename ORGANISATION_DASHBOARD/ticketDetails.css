@@ -1,0 +1,376 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    --sidebar-width: 270px;
+    --sidebar-collapsed-width: 85px;
+
+    --green: #4b561b;
+    --cream: #f4f0e7;
+    --teal: #244f4b;
+    --brown: #955b24;
+    --text: #263238;
+    --white: #ffffff;
+    --border: #e4e0d7;
+}
+
+
+body {
+    font-family: "Ubuntu", sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    margin: 0;
+    padding: 30px 15px;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+
+button,
+input,
+textarea,
+select {
+    font-family: "Ubuntu", sans-serif;
+}
+
+
+/* =========================================
+   DASHBOARD CONTAINER
+========================================= */
+
+.dashboard-container {
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* =========================================
+   TOPBAR PROFILE
+========================================= */
+
+.topbar-profile {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding-left: 20px;
+
+    border-left: 1px solid var(--border);
+
+    color: var(--text);
+}
+
+
+.topbar-avatar {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ece8df;
+}
+
+
+.topbar-avatar img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+.topbar-avatar .material-icons {
+    font-size: 40px;
+    color: var(--green);
+}
+
+
+.topbar-profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.topbar-profile-info strong {
+    font-size: 13px;
+    font-weight: 600;
+
+    color: var(--text);
+}
+
+
+.topbar-profile-info span {
+    margin-top: 2px;
+
+    font-size: 10px;
+
+    color: #777;
+}
+
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.back-button {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.ticket-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+.card-header h2 {
+    margin: 0;
+    color: #1e3d2f;
+}
+
+.read-only-badge {
+    background: #e2e8f0;
+    color: #64748b;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.priority-badge {
+    background: #0284c7;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+/* Status Tracker Animation */
+.status-tracker {
+    margin: 35px 0;
+}
+
+.tracker-steps {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.step {
+    text-align: center;
+    opacity: 0.35;
+    transition: all 0.5s ease;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+.step-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #cbd5e1;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px;
+    font-weight: bold;
+    transition: background 0.4s ease, transform 0.4s ease;
+}
+
+.step.active .step-icon {
+    background: #16a34a;
+    box-shadow: 0 0 12px rgba(22, 163, 74, 0.5);
+    animation: popIn 0.5s ease forwards;
+}
+
+.step-title {
+    margin: 0;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.step-line {
+    flex-grow: 1;
+    height: 4px;
+    background: #e2e8f0;
+    margin: 0 10px;
+    position: relative;
+    top: -14px;
+    overflow: hidden;
+}
+
+.step-line.active-line::after {
+    content: '';
+    display: block;
+    height: 100%;
+    background: #16a34a;
+    animation: fillLine 0.8s ease-in-out forwards;
+}
+
+@keyframes fillLine {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.8); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* Timeline Comments */
+.comments-section {
+    margin-top: 40px;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 24px;
+    border-left: 3px solid #16a34a;
+    margin-top: 20px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 25px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+    animation-delay: var(--delay);
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -31px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #16a34a;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px #16a34a;
+}
+
+.timeline-content {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.author-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.role-badge {
+    background: #dbeafe;
+    color: #1e40af;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.comment-body {
+    margin: 0 0 8px 0;
+    color: #334155;
+    line-height: 1.5;
+}
+
+.comment-time {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+.no-comments {
+    color: #64748b;
+    font-style: italic;
+}
+
+.message {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hidden comments state */
+.timeline-item.hidden-comment {
+    display: none;
+}
+
+/* Toggle Comments Button Styles */
+.toggle-comments-wrapper {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-toggle-comments {
+    background-color: #f1f5f9;
+    color: #1e3d2f;
+    border: 1px solid #cbd5e1;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-toggle-comments:hover {
+    background-color: #1e3d2f;
+    color: #ffffff;
+    border-color: #1e3d2f;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
