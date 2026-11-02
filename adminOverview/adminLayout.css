@@ -1,0 +1,524 @@
+/* =====================================================================
+   adminLayout.css
+   Shared M-LINK admin shell: sidebar + topbar + footer.
+   Copied 1:1 from the admin dashboard so every admin page looks and
+   behaves the same. Link this file LAST in <head> (after any page
+   stylesheet such as UserM.css or the page's own <style>) so the shell
+   rules always win.
+   ===================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --sidebar-width: 270px;
+    --sidebar-collapsed-width: 85px;
+    --green: #4b561b;
+    --cream: #f4f0e7;
+    --teal: #244f4b;
+    --brown: #955b24;
+    --text: #263238;
+    --white: #ffffff;
+    --border: #e4e0d7;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--cream);
+}
+
+.sidebar a,
+.topbar a {
+    text-decoration: none;
+}
+
+/* =====================================================================
+   DASHBOARD SHELL
+   ===================================================================== */
+.dashboard-container {
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* =====================================================================
+   SIDEBAR
+   ===================================================================== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    padding: 30px 18px;
+    background: var(--green);
+    color: var(--white);
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1000;
+    transition:
+        width 0.3s ease,
+        transform 0.3s ease;
+    scrollbar-width: none;
+    font-family: "Ubuntu", sans-serif;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+/* SIDEBAR PROFILE */
+.sidebar-profile {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 5px 7px 25px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+}
+
+.sidebar-avatar {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+}
+
+.sidebar-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sidebar-avatar .material-icons {
+    font-size: 42px;
+    color: var(--white);
+}
+
+.sidebar-profile-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.sidebar-profile-info strong {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar-profile-info span {
+    margin-top: 3px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.75);
+    text-transform: capitalize;
+}
+
+/* SIDEBAR MENU */
+.sidebar-menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-link {
+    width: 100%;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 11px 14px;
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.sidebar-link:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--white);
+}
+
+.sidebar-link.active {
+    background: rgba(255, 255, 255, 0.18);
+    color: var(--white);
+}
+
+/* SIDEBAR ICONS */
+.sidebar-icon {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    display: block;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+/* COLLAPSED SIDEBAR */
+.sidebar.collapsed {
+    width: var(--sidebar-collapsed-width);
+}
+
+.sidebar.collapsed .sidebar-profile {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.sidebar.collapsed .sidebar-profile-info {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-link {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.sidebar.collapsed .sidebar-link > span {
+    display: none;
+}
+
+/* =====================================================================
+   MAIN WRAPPER
+   ===================================================================== */
+.main-wrapper {
+    width: calc(100% - var(--sidebar-width));
+    min-height: 100vh;
+    margin-left: var(--sidebar-width);
+    display: flex;
+    flex-direction: column;
+    transition:
+        margin-left 0.3s ease,
+        width 0.3s ease;
+}
+
+.main-wrapper.sidebar-collapsed {
+    width: calc(100% - var(--sidebar-collapsed-width));
+    margin-left: var(--sidebar-collapsed-width);
+}
+
+/* =====================================================================
+   TOPBAR
+   ===================================================================== */
+.topbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 35px;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    z-index: 900;
+    font-family: "Ubuntu", sans-serif;
+}
+
+.topbar-left,
+.topbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.topbar-left {
+    gap: 20px;
+}
+
+.topbar-right {
+    gap: 28px;
+}
+
+/* HAMBURGER */
+.menu-btn {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+}
+
+.menu-btn:hover {
+    color: var(--green);
+}
+
+.menu-btn .material-icons {
+    font-size: 29px;
+}
+
+/* TOPBAR LOGO */
+.logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.topbar-logo {
+    width: 64px;
+    height: 64px;
+    display: block;
+    object-fit: contain;
+}
+
+/* TOPBAR ICON LINKS */
+.topbar-icon-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.topbar-icon-btn:hover {
+    color: var(--brown);
+}
+
+.topbar-icon-img {
+    width: 26px;
+    height: 26px;
+    display: block;
+    object-fit: contain;
+}
+
+/* TOPBAR ICON BADGES (unread messages / new sign-ups) */
+.topbar-icon-wrap {
+    position: relative;
+    display: inline-flex;
+}
+
+.topbar-badge {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #b3261e;
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+    border-radius: 999px;
+    border: 2px solid var(--white);
+}
+
+/* TOPBAR PROFILE */
+.topbar-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 20px;
+    border-left: 1px solid var(--border);
+    color: var(--text);
+}
+
+.topbar-avatar {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #ece8df;
+    overflow: hidden;
+}
+
+.topbar-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.topbar-avatar .material-icons {
+    font-size: 40px;
+    color: var(--green);
+}
+
+.topbar-profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.topbar-profile-info strong {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.topbar-profile-info span {
+    margin-top: 2px;
+    font-size: 10px;
+    color: #777777;
+    text-transform: capitalize;
+}
+
+/* =====================================================================
+   PAGE CONTENT + FOOTER
+   ===================================================================== */
+.dashboard-content {
+    width: 100%;
+    flex: 1;
+    padding: 35px;
+}
+
+footer.site-footer {
+    width: 100%;
+    margin-top: auto;
+    padding: 18px 35px;
+    background: var(--teal);
+    border-top: none;
+    color: var(--white);
+    text-align: center;
+    font-family: "Ubuntu", sans-serif;
+}
+
+footer.site-footer p {
+    font-size: 11px;
+    color: var(--white);
+}
+
+/* =====================================================================
+   RESPONSIVE
+   ===================================================================== */
+@media (max-width: 1000px) {
+    .topbar-right {
+        gap: 18px;
+    }
+
+    .topbar-icon-btn > span {
+        display: none;
+    }
+}
+
+@media (max-width: 750px) {
+    .sidebar {
+        width: var(--sidebar-width);
+        transform: translateX(-100%);
+    }
+
+    .sidebar.mobile-open {
+        transform: translateX(0);
+    }
+
+    .sidebar.collapsed {
+        width: var(--sidebar-width);
+    }
+
+    .main-wrapper,
+    .main-wrapper.sidebar-collapsed {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .topbar {
+        height: 80px;
+        padding: 0 18px;
+    }
+
+    .topbar-left {
+        gap: 12px;
+    }
+
+    .topbar-right {
+        gap: 14px;
+    }
+
+    .topbar-logo {
+        width: 52px;
+        height: 52px;
+    }
+
+    .topbar-profile-info {
+        display: none;
+    }
+
+    .topbar-profile {
+        padding-left: 12px;
+    }
+
+    .topbar-avatar {
+        width: 37px;
+        height: 37px;
+    }
+
+    .topbar-icon-btn > span {
+        display: none;
+    }
+
+    .dashboard-content {
+        padding: 25px 18px;
+    }
+
+    footer.site-footer {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .topbar {
+        padding: 0 12px;
+    }
+
+    .topbar-right {
+        gap: 10px;
+    }
+
+    .topbar-logo {
+        width: 45px;
+        height: 45px;
+    }
+
+    .menu-btn {
+        width: 34px;
+        height: 34px;
+    }
+
+    .menu-btn .material-icons {
+        font-size: 26px;
+    }
+
+    .topbar-profile {
+        padding-left: 8px;
+    }
+
+    .topbar-avatar {
+        width: 34px;
+        height: 34px;
+    }
+
+    .dashboard-content {
+        padding: 20px 12px;
+    }
+}

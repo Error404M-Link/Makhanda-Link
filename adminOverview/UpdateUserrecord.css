@@ -1,0 +1,386 @@
+.message.error {
+    background: #f8e5e2;
+    border: 1px solid #e5b8b1;
+    color: #8b2f24;
+}
+
+.message.success {
+    background: #edf3df;
+    border: 1px solid #c8d5a8;
+    color: #4b561b;
+}
+
+.password-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.password-modal.show {
+    display: flex;
+}
+
+.password-modal-content {
+    width: 100%;
+    max-width: 430px;
+    background: white;
+    border-radius: 7px;
+    padding: 28px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+}
+
+.password-modal-content h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.password-modal-content p {
+    color: #777;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.password-modal-content label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 7px;
+}
+
+.password-modal-content input {
+    width: 100%;
+    border: 1px solid #d6d1c7;
+    border-radius: 5px;
+    padding: 11px 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    outline: none;
+}
+
+.password-modal-content input:focus {
+    border-color: #68772a;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.modal-cancel {
+    padding: 10px 18px;
+    border: 1px solid #d1cbc0;
+    border-radius: 5px;
+    background: white;
+    color: #555;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.modal-confirm {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 5px;
+    background: #5f7022;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.modal-confirm:hover {
+    background: #4b591a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f0e7;
+    color: #333;
+}
+
+.dashboard-content {
+    padding: 35px;
+    flex: 1;
+}
+
+.page-heading {
+    margin-bottom: 25px;
+}
+
+.section-label {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #68772a;
+    margin-bottom: 7px;
+}
+
+.page-heading h1 {
+    font-size: 30px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 7px;
+}
+
+.page-heading p {
+    font-size: 14px;
+    color: #777;
+}
+
+.message {
+    padding: 13px 16px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.dashboard-panel {
+    background: white;
+    border: 1px solid #ddd7ca;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.panel-header {
+    padding: 22px 25px;
+    border-bottom: 1px solid #e5e0d7;
+}
+
+.panel-header h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.panel-header p {
+    font-size: 13px;
+    color: #777;
+}
+
+.update-form {
+    padding: 30px 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid #d6d1c7;
+    border-radius: 5px;
+    padding: 11px 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #333;
+    background: white;
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #68772a;
+}
+
+.form-group input[readonly] {
+    background: #f4f2ed;
+    color: #777;
+    cursor: not-allowed;
+}
+
+.form-group small {
+    margin-top: 6px;
+    font-size: 11px;
+    color: #888;
+}
+
+.account-information {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 18px;
+    background: #f7f5ef;
+    border: 1px solid #e2ddd3;
+    border-radius: 5px;
+}
+
+.account-information div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.account-information span {
+    font-size: 13px;
+    color: #666;
+}
+
+.account-information strong {
+    font-size: 12px;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.status.active,
+.status.verified {
+    background: #e1ecd2;
+    color: #4b681c;
+}
+
+.status.inactive {
+    background: #eee1de;
+    color: #8b3b31;
+}
+
+.status.pending {
+    background: #f5ecd4;
+    color: #80651b;
+}
+
+.form-buttons {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e0d7;
+}
+
+.cancel-button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 18px;
+    border: 1px solid #d1cbc0;
+    border-radius: 5px;
+    background: white;
+    color: #555;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.cancel-button:hover {
+    background: #f4f1eb;
+}
+
+.save-button {
+    border: none;
+    padding: 11px 20px;
+    border-radius: 5px;
+    background: #5f7022;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.save-button:hover {
+    background: #4b591a;
+}
+
+@media (max-width: 800px) {
+
+    .update-form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width,
+    .form-buttons {
+        grid-column: auto;
+    }
+
+    .account-information {
+        grid-column: auto;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .dashboard-content {
+        padding: 18px;
+    }
+
+    .page-heading h1 {
+        font-size: 25px;
+    }
+
+    .update-form {
+        padding: 20px 18px;
+    }
+
+    .form-buttons {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .cancel-button,
+    .save-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .password-modal-content {
+        padding: 22px 18px;
+    }
+
+    .modal-buttons {
+        flex-direction: column-reverse;
+    }
+
+    .modal-cancel,
+    .modal-confirm {
+        width: 100%;
+    }
+}

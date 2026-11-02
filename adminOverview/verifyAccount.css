@@ -1,0 +1,851 @@
+/* verification modal */
+
+.modal-overlay {
+    display: none;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(38, 50, 56, 0.65);
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 999999;
+}
+
+
+.modal-overlay.show {
+    display: flex;
+}
+
+
+.confirmation-modal {
+    position: relative;
+
+    width: 460px;
+    max-width: 100%;
+
+    background: #f4f0e7;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+
+    animation: modalAppear 0.2s ease;
+}
+
+
+@keyframes modalAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* modal header */
+
+.confirmation-modal h2 {
+    margin: 0;
+
+    padding: 20px 25px;
+
+    background: #4b561b;
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+
+.confirmation-modal p {
+    margin: 0;
+
+    padding: 22px 25px 10px;
+
+    color: #263238;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* close button */
+
+.close-modal {
+    position: absolute;
+
+    top: 14px;
+    right: 15px;
+
+    width: 32px;
+    height: 32px;
+
+    padding: 0;
+
+    background: transparent;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 50%;
+
+    font-size: 24px;
+
+    line-height: 30px;
+
+    cursor: pointer;
+}
+
+
+.close-modal:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+
+/* password section */
+
+.confirmation-modal form {
+    padding: 10px 25px 25px;
+}
+
+
+.confirmation-modal label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #4b561b;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+.password-input {
+    display: flex;
+
+    width: 100%;
+}
+
+
+.password-input input {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 45px;
+
+    padding: 10px 14px;
+
+    background: white;
+
+    color: #263238;
+
+    border: 1px solid #b9bec1;
+
+    border-right: none;
+
+    border-radius: 7px 0 0 7px;
+
+    outline: none;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 14px;
+}
+
+
+.password-input input:focus {
+    border-color: #4b561b;
+
+    box-shadow: 0 0 0 2px rgba(75, 86, 27, 0.15);
+}
+
+
+.password-input button {
+    height: 45px;
+
+    padding: 0 14px;
+
+    background: #ffffff;
+
+    color: #4b561b;
+
+    border: 1px solid #b9bec1;
+
+    border-radius: 0 7px 7px 0;
+
+    cursor: pointer;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+.password-input button:hover {
+    background: #f1eee5;
+}
+
+
+/* modal buttons */
+
+.modal-buttons {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 22px;
+}
+
+
+.modal-buttons button {
+    padding: 11px 20px;
+
+    border-radius: 7px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.cancel-button {
+    background: #ffffff;
+
+    color: #4b561b;
+
+    border: 1px solid #4b561b;
+}
+
+
+.cancel-button:hover {
+    background: #ebe7dc;
+}
+
+
+.confirm-button {
+    background: #4b561b;
+
+    color: #ffffff;
+
+    border: 1px solid #4b561b;
+}
+
+
+.confirm-button:hover {
+    background: #687d25;
+}
+
+
+/* mobile modal */
+
+@media (max-width: 600px) {
+
+    .modal-overlay {
+        padding: 15px;
+    }
+
+
+    .confirmation-modal {
+        width: 100%;
+    }
+
+
+    .confirmation-modal h2 {
+        font-size: 20px;
+
+        padding: 18px 20px;
+    }
+
+
+    .confirmation-modal p {
+        padding: 20px 20px 10px;
+
+        font-size: 13px;
+    }
+
+
+    .confirmation-modal form {
+        padding: 10px 20px 20px;
+    }
+
+
+    .modal-buttons {
+        flex-direction: column-reverse;
+    }
+
+
+    .modal-buttons button {
+        width: 100%;
+    }
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f0e7;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* sidebar */
+
+.sidebar {
+    width: 220px;
+    min-height: 100vh;
+    background: #4b5b18;
+    color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 24px 18px;
+}
+
+.logo {
+    text-align: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo img {
+    width: 108px;
+    height: 28px;
+    object-fit: contain;
+    margin-bottom: 8px;
+}
+
+.logo h2 {
+    font-size: 23px;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.logo p {
+    font-size: 12px;
+    color: #eeeeee;
+}
+
+.profile {
+    text-align: center;
+    padding: 22px 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile h3 {
+    font-size: 14px;
+    word-break: break-word;
+    line-height: 1.2;
+}
+
+.profile p {
+    font-size: 12px;
+    margin-top: 6px;
+    color: #eeeeee;
+}
+
+.menu {
+    list-style: none;
+    padding: 15px 0 0;
+}
+
+.menu li {
+    margin-bottom: 3px;
+}
+
+.menu li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 13px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.menu li a:hover {
+    background: #5d6d20;
+}
+
+.menu li.active a {
+    background: #6b7f25;
+    font-weight: bold;
+}
+
+.logout-link {
+    margin-top: 12px;
+    padding-top: 18px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+/* main content */
+
+.main-content {
+    margin-left: 220px;
+    width: calc(100% - 220px);
+    min-height: 100vh;
+}
+
+
+/* topbar */
+
+.topbar {
+    height: 74px;
+    background: #ffffff;
+    border-bottom: 1px solid #d9d4ca;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 26px;
+}
+
+.topbar-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #222d35;
+}
+
+.user {
+    font-size: 13px;
+    font-weight: bold;
+    color: #4b5b18;
+}
+
+
+/* dashboard content */
+
+.dashboard-content {
+    padding: 26px;
+}
+
+.page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.page-heading h1 {
+    font-size: 32px;
+    color: #222d35;
+    margin-bottom: 5px;
+}
+
+.pending-count {
+    background: #ffffff;
+    border: 1px solid #d6d0c5;
+    border-radius: 6px;
+    min-width: 170px;
+    padding: 14px 20px;
+    text-align: center;
+}
+
+.pending-count span {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.pending-count strong {
+    display: block;
+    font-size: 28px;
+    color: #4b5b18;
+}
+
+
+/* message */
+
+.message {
+    background: #ffffff;
+    border: 1px solid #d6d0c5;
+    border-left: 4px solid #4b5b18;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+
+/* panel */
+
+.dashboard-panel {
+    background: #ffffff;
+    border: 1px solid #d6d0c5;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.panel-header {
+    padding: 21px 25px;
+    border-bottom: 1px solid #ddd8ce;
+}
+
+.panel-header h3 {
+    color: #222d35;
+    font-size: 18px;
+}
+
+
+/* table */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 950px;
+}
+
+thead {
+    background: #f7f4ee;
+}
+
+th {
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: normal;
+    color: #4b5b68;
+    border-bottom: 1px solid #dcd7ce;
+}
+
+td {
+    padding: 17px 18px;
+    font-size: 13px;
+    color: #222d35;
+    border-bottom: 1px solid #e5e0d7;
+    vertical-align: middle;
+}
+
+tbody tr:hover {
+    background: #faf9f5;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+td strong {
+    font-weight: bold;
+    color: #222d35;
+}
+
+
+/* status */
+
+.status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status.pending {
+    background: #f3e8bd;
+    color: #756116;
+}
+
+
+/* action buttons */
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.verify-button,
+.reject-button {
+    border: none;
+    padding: 8px 13px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.verify-button {
+    background: #5f721f;
+    color: white;
+}
+
+.verify-button:hover {
+    background: #4b5b18;
+}
+
+.reject-button {
+    background: #8b3535;
+    color: white;
+}
+
+.reject-button:hover {
+    background: #722929;
+}
+
+
+/* empty state */
+
+.empty-state {
+    text-align: center;
+    padding: 70px 25px;
+}
+
+.empty-state h3 {
+    color: #222d35;
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    color: #777;
+    font-size: 14px;
+}
+
+
+/* password modal */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.confirmation-modal {
+    width: 440px;
+    max-width: 90%;
+    background: white;
+    border-radius: 7px;
+    padding: 28px;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    border: none;
+    background: transparent;
+    font-size: 25px;
+    color: #777;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+.confirmation-modal h2 {
+    color: #222d35;
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.confirmation-modal p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 22px;
+}
+
+.confirmation-modal label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 7px;
+}
+
+.password-input {
+    display: flex;
+    width: 100%;
+    margin-bottom: 23px;
+}
+
+.password-input input {
+    flex: 1;
+    height: 40px;
+    border: 1px solid #cfc9be;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    padding: 0 11px;
+    font-size: 14px;
+    outline: none;
+}
+
+.password-input input:focus {
+    border-color: #5f721f;
+}
+
+.password-input button {
+    width: 65px;
+    border: 1px solid #cfc9be;
+    background: #f4f0e7;
+    color: #4b5b18;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.password-input button:hover {
+    background: #e8e3d8;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 9px;
+}
+
+.cancel-button,
+.confirm-button {
+    padding: 9px 17px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cancel-button {
+    background: #eeeeee;
+    border: 1px solid #d2d2d2;
+    color: #333;
+}
+
+.cancel-button:hover {
+    background: #e1e1e1;
+}
+
+.confirm-button {
+    background: #4b5b18;
+    border: 1px solid #4b5b18;
+    color: white;
+}
+
+.confirm-button:hover {
+    background: #3d4a13;
+}
+
+
+/* responsive */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 220px;
+    }
+
+    .main-content {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+    }
+
+    .dashboard-content {
+        padding: 20px;
+    }
+
+    .page-heading {
+        gap: 15px;
+    }
+
+    .page-heading h1 {
+        font-size: 27px;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .container {
+        display: block;
+    }
+
+    .page-heading {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pending-count {
+        width: 100%;
+    }
+
+    .topbar {
+        padding: 0 18px;
+    }
+
+    .dashboard-content {
+        padding: 18px 12px;
+    }
+}
