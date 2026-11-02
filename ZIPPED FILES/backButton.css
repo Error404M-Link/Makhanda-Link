@@ -1,0 +1,48 @@
+.backNavWrapper {
+    width: 10%;   
+    margin-right: 9%;
+    padding: 0;              
+    box-sizing: border-box;       
+    display: flex;    
+    position: sticky;           
+}
+.backNavContainer {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.backBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 0.95rem;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+
+.backBtn:hover {
+    background-color: #6c6565;
+    color: #000;
+    border-color: #ccc;
+}
+
+/*#################### BACK BUTTON HTML CODE #################################
+
+<div class="backNavWrapper">
+            <div class="backNavContainer">
+                <a href="javascript:history.back()" class="backBtn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    <span>Back</span>
+                </a>
+            </div>
+        </div>
+
+*/
