@@ -1,0 +1,360 @@
+/* =========================================
+   PALETTE  (same values as residence.php)
+========================================= */
+
+:root {
+    --green: #4b561b;
+    --cream: #f4f0e7;
+    --teal: #244f4b;
+    --brown: #955b24;
+    --text: #263238;
+    --white: #ffffff;
+    --border: #e4e0d7;
+
+    --soft: #f1eee5;        /* hover / active backgrounds */
+    --field: #faf8f3;       /* input backgrounds */
+    --muted: #6f7474;       /* secondary text */
+    --muted-light: #8a8d8d; /* hints / icons */
+    --shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+body {
+    background-color: var(--cream);
+    color: var(--text);
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.profileContainer {
+    display: flex;
+    gap: 30px;
+    max-width: 2100px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.settingsHeader {
+    padding: 20px 20px 0 80px;
+}
+
+.settingsHeader h1 {
+    color: var(--teal);
+}
+
+.notificationBanner {
+    max-width: 1200px;
+    margin: 15px auto -5px auto;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.successNotification {
+    background-color: #e4f0e9;
+    color: #24623d;
+    border: 1px solid #cfe3d6;
+}
+
+.errorNotification {
+    background-color: #f8e7e4;
+    color: #9b2c1f;
+    border: 1px solid #efcdc7;
+}
+
+/* LEFT CARD */
+.profileCardLeft {
+    width: 280px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: var(--shadow);
+}
+
+.profileAvatarWrapper {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin-bottom: 15px;
+}
+
+.profileAvatarWrapper img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.editBadge {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    background-color: var(--brown);
+    color: var(--white);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    border: 2px solid var(--white);
+}
+
+.fileInputHidden {
+    display: none;
+}
+
+.imageUploadActions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.btnSmall {
+    padding: 8px 18px;
+    font-size: 0.8rem;
+}
+
+.userName {
+    font-size: 1.1rem;
+    color: var(--teal);
+    margin-bottom: 4px;
+}
+
+.userRole {
+    font-size: 0.85rem;
+    color: var(--muted-light);
+    margin-bottom: 25px;
+}
+
+.profileNavMenu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profileNavMenu .navItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 25px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.profileNavMenu .navItem:hover {
+    background-color: var(--soft);
+    color: var(--teal);
+}
+
+.profileNavMenu .navItem.active {
+    background-color: var(--soft);
+    color: var(--teal);
+    font-weight: 600;
+}
+
+/* RIGHT CARD */
+.profileCardRight {
+    flex: 1;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 35px 40px;
+    box-shadow: var(--shadow);
+}
+
+.profileCardRight h2 {
+    font-size: 1.3rem;
+    color: var(--teal);
+    margin-bottom: 25px;
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.fullWidth {
+    grid-column: span 2;
+}
+
+.inputGroup label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+
+.inputGroup input, 
+.inputGroup select {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: var(--field);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 0.9rem;
+    color: var(--text);
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* outline is removed above, so show focus with the teal accent instead */
+.inputGroup input:focus,
+.inputGroup select:focus {
+    border-color: var(--teal);
+}
+
+.readOnlyInput {
+    background-color: var(--soft);
+    color: var(--muted);
+    cursor: not-allowed;
+}
+
+.verifiedTag {
+    position: absolute;
+    right: 15px;
+    color: #24623d;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.icon-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.icon-input i {
+    position: absolute;
+    right: 15px;
+    color: var(--muted-light);
+}
+
+.formActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btnDiscard {
+    background: transparent;
+    border: 1px solid var(--teal);
+    color: var(--teal);
+    padding: 12px 30px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btnDiscard:hover {
+    background: var(--soft);
+}
+
+.btnSave {
+    background: var(--teal);
+    border: none;
+    color: var(--white);
+    padding: 12px 30px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btnSave:hover {
+    background: #1c3f3c;
+}
+
+/* TAB VISIBILITY */
+.tabSection {
+    display: block;
+}
+
+.hiddenSection {
+    display: none;
+}
+
+/* MODAL POPUP STYLES */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(38, 50, 56, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.hiddenModal {
+    display: none;
+}
+
+.modalContent {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.modalContent h3 {
+    margin-top: 0;
+    color: var(--teal);
+}
+
+.modalContent p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 15px;
+}
+
+.modalInput {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--field);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.modalInput:focus {
+    outline: none;
+    border-color: var(--teal);
+}
+
+.modalErrorText {
+    color: #a8322a;
+    font-size: 0.85rem;
+    margin-top: -5px;
+    margin-bottom: 15px;
+}
+
+.hiddenError {
+    display: none;
+}
+
+.modalActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
