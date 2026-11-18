@@ -151,7 +151,7 @@ Makhanda-Link-Recovery/
 | Faith Lizwi Mlambo | Project Manager & Full Stack Developer |
 | Hlompho Noah Nyathi | Infrastructure Manager & Full Stack Developer |
 | Qhamani Somhlahlo | Change Manager Analyst & front-end developer |
-| Qhamani Somhlahlo | Systems Analyst & Full Stack developer |
+| Master Ganyali | Systems Analyst & Full Stack developer |
 | Zevile Ngwabi | Business Analyst & front-end developer |
 
 ## Acknowledgements
